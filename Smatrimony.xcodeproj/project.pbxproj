@@ -1,0 +1,547 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		74A089E31E436E8A00D7D04C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A089E21E436E8A00D7D04C /* main.m */; };
+		74A089E61E436E8A00D7D04C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A089E51E436E8A00D7D04C /* AppDelegate.m */; };
+		74A089E91E436E8A00D7D04C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A089E81E436E8A00D7D04C /* ViewController.m */; };
+		74A089EC1E436E8A00D7D04C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74A089EA1E436E8A00D7D04C /* Main.storyboard */; };
+		74A089EF1E436E8A00D7D04C /* Smatrimony.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74A089ED1E436E8A00D7D04C /* Smatrimony.xcdatamodeld */; };
+		74A089F11E436E8A00D7D04C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74A089F01E436E8A00D7D04C /* Assets.xcassets */; };
+		74A089F41E436E8A00D7D04C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74A089F21E436E8A00D7D04C /* LaunchScreen.storyboard */; };
+		74A089FF1E436E8A00D7D04C /* SmatrimonyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A089FE1E436E8A00D7D04C /* SmatrimonyTests.m */; };
+		74A08A0A1E436E8A00D7D04C /* SmatrimonyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A08A091E436E8A00D7D04C /* SmatrimonyUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		74A089FB1E436E8A00D7D04C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74A089D61E436E8A00D7D04C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 74A089DD1E436E8A00D7D04C;
+			remoteInfo = Smatrimony;
+		};
+		74A08A061E436E8A00D7D04C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74A089D61E436E8A00D7D04C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 74A089DD1E436E8A00D7D04C;
+			remoteInfo = Smatrimony;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		74A089DE1E436E8A00D7D04C /* Smatrimony.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smatrimony.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		74A089E21E436E8A00D7D04C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		74A089E41E436E8A00D7D04C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		74A089E51E436E8A00D7D04C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		74A089E71E436E8A00D7D04C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		74A089E81E436E8A00D7D04C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		74A089EB1E436E8A00D7D04C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		74A089EE1E436E8A00D7D04C /* Smatrimony.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Smatrimony.xcdatamodel; sourceTree = "<group>"; };
+		74A089F01E436E8A00D7D04C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		74A089F31E436E8A00D7D04C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		74A089F51E436E8A00D7D04C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74A089FA1E436E8A00D7D04C /* SmatrimonyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmatrimonyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74A089FE1E436E8A00D7D04C /* SmatrimonyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmatrimonyTests.m; sourceTree = "<group>"; };
+		74A08A001E436E8A00D7D04C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74A08A051E436E8A00D7D04C /* SmatrimonyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmatrimonyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74A08A091E436E8A00D7D04C /* SmatrimonyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmatrimonyUITests.m; sourceTree = "<group>"; };
+		74A08A0B1E436E8A00D7D04C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		74A089DB1E436E8A00D7D04C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74A089F71E436E8A00D7D04C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74A08A021E436E8A00D7D04C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		74A089D51E436E8A00D7D04C = {
+			isa = PBXGroup;
+			children = (
+				74A089E01E436E8A00D7D04C /* Smatrimony */,
+				74A089FD1E436E8A00D7D04C /* SmatrimonyTests */,
+				74A08A081E436E8A00D7D04C /* SmatrimonyUITests */,
+				74A089DF1E436E8A00D7D04C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		74A089DF1E436E8A00D7D04C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74A089DE1E436E8A00D7D04C /* Smatrimony.app */,
+				74A089FA1E436E8A00D7D04C /* SmatrimonyTests.xctest */,
+				74A08A051E436E8A00D7D04C /* SmatrimonyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		74A089E01E436E8A00D7D04C /* Smatrimony */ = {
+			isa = PBXGroup;
+			children = (
+				74A089E41E436E8A00D7D04C /* AppDelegate.h */,
+				74A089E51E436E8A00D7D04C /* AppDelegate.m */,
+				74A089E71E436E8A00D7D04C /* ViewController.h */,
+				74A089E81E436E8A00D7D04C /* ViewController.m */,
+				74A089EA1E436E8A00D7D04C /* Main.storyboard */,
+				74A089F01E436E8A00D7D04C /* Assets.xcassets */,
+				74A089F21E436E8A00D7D04C /* LaunchScreen.storyboard */,
+				74A089F51E436E8A00D7D04C /* Info.plist */,
+				74A089ED1E436E8A00D7D04C /* Smatrimony.xcdatamodeld */,
+				74A089E11E436E8A00D7D04C /* Supporting Files */,
+			);
+			path = Smatrimony;
+			sourceTree = "<group>";
+		};
+		74A089E11E436E8A00D7D04C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				74A089E21E436E8A00D7D04C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		74A089FD1E436E8A00D7D04C /* SmatrimonyTests */ = {
+			isa = PBXGroup;
+			children = (
+				74A089FE1E436E8A00D7D04C /* SmatrimonyTests.m */,
+				74A08A001E436E8A00D7D04C /* Info.plist */,
+			);
+			path = SmatrimonyTests;
+			sourceTree = "<group>";
+		};
+		74A08A081E436E8A00D7D04C /* SmatrimonyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				74A08A091E436E8A00D7D04C /* SmatrimonyUITests.m */,
+				74A08A0B1E436E8A00D7D04C /* Info.plist */,
+			);
+			path = SmatrimonyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		74A089DD1E436E8A00D7D04C /* Smatrimony */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74A08A0E1E436E8A00D7D04C /* Build configuration list for PBXNativeTarget "Smatrimony" */;
+			buildPhases = (
+				74A089DA1E436E8A00D7D04C /* Sources */,
+				74A089DB1E436E8A00D7D04C /* Frameworks */,
+				74A089DC1E436E8A00D7D04C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Smatrimony;
+			productName = Smatrimony;
+			productReference = 74A089DE1E436E8A00D7D04C /* Smatrimony.app */;
+			productType = "com.apple.product-type.application";
+		};
+		74A089F91E436E8A00D7D04C /* SmatrimonyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74A08A111E436E8A00D7D04C /* Build configuration list for PBXNativeTarget "SmatrimonyTests" */;
+			buildPhases = (
+				74A089F61E436E8A00D7D04C /* Sources */,
+				74A089F71E436E8A00D7D04C /* Frameworks */,
+				74A089F81E436E8A00D7D04C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74A089FC1E436E8A00D7D04C /* PBXTargetDependency */,
+			);
+			name = SmatrimonyTests;
+			productName = SmatrimonyTests;
+			productReference = 74A089FA1E436E8A00D7D04C /* SmatrimonyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		74A08A041E436E8A00D7D04C /* SmatrimonyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74A08A141E436E8A00D7D04C /* Build configuration list for PBXNativeTarget "SmatrimonyUITests" */;
+			buildPhases = (
+				74A08A011E436E8A00D7D04C /* Sources */,
+				74A08A021E436E8A00D7D04C /* Frameworks */,
+				74A08A031E436E8A00D7D04C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74A08A071E436E8A00D7D04C /* PBXTargetDependency */,
+			);
+			name = SmatrimonyUITests;
+			productName = SmatrimonyUITests;
+			productReference = 74A08A051E436E8A00D7D04C /* SmatrimonyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		74A089D61E436E8A00D7D04C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Indobytes;
+				TargetAttributes = {
+					74A089DD1E436E8A00D7D04C = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
+					74A089F91E436E8A00D7D04C = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 74A089DD1E436E8A00D7D04C;
+					};
+					74A08A041E436E8A00D7D04C = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 74A089DD1E436E8A00D7D04C;
+					};
+				};
+			};
+			buildConfigurationList = 74A089D91E436E8A00D7D04C /* Build configuration list for PBXProject "Smatrimony" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 74A089D51E436E8A00D7D04C;
+			productRefGroup = 74A089DF1E436E8A00D7D04C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				74A089DD1E436E8A00D7D04C /* Smatrimony */,
+				74A089F91E436E8A00D7D04C /* SmatrimonyTests */,
+				74A08A041E436E8A00D7D04C /* SmatrimonyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		74A089DC1E436E8A00D7D04C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74A089F41E436E8A00D7D04C /* LaunchScreen.storyboard in Resources */,
+				74A089F11E436E8A00D7D04C /* Assets.xcassets in Resources */,
+				74A089EC1E436E8A00D7D04C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74A089F81E436E8A00D7D04C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74A08A031E436E8A00D7D04C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		74A089DA1E436E8A00D7D04C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74A089E91E436E8A00D7D04C /* ViewController.m in Sources */,
+				74A089E61E436E8A00D7D04C /* AppDelegate.m in Sources */,
+				74A089EF1E436E8A00D7D04C /* Smatrimony.xcdatamodeld in Sources */,
+				74A089E31E436E8A00D7D04C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74A089F61E436E8A00D7D04C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74A089FF1E436E8A00D7D04C /* SmatrimonyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74A08A011E436E8A00D7D04C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74A08A0A1E436E8A00D7D04C /* SmatrimonyUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		74A089FC1E436E8A00D7D04C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 74A089DD1E436E8A00D7D04C /* Smatrimony */;
+			targetProxy = 74A089FB1E436E8A00D7D04C /* PBXContainerItemProxy */;
+		};
+		74A08A071E436E8A00D7D04C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 74A089DD1E436E8A00D7D04C /* Smatrimony */;
+			targetProxy = 74A08A061E436E8A00D7D04C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		74A089EA1E436E8A00D7D04C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74A089EB1E436E8A00D7D04C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		74A089F21E436E8A00D7D04C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74A089F31E436E8A00D7D04C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		74A08A0C1E436E8A00D7D04C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		74A08A0D1E436E8A00D7D04C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		74A08A0F1E436E8A00D7D04C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Smatrimony/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.steeloncall.Smatrimony;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		74A08A101E436E8A00D7D04C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Smatrimony/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.steeloncall.Smatrimony;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		74A08A121E436E8A00D7D04C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SmatrimonyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.steeloncall.SmatrimonyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smatrimony.app/Smatrimony";
+			};
+			name = Debug;
+		};
+		74A08A131E436E8A00D7D04C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SmatrimonyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.steeloncall.SmatrimonyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smatrimony.app/Smatrimony";
+			};
+			name = Release;
+		};
+		74A08A151E436E8A00D7D04C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SmatrimonyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.steeloncall.SmatrimonyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Smatrimony;
+			};
+			name = Debug;
+		};
+		74A08A161E436E8A00D7D04C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SmatrimonyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.steeloncall.SmatrimonyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Smatrimony;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		74A089D91E436E8A00D7D04C /* Build configuration list for PBXProject "Smatrimony" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74A08A0C1E436E8A00D7D04C /* Debug */,
+				74A08A0D1E436E8A00D7D04C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		74A08A0E1E436E8A00D7D04C /* Build configuration list for PBXNativeTarget "Smatrimony" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74A08A0F1E436E8A00D7D04C /* Debug */,
+				74A08A101E436E8A00D7D04C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		74A08A111E436E8A00D7D04C /* Build configuration list for PBXNativeTarget "SmatrimonyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74A08A121E436E8A00D7D04C /* Debug */,
+				74A08A131E436E8A00D7D04C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		74A08A141E436E8A00D7D04C /* Build configuration list for PBXNativeTarget "SmatrimonyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74A08A151E436E8A00D7D04C /* Debug */,
+				74A08A161E436E8A00D7D04C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		74A089ED1E436E8A00D7D04C /* Smatrimony.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				74A089EE1E436E8A00D7D04C /* Smatrimony.xcdatamodel */,
+			);
+			currentVersion = 74A089EE1E436E8A00D7D04C /* Smatrimony.xcdatamodel */;
+			path = Smatrimony.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 74A089D61E436E8A00D7D04C /* Project object */;
+}
