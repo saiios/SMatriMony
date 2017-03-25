@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="success_cell_1" rowHeight="215" id="KGk-i7-Jjw" customClass="success_cell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Je2-ZT-6Id">
+                        <rect key="frame" x="10" y="8" width="300" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="New-VK-BSS"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smatrimony_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="2eb-js-mgt">
+                        <rect key="frame" x="10" y="58" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="9ry-fN-Z8A"/>
+                            <constraint firstAttribute="width" constant="80" id="Cht-4y-9PD"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVy-cR-2Ll">
+                        <rect key="frame" x="100" y="58" width="210" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="P99-Bl-fyB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marriage Date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRZ-BH-1Gb">
+                        <rect key="frame" x="100" y="93" width="210" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="ylP-L1-UYa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDS-kf-03K">
+                        <rect key="frame" x="10" y="148" width="300" height="0.0"/>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Db6-yL-2Bm">
+                        <rect key="frame" x="280" y="184" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="2ne-ws-f7h"/>
+                            <constraint firstAttribute="width" constant="20" id="dqb-zp-3tM"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="down"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEGA STAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG3-S6-4vW">
+                        <rect key="frame" x="30" y="13" width="260" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Od6-rq-8zL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Db6-yL-2Bm" secondAttribute="bottom" constant="10" id="0Ig-An-1uq"/>
+                    <constraint firstItem="JDS-kf-03K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="4Rx-bA-LyY"/>
+                    <constraint firstItem="mRZ-BH-1Gb" firstAttribute="top" secondItem="aVy-cR-2Ll" secondAttribute="bottom" constant="10" id="FZ5-45-9uz"/>
+                    <constraint firstItem="yG3-S6-4vW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="OPM-C4-9tb"/>
+                    <constraint firstItem="aVy-cR-2Ll" firstAttribute="top" secondItem="Je2-ZT-6Id" secondAttribute="bottom" constant="15" id="RRk-nk-7dQ"/>
+                    <constraint firstItem="aVy-cR-2Ll" firstAttribute="leading" secondItem="2eb-js-mgt" secondAttribute="trailing" constant="10" id="ULC-re-ojH"/>
+                    <constraint firstItem="mRZ-BH-1Gb" firstAttribute="leading" secondItem="2eb-js-mgt" secondAttribute="trailing" constant="10" id="WEV-Wg-aUj"/>
+                    <constraint firstItem="JDS-kf-03K" firstAttribute="top" secondItem="2eb-js-mgt" secondAttribute="bottom" constant="10" id="a5Z-GC-l8d"/>
+                    <constraint firstItem="yG3-S6-4vW" firstAttribute="centerY" secondItem="Je2-ZT-6Id" secondAttribute="centerY" id="di1-ZL-pcG"/>
+                    <constraint firstAttribute="trailing" secondItem="Db6-yL-2Bm" secondAttribute="trailing" constant="20" id="gHL-7W-eZW"/>
+                    <constraint firstAttribute="trailing" secondItem="JDS-kf-03K" secondAttribute="trailing" constant="10" id="gaC-F9-tiO"/>
+                    <constraint firstAttribute="trailing" secondItem="mRZ-BH-1Gb" secondAttribute="trailing" constant="10" id="hgB-qb-nrw"/>
+                    <constraint firstItem="Je2-ZT-6Id" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nfZ-6E-rxk"/>
+                    <constraint firstItem="2eb-js-mgt" firstAttribute="top" secondItem="Je2-ZT-6Id" secondAttribute="bottom" constant="15" id="pBK-BY-5Ne"/>
+                    <constraint firstItem="Je2-ZT-6Id" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="plb-Le-nEo"/>
+                    <constraint firstAttribute="trailing" secondItem="Je2-ZT-6Id" secondAttribute="trailing" constant="10" id="qF3-N6-ZQQ"/>
+                    <constraint firstItem="2eb-js-mgt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="v4a-Oj-GiD"/>
+                    <constraint firstAttribute="trailing" secondItem="aVy-cR-2Ll" secondAttribute="trailing" constant="10" id="wt5-jr-HMF"/>
+                    <constraint firstAttribute="trailing" secondItem="yG3-S6-4vW" secondAttribute="trailing" constant="30" id="zR4-Li-uso"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btn" destination="Db6-yL-2Bm" id="hxe-95-ovG"/>
+                <outlet property="des" destination="JDS-kf-03K" id="re7-BG-oyJ"/>
+                <outlet property="head_lbl" destination="yG3-S6-4vW" id="Fyq-8n-KIo"/>
+                <outlet property="img" destination="2eb-js-mgt" id="TE9-LW-svN"/>
+                <outlet property="mrg_date" destination="mRZ-BH-1Gb" id="yzo-xv-F73"/>
+                <outlet property="title" destination="aVy-cR-2Ll" id="2X8-JS-bov"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="137.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bgg.png" width="253" height="27"/>
+        <image name="down" width="32" height="32"/>
+        <image name="smatrimony_logo.png" width="250" height="128"/>
+    </resources>
+</document>

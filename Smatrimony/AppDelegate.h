@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+#import "LoginViewController.h"
+#import <UserNotifications/UserNotifications.h>
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UNUserNotificationCenterDelegate>
+{
+    NSUserDefaults *user_inf;
+}
 @property (strong, nonatomic) UIWindow *window;
+@property(assign,nonatomic)BOOL shouldRotate;
 
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 

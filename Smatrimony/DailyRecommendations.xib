@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DailyRecommendations">
+            <connections>
+                <outlet property="profileTableBgView" destination="Cr1-Mf-fsh" id="zTc-L0-yPr"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFk-0T-hXn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqH-Bw-qdn">
+                            <rect key="frame" x="15" y="20" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="33e-i9-eyC"/>
+                                <constraint firstAttribute="height" constant="35" id="kKb-UH-9ng"/>
+                            </constraints>
+                            <state key="normal" image="Back"/>
+                            <connections>
+                                <action selector="back_click:" destination="-1" eventType="touchUpInside" id="c1C-L9-q1i"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AQ-ow-AYK">
+                            <rect key="frame" x="65" y="25.5" width="305" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="pmE-sZ-y6N"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.74117647060000003" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="bqH-Bw-qdn" firstAttribute="top" secondItem="eFk-0T-hXn" secondAttribute="top" constant="20" id="5aq-Ie-2Gf"/>
+                        <constraint firstAttribute="height" constant="60" id="UBo-wM-LLy"/>
+                        <constraint firstAttribute="trailing" secondItem="1AQ-ow-AYK" secondAttribute="trailing" constant="5" id="bsE-ki-Nzw"/>
+                        <constraint firstItem="1AQ-ow-AYK" firstAttribute="leading" secondItem="bqH-Bw-qdn" secondAttribute="trailing" constant="15" id="iAb-Lv-6NI"/>
+                        <constraint firstAttribute="bottom" secondItem="1AQ-ow-AYK" secondAttribute="bottom" constant="9.5" id="iRd-Tp-OHP"/>
+                        <constraint firstItem="bqH-Bw-qdn" firstAttribute="leading" secondItem="eFk-0T-hXn" secondAttribute="leading" constant="15" id="qUu-8E-UOB"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cr1-Mf-fsh">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eFk-0T-hXn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Rm-zt-FXL"/>
+                <constraint firstAttribute="trailing" secondItem="Cr1-Mf-fsh" secondAttribute="trailing" id="3IM-HW-Fkb"/>
+                <constraint firstAttribute="trailing" secondItem="eFk-0T-hXn" secondAttribute="trailing" id="4DC-Fl-EU8"/>
+                <constraint firstItem="Cr1-Mf-fsh" firstAttribute="top" secondItem="eFk-0T-hXn" secondAttribute="bottom" id="V2H-MK-0jL"/>
+                <constraint firstItem="Cr1-Mf-fsh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VjB-Wv-5G2"/>
+                <constraint firstItem="eFk-0T-hXn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bqR-YY-ple"/>
+                <constraint firstAttribute="bottom" secondItem="Cr1-Mf-fsh" secondAttribute="bottom" id="z5t-wF-swF"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Back" width="44" height="44"/>
+    </resources>
+</document>

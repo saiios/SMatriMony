@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="196" id="KGk-i7-Jjw" customClass="Block_cell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="PaX-fC-Bvx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smatrimony_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="oRw-On-X60">
+                        <rect key="frame" x="15" y="40" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="R0X-KT-LCi"/>
+                            <constraint firstAttribute="width" constant="80" id="ka0-lg-X1X"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S2550" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fn-lL-0z6">
+                        <rect key="frame" x="100" y="15" width="215" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="rbb-zZ-Fos"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <color key="textColor" red="0.74901960779999999" green="0.14117647059999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="saikrishna J" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsk-jb-Xoj">
+                        <rect key="frame" x="100" y="37" width="215" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="bF8-S2-lNm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <color key="textColor" red="0.74901960779999999" green="0.14117647059999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24yrs ,5ft 11" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0D-fV-stb">
+                        <rect key="frame" x="100" y="59" width="215" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="jQf-Dm-vcP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <color key="textColor" red="0.74901960779999999" green="0.14117647059999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MTM, India" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGJ-Cb-wWL">
+                        <rect key="frame" x="100" y="81" width="215" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="gta-lX-P65"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <color key="textColor" red="0.74901960779999999" green="0.14117647059999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hindu, Kapu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4u2-cI-9e9">
+                        <rect key="frame" x="100" y="103" width="215" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="rpg-Iv-UFS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <color key="textColor" red="0.74901960779999999" green="0.14117647059999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Software Engineer " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymy-Sm-V78">
+                        <rect key="frame" x="100" y="125" width="215" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="drS-02-Ird"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <color key="textColor" red="0.74901960779999999" green="0.14117647059999999" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7C-mU-ZSg">
+                        <rect key="frame" x="200" y="147" width="100" height="35"/>
+                        <color key="backgroundColor" red="0.22584542630000001" green="0.26470011469999999" blue="0.36429235339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="3hW-7K-pKS"/>
+                            <constraint firstAttribute="width" constant="100" id="a7b-Z9-n9R"/>
+                        </constraints>
+                        <state key="normal" title="Un Block">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-MV-tbW">
+                        <rect key="frame" x="205" y="157" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="FIf-vK-LhO"/>
+                            <constraint firstAttribute="height" constant="15" id="fwt-WE-Pja"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="d0D-fV-stb" firstAttribute="leading" secondItem="oRw-On-X60" secondAttribute="trailing" constant="5" id="5Y8-Qu-7KL"/>
+                    <constraint firstItem="Ymy-Sm-V78" firstAttribute="width" secondItem="4u2-cI-9e9" secondAttribute="width" id="5dG-Rn-2bm"/>
+                    <constraint firstAttribute="bottom" secondItem="PaX-fC-Bvx" secondAttribute="bottom" id="95k-G4-kGU"/>
+                    <constraint firstItem="3fn-lL-0z6" firstAttribute="leading" secondItem="oRw-On-X60" secondAttribute="trailing" constant="5" id="APg-c1-JIM"/>
+                    <constraint firstAttribute="trailing" secondItem="r7C-mU-ZSg" secondAttribute="trailing" constant="20" id="E1G-NV-OAl"/>
+                    <constraint firstItem="r7C-mU-ZSg" firstAttribute="top" secondItem="Ymy-Sm-V78" secondAttribute="bottom" constant="1" id="JLF-P4-mqM"/>
+                    <constraint firstAttribute="trailing" secondItem="3fn-lL-0z6" secondAttribute="trailing" constant="5" id="KJG-rD-8Vc"/>
+                    <constraint firstItem="4u2-cI-9e9" firstAttribute="top" secondItem="aGJ-Cb-wWL" secondAttribute="bottom" constant="1" id="MYz-oA-QpT"/>
+                    <constraint firstAttribute="trailing" secondItem="aGJ-Cb-wWL" secondAttribute="trailing" constant="5" id="OA4-3R-0M5"/>
+                    <constraint firstItem="d0D-fV-stb" firstAttribute="top" secondItem="Jsk-jb-Xoj" secondAttribute="bottom" constant="1" id="ORh-15-Dzz"/>
+                    <constraint firstItem="aGJ-Cb-wWL" firstAttribute="top" secondItem="d0D-fV-stb" secondAttribute="bottom" constant="1" id="WdC-Zo-GfK"/>
+                    <constraint firstAttribute="trailing" secondItem="PaX-fC-Bvx" secondAttribute="trailing" id="Y0G-Jh-Iv0"/>
+                    <constraint firstAttribute="trailing" secondItem="d0D-fV-stb" secondAttribute="trailing" constant="5" id="a8T-47-2Uc"/>
+                    <constraint firstItem="4u2-cI-9e9" firstAttribute="width" secondItem="aGJ-Cb-wWL" secondAttribute="width" id="d2m-DF-l6D"/>
+                    <constraint firstItem="Jsk-jb-Xoj" firstAttribute="top" secondItem="3fn-lL-0z6" secondAttribute="bottom" constant="1" id="f6q-68-9c7"/>
+                    <constraint firstItem="oRw-On-X60" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="g3v-Xs-0ft"/>
+                    <constraint firstItem="Jsk-jb-Xoj" firstAttribute="leading" secondItem="oRw-On-X60" secondAttribute="trailing" constant="5" id="gVi-op-pYF"/>
+                    <constraint firstItem="aGJ-Cb-wWL" firstAttribute="leading" secondItem="oRw-On-X60" secondAttribute="trailing" constant="5" id="ghv-ii-rSq"/>
+                    <constraint firstItem="Ymy-Sm-V78" firstAttribute="top" secondItem="4u2-cI-9e9" secondAttribute="bottom" constant="1" id="lHF-jt-Xg0"/>
+                    <constraint firstAttribute="trailing" secondItem="Ymy-Sm-V78" secondAttribute="trailing" constant="5" id="lkb-My-qzk"/>
+                    <constraint firstAttribute="trailing" secondItem="tD7-MV-tbW" secondAttribute="trailing" constant="100" id="lnq-qi-fti"/>
+                    <constraint firstItem="PaX-fC-Bvx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lu3-HV-grf"/>
+                    <constraint firstItem="tD7-MV-tbW" firstAttribute="centerY" secondItem="r7C-mU-ZSg" secondAttribute="centerY" id="mCV-4D-mHj"/>
+                    <constraint firstItem="3fn-lL-0z6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="nHY-VQ-Xp0"/>
+                    <constraint firstItem="oRw-On-X60" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oDd-yI-HKR"/>
+                    <constraint firstItem="PaX-fC-Bvx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vap-Ut-kqy"/>
+                    <constraint firstAttribute="trailing" secondItem="Jsk-jb-Xoj" secondAttribute="trailing" constant="5" id="waS-sP-hOt"/>
+                    <constraint firstAttribute="trailing" secondItem="4u2-cI-9e9" secondAttribute="trailing" constant="5" id="zpQ-LG-nbv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cast" destination="4u2-cI-9e9" id="2Ji-Aj-6Vc"/>
+                <outlet property="img" destination="oRw-On-X60" id="2QS-sh-nZg"/>
+                <outlet property="location" destination="aGJ-Cb-wWL" id="NiI-WZ-guf"/>
+                <outlet property="matri_id" destination="3fn-lL-0z6" id="U6B-3i-0mP"/>
+                <outlet property="ocp" destination="Ymy-Sm-V78" id="DUc-Oc-ly1"/>
+                <outlet property="unblock" destination="r7C-mU-ZSg" id="slk-iG-xWT"/>
+                <outlet property="username" destination="Jsk-jb-Xoj" id="Sci-sQ-ZLZ"/>
+                <outlet property="yr_hight" destination="d0D-fV-stb" id="aDt-dJ-m35"/>
+            </connections>
+            <point key="canvasLocation" x="32" y="142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="account" width="35" height="35"/>
+        <image name="bg.png" width="287" height="476"/>
+        <image name="smatrimony_logo.png" width="250" height="128"/>
+    </resources>
+</document>

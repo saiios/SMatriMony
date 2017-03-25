@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="256" id="KGk-i7-Jjw" customClass="ProfileTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="255"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="female" translatesAutoresizingMaskIntoConstraints="NO" id="i77-h9-8e7">
+                        <rect key="frame" x="8" y="16" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="PNh-4Y-4oQ"/>
+                            <constraint firstAttribute="width" constant="100" id="vMt-0N-y67"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="50"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S4228" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHr-CH-Oes">
+                        <rect key="frame" x="120" y="16" width="196" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="ANr-BL-upf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="1" green="0.041296868229999999" blue="0.35210635429999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venkat" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRI-Qm-XPH">
+                        <rect key="frame" x="120" y="42" width="196" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.45810347372460736" green="0.22802881493501942" blue="0.17117571480352708" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSK-IC-kfm">
+                        <rect key="frame" x="120" y="134" width="196" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="AJO-jl-nls"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.45810347372460736" green="0.22802881493501942" blue="0.17117571480352708" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMp-pc-njE">
+                        <rect key="frame" x="12" y="143" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="20B-GB-hGT"/>
+                            <constraint firstAttribute="width" constant="40" id="aUp-s3-NdF"/>
+                        </constraints>
+                        <state key="normal" image="unshortlist_icon.png"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJr-Wp-sCO">
+                        <rect key="frame" x="62" y="142" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Hn1-aq-sKK"/>
+                            <constraint firstAttribute="width" constant="40" id="Zhx-vZ-azZ"/>
+                        </constraints>
+                        <state key="normal" image="chat_icon.png"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QtV-Xn-FYR">
+                        <rect key="frame" x="163" y="194" width="149" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="149" id="gDS-y3-zID"/>
+                            <constraint firstAttribute="height" constant="29" id="wXt-gy-ua9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <state key="normal" title="SEND INTREST">
+                            <color key="titleColor" red="0.37252535994764402" green="0.0" blue="0.0076490470894287621" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="1" green="0.04129686822652856" blue="0.35210635430568338" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shortlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa8-Sy-ged">
+                        <rect key="frame" x="11" y="181" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="cgc-x4-ChE"/>
+                            <constraint firstAttribute="height" constant="21" id="fW4-Rs-c0L"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls1-op-BMe">
+                        <rect key="frame" x="61" y="181" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="88h-bo-JgG"/>
+                            <constraint firstAttribute="height" constant="21" id="tFG-pk-TA5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 Yrd,5ft 3 In/161 Cms " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTc-sg-uK3">
+                        <rect key="frame" x="120" y="63" width="196" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.45810347372460736" green="0.22802881493501942" blue="0.17117571480352708" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="RoadNo.2,Jubleehills,Hyderabadh,telangana" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXA-Ib-w7a">
+                        <rect key="frame" x="120" y="84" width="196" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.45810347372460736" green="0.22802881493501942" blue="0.17117571480352708" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-On-73O">
+                        <rect key="frame" x="120" y="157" width="196" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="xwR-hO-jlm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.45810347369999999" green="0.22802881489999999" blue="0.17117571479999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JSK-IC-kfm" firstAttribute="top" secondItem="aXA-Ib-w7a" secondAttribute="bottom" constant="6" id="2I5-i7-kNJ"/>
+                    <constraint firstItem="QtV-Xn-FYR" firstAttribute="top" secondItem="DYi-On-73O" secondAttribute="bottom" constant="16" id="30e-rK-KK0"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="QtV-Xn-FYR" secondAttribute="bottom" constant="24" id="3bd-lS-JIa"/>
+                    <constraint firstItem="xa8-Sy-ged" firstAttribute="centerX" secondItem="FMp-pc-njE" secondAttribute="centerX" id="54q-VY-Esl"/>
+                    <constraint firstItem="zRI-Qm-XPH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="4" id="Apt-kk-qyy"/>
+                    <constraint firstItem="zRI-Qm-XPH" firstAttribute="top" secondItem="iHr-CH-Oes" secondAttribute="bottom" constant="4" id="BR5-SL-Qkv"/>
+                    <constraint firstItem="qJr-Wp-sCO" firstAttribute="leading" secondItem="FMp-pc-njE" secondAttribute="trailing" constant="10" id="Dpk-It-ilh"/>
+                    <constraint firstItem="iHr-CH-Oes" firstAttribute="leading" secondItem="i77-h9-8e7" secondAttribute="trailing" constant="12" id="I7m-EU-F26"/>
+                    <constraint firstItem="DYi-On-73O" firstAttribute="leading" secondItem="i77-h9-8e7" secondAttribute="trailing" constant="12" id="IEF-Nc-EJY"/>
+                    <constraint firstItem="QtV-Xn-FYR" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="JSa-M3-t8I"/>
+                    <constraint firstItem="qJr-Wp-sCO" firstAttribute="top" secondItem="i77-h9-8e7" secondAttribute="bottom" constant="25.5" id="JXv-T6-Syl"/>
+                    <constraint firstItem="JSK-IC-kfm" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="4" id="MQq-n8-uie"/>
+                    <constraint firstItem="xa8-Sy-ged" firstAttribute="baseline" secondItem="Ls1-op-BMe" secondAttribute="baseline" id="P9Q-xF-oak"/>
+                    <constraint firstItem="Ls1-op-BMe" firstAttribute="centerX" secondItem="qJr-Wp-sCO" secondAttribute="centerX" id="Peu-qT-Ggd"/>
+                    <constraint firstItem="xa8-Sy-ged" firstAttribute="top" secondItem="FMp-pc-njE" secondAttribute="bottom" constant="-1.5" id="SXL-Z4-Zzo"/>
+                    <constraint firstItem="FMp-pc-njE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="U4p-61-KtB"/>
+                    <constraint firstItem="Ls1-op-BMe" firstAttribute="top" secondItem="qJr-Wp-sCO" secondAttribute="bottom" constant="-1" id="Uc9-YB-zwT"/>
+                    <constraint firstItem="i77-h9-8e7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="VGr-hu-4L3"/>
+                    <constraint firstItem="iHr-CH-Oes" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="XsP-7B-fg0"/>
+                    <constraint firstItem="DYi-On-73O" firstAttribute="top" secondItem="JSK-IC-kfm" secondAttribute="bottom" constant="2" id="YR5-2w-5dT"/>
+                    <constraint firstAttribute="trailing" secondItem="iHr-CH-Oes" secondAttribute="trailing" constant="4" id="ZoC-gv-ZpC"/>
+                    <constraint firstItem="VTc-sg-uK3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="4" id="aM2-gU-aZh"/>
+                    <constraint firstItem="VTc-sg-uK3" firstAttribute="top" secondItem="zRI-Qm-XPH" secondAttribute="bottom" constant="4" id="bEO-IO-em9"/>
+                    <constraint firstItem="aXA-Ib-w7a" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="4" id="euX-16-tIG"/>
+                    <constraint firstItem="JSK-IC-kfm" firstAttribute="leading" secondItem="i77-h9-8e7" secondAttribute="trailing" constant="12" id="jyJ-31-L2K"/>
+                    <constraint firstItem="i77-h9-8e7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="kqP-cm-P81"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DYi-On-73O" secondAttribute="trailing" constant="-4" id="lmf-2J-gNR"/>
+                    <constraint firstItem="VTc-sg-uK3" firstAttribute="leading" secondItem="i77-h9-8e7" secondAttribute="trailing" constant="12" id="tAy-l2-KqZ"/>
+                    <constraint firstItem="aXA-Ib-w7a" firstAttribute="top" secondItem="VTc-sg-uK3" secondAttribute="bottom" constant="4" id="ydR-vE-klU"/>
+                    <constraint firstItem="zRI-Qm-XPH" firstAttribute="leading" secondItem="i77-h9-8e7" secondAttribute="trailing" constant="12" id="ykz-Dk-EXf"/>
+                    <constraint firstItem="aXA-Ib-w7a" firstAttribute="leading" secondItem="i77-h9-8e7" secondAttribute="trailing" constant="12" id="zJG-t0-UiW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                    <color key="value" white="0.0" alpha="0.6389073582" colorSpace="calibratedWhite"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                    <real key="value" value="0.5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                    <size key="value" width="0.0" height="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="AccountLbl" destination="DYi-On-73O" id="AjE-rP-GvW"/>
+                <outlet property="AddressLbl" destination="aXA-Ib-w7a" id="1xE-Pq-FH8"/>
+                <outlet property="MatriIDLbl" destination="iHr-CH-Oes" id="dvJ-TP-kYS"/>
+                <outlet property="SortListBtn" destination="FMp-pc-njE" id="4fj-9o-PEK"/>
+                <outlet property="casteLbl" destination="JSK-IC-kfm" id="bpb-WD-nQv"/>
+                <outlet property="heightLbl" destination="VTc-sg-uK3" id="RtT-qz-e9Y"/>
+                <outlet property="imageOutlet" destination="i77-h9-8e7" id="BC8-3b-at1"/>
+                <outlet property="nameLbl" destination="zRI-Qm-XPH" id="GRe-Pv-lFk"/>
+                <outlet property="sendInterestBtn" destination="QtV-Xn-FYR" id="mml-3L-AAR"/>
+            </connections>
+            <point key="canvasLocation" x="-702" y="19"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chat_icon.png" width="48" height="48"/>
+        <image name="female" width="240" height="311"/>
+        <image name="unshortlist_icon.png" width="48" height="48"/>
+    </resources>
+</document>

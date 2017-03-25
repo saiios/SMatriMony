@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "MenuViewController.h"
+#import "LoginViewController.h"
+#import "Home_VC.h"
 
 @interface AppDelegate ()
 
@@ -15,13 +18,194 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     // Override point for customization after application launch.
+    user_inf=[NSUserDefaults standardUserDefaults];
+    NSString *matri_id=[user_inf valueForKey:@"matri_id"];
+
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:@"UserLogin"])
+    {
+        if ([matri_id isEqualToString:@""]||matri_id.length==0)
+        {
+            LoginViewController *menuController  =[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+            self.window.rootViewController = nav;
+        }
+        else
+        {
+            MenuViewController *menuController  =[[MenuViewController alloc]initWithNibName:@"MenuViewController" bundle:nil];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+            self.window.rootViewController = nav;
+        }
+    [self.window makeKeyAndVisible];
+    }
+    else
+    {
+        if ([matri_id isEqualToString:@""]||matri_id.length==0)
+        {
+            LoginViewController *menuController  =[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+            self.window.rootViewController = nav;
+        }
+        else
+        {
+        Home_VC *menuController  =[[Home_VC alloc]initWithNibName:@"Home_VC" bundle:nil];
+        
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+        
+        self.window.rootViewController = nav;
+        }
+        [self.window makeKeyAndVisible];
+        
+    }
+    [self registerForRemoteNotifications];
+
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
     return YES;
+}
+- (void)registerForRemoteNotifications {
+    
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        
+        
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if(!error){
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        }];
+    }
+    else {
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+        {
+            [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+            
+            NSLog(@"current notifications : %@", [[UIApplication sharedApplication] currentUserNotificationSettings]);
+        }
+        else
+        {
+            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+             (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+            
+            
+        }
+    }
+}
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // custom stuff we do to register the device with our AWS middleman
+    NSLog(@"%@",[deviceToken description]);
+    
+    NSString *str = [NSString stringWithFormat:@"%@",deviceToken];
+    
+    NSString *deviceTokenStr = [[[[deviceToken description]
+                                  stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                                 stringByReplacingOccurrencesOfString: @">" withString: @""]
+                                stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    NSLog(@"Device Token: %@", deviceTokenStr);
+    
+}
+
+- (BOOL)application:(nonnull UIApplication *)application
+            openURL:(nonnull NSURL *)url
+            options:(nonnull NSDictionary<NSString *, id> *)options
+{
+    NSString *url_str=[NSString stringWithFormat:@"%@",url];
+        return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                              openURL:url
+                                                    sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                           annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
+-(void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void(^)(UIBackgroundFetchResult))completionHandler
+{
+    // iOS 10 will handle notifications through other methods
+    
+    if( SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0") )
+    {
+        NSLog( @"iOS version >= 10. Let NotificationCenter handle this one." );
+        
+        // set a member variable to tell the new delegate that this is background
+        return;
+    }
+    
+    NSLog( @"HANDLE PUSH, didReceiveRemoteNotification: %@", userInfo );
+    
+    // custom code to handle notification content
+    
+    if( [UIApplication sharedApplication].applicationState == UIApplicationStateInactive )
+    {
+        NSLog( @"INACTIVE" );
+        
+        completionHandler( UIBackgroundFetchResultNewData );
+        
+    }
+    else if( [UIApplication sharedApplication].applicationState == UIApplicationStateBackground )
+    {
+        
+        NSLog( @"BACKGROUND" );
+        completionHandler( UIBackgroundFetchResultNewData );
+        
+    }
+    else
+    {
+        NSLog( @"FOREGROUND" );
+        completionHandler( UIBackgroundFetchResultNewData );
+    }
 }
 
 
-- (void)applicationWillResignActive:(UIApplication *)application {
+
+//Called when a notification is delivered to a foreground app.
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    NSLog(@"User Info : %@",notification.request.content.userInfo);
+    completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+    
+}
+
+//Called to let your app know which action was selected by the user for a given notification.
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler{
+    NSLog(@"User Info : %@",response.notification.request.content.userInfo);
+    completionHandler();
+    
+    
+}
+
+
+//Handle actions
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
+    //Handle action as well
+}
+
+-(UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
+    if (self.shouldRotate) {
+        return UIInterfaceOrientationMaskAll;
+    }else{
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    NSString *url_str=[NSString stringWithFormat:@"%@",url];
+        BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                      openURL:url
+                                                            sourceApplication:sourceApplication
+                                                                   annotation:annotation
+                        ];
+        // Add any custom logic here.
+        return handled;
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application
+{
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Home_VC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wp-UV-00U">
+                    <rect key="frame" x="0.0" y="627" width="187" height="40"/>
+                    <color key="backgroundColor" red="0.74117647060000003" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="dVa-MR-0n3"/>
+                    </constraints>
+                    <state key="normal" title="USER LOGIN">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="userlogin_click:" destination="-1" eventType="touchUpInside" id="BxD-xV-NXM"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U64-eC-7xy">
+                    <rect key="frame" x="188" y="627" width="187" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="w8O-oU-DQh"/>
+                    </constraints>
+                    <state key="normal" title="AGENT LOGIN">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home" translatesAutoresizingMaskIntoConstraints="NO" id="aWe-Ja-0pE">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="U64-eC-7xy" secondAttribute="bottom" id="2cQ-gz-Nqm"/>
+                <constraint firstAttribute="bottom" secondItem="9Wp-UV-00U" secondAttribute="bottom" id="Eyb-tH-CGJ"/>
+                <constraint firstItem="9Wp-UV-00U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GGe-dW-1AI"/>
+                <constraint firstItem="aWe-Ja-0pE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Hlt-K5-TVj"/>
+                <constraint firstItem="U64-eC-7xy" firstAttribute="top" secondItem="aWe-Ja-0pE" secondAttribute="bottom" id="Y2T-TN-Ok0"/>
+                <constraint firstItem="U64-eC-7xy" firstAttribute="width" secondItem="9Wp-UV-00U" secondAttribute="width" id="eps-4Y-dzD"/>
+                <constraint firstItem="aWe-Ja-0pE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="i38-fA-5IQ"/>
+                <constraint firstAttribute="trailing" secondItem="U64-eC-7xy" secondAttribute="trailing" id="mmP-Cy-73N"/>
+                <constraint firstAttribute="trailing" secondItem="aWe-Ja-0pE" secondAttribute="trailing" id="oTZ-ZM-6bX"/>
+                <constraint firstItem="U64-eC-7xy" firstAttribute="leading" secondItem="9Wp-UV-00U" secondAttribute="trailing" constant="1" id="zGe-YS-1Wr"/>
+            </constraints>
+            <point key="canvasLocation" x="26.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Home" width="750" height="1334"/>
+    </resources>
+</document>
