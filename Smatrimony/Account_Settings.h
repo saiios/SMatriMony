@@ -18,10 +18,9 @@
     NSUserDefaults *user_inf;
     NSString *matri_id;
 }
-- (IBAction)Preferences_click:(id)sender;
+
 - (IBAction)Delete_Ac:(id)sender;
 - (IBAction)Logout:(id)sender;
-- (IBAction)Blocked_Profiles:(id)sender;
 - (IBAction)back_click:(id)sender;
 
 @end

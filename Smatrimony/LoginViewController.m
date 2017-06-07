@@ -5,11 +5,15 @@
 //  Created by INDOBYTES on 03/02/17.
 //  Copyright © 2017 Indobytes. All rights reserved.
 //
-
+#define kOFFSET_FOR_KEYBOARD 150.0
 #import "LoginViewController.h"
 #import "MenuViewController.h"
 #import "RegistrationViewController.h"
+#import "Home_VC.h"
 @interface LoginViewController ()
+{
+    NSInteger tagTF;
+}
 
 @end
 
@@ -18,6 +22,11 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [[NSUserDefaults standardUserDefaults]setObject:@"User_Login" forKey:@"Re_Open"];
+   self.email.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+     self.password.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+//    _submitBtnOutlet.layer.cornerRadius = 10; // this value vary as per your desire
+//    _submitBtnOutlet.clipsToBounds = YES;
     self.navigationController.navigationBar.hidden =YES;
     // Do any additional setup after loading the view from its nib.
     for (UITextField *field in _textFields) {
@@ -30,8 +39,60 @@
     loginButton.delegate = self;
     loginButton.readPermissions =
     @[@"public_profile", @"email", @"user_friends"];
+ 
+    self.email.delegate = self;
+    self.password.delegate = self;
 }
 
+
+-(void)setMovedUp:(BOOL)movedUP
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    CGRect rect = self.view.frame;
+    if(movedUP)
+    {
+        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
+        rect.size.height += kOFFSET_FOR_KEYBOARD;
+    }
+    else{
+        rect.origin.y += kOFFSET_FOR_KEYBOARD;
+        rect.size.height -= kOFFSET_FOR_KEYBOARD;
+    }
+    self.view.frame = rect;
+    [UIView commitAnimations];
+}
+
+#pragma mark - UITextFieldDelegate Methods
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    tagTF = textField.tag;
+//    if(textField.tag>=6)
+//    {
+        if(self.view.frame.origin.y >= 0)
+        {
+            [self setMovedUp:YES];
+        }
+   // }
+    return YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+//    if(textField.tag>=6)
+//    {
+        [self setMovedUp:NO];
+ //   }
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+//    
+//    [textField resignFirstResponder];
+//    return YES;
+//}
 - (void)loginButton:(FBSDKLoginButton *)loginButton
 didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
               error:(NSError *)error
@@ -51,6 +112,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
          {
              if ([result.grantedPermissions containsObject:@"email"])
              {
+                loginButton.titleLabel.text = @"Login with Facebook";
                  NSLog(@"result is:%@",result);
                  [self getFBResult];
              }
@@ -117,7 +179,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                  NSString *profile_pic=[user_info valueForKey:@"photo1"];
                  NSString *gender_str=[user_info valueForKey:@"gender"];
                  NSString *status_str=[user_info valueForKey:@"status"];
-                 
+                
                  if ([matri_id isEqualToString:@""]||[matri_id isEqualToString:@"0"])
                  {
                      [self Alert:@"Something went wrong!"];
@@ -125,12 +187,13 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                  else
                  {
                      user_inf=[NSUserDefaults standardUserDefaults];
+                     
                      [user_inf setValue:matri_id forKey:@"matri_id"];
                      [user_inf setValue:email_id forKey:@"email_id"];
                      [user_inf setValue:profile_pic forKey:@"profile_pic"];
                      [user_inf setValue:gender_str forKey:@"gender"];
                      [user_inf setValue:status_str forKey:@"status"];
-                     
+                    
                      MenuViewController *menuController  =[[MenuViewController alloc]initWithNibName:@"MenuViewController" bundle:nil];
                      menuController.user_name_str=[user_info valueForKey:@"username"];
                      [self.navigationController pushViewController:menuController animated:YES];
@@ -149,7 +212,8 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 
 - (IBAction)submitActionm:(id)sender
 {
-    [self.view endEditing:YES];
+//     [self setMovedUp:NO];
+//    [self.view endEditing:YES];
     
     if ([self valide_Data] == YES)
     { // checking if the either of the string is empty and other validations
@@ -258,7 +322,9 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                  NSString *profile_pic=[user_info valueForKey:@"photo1"];
                  NSString *gender_str=[user_info valueForKey:@"gender"];
                  NSString *status_str=[user_info valueForKey:@"status"];
-
+                 NSString * mobileNum = [user_info valueForKey:@"mobile"];
+                 NSString * name = [user_info valueForKey:@"username"];
+                
                  if ([matri_id isEqualToString:@""]||[matri_id isEqualToString:@"0"])
                  {
                      [self Alert:@"Something went wrong!"];
@@ -271,10 +337,23 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                      [user_inf setValue:profile_pic forKey:@"profile_pic"];
                      [user_inf setValue:gender_str forKey:@"gender"];
                      [user_inf setValue:status_str forKey:@"status"];
-
-                    MenuViewController *menuController  =[[MenuViewController alloc]initWithNibName:@"MenuViewController" bundle:nil];
-                     menuController.user_name_str=[user_info valueForKey:@"username"];
-                    [self.navigationController pushViewController:menuController animated:YES];
+                     [user_inf setValue:name forKey:@"userName"];
+                     
+                     NSString * mobileVerificationStatus = [user_info valueForKey:@"mobile_verify_status"];
+                     if ([mobileVerificationStatus isEqualToString:@"Yes"]) {
+                        MenuViewController *menuController  =[[MenuViewController alloc]initWithNibName:@"MenuViewController" bundle:nil];
+                         menuController.user_name_str=[user_info valueForKey:@"username"];
+                         [self.navigationController pushViewController:menuController animated:YES];
+                     }
+                     else
+                     {
+                    MenuViewController *menuController  =[[MenuViewController alloc]init];
+                       menuController.user_name_str=[user_info valueForKey:@"username"];
+               
+                     Login_Mobile *loginMobileObj  =[[Login_Mobile alloc]initWithNibName:@"Login_Mobile" bundle:nil];
+                     loginMobileObj.mobileNumbr = mobileNum;
+                     [self.navigationController pushViewController:loginMobileObj animated:YES];
+                     }
                  }
              }
             else if ([status isEqualToString:@"0"]||[status isEqualToString:@"3"])
@@ -324,15 +403,15 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 - (IBAction)fpwd_click:(id)sender
 {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@""
-                                                         message:@"Enter Email id"
+                                                         message:@"Please Enter Mobile Number"
                                                         delegate:self
                                                cancelButtonTitle:@"Cancel"
-                                               otherButtonTitles:@"Send", nil];
+                                               otherButtonTitles:@"Submit", nil];
     
         alert.alertViewStyle = UIAlertViewStylePlainTextInput;
         UITextField * alertTextField1 = [alert textFieldAtIndex:0];
         alertTextField1.keyboardType = UIKeyboardTypeDefault;
-        alertTextField1.placeholder = @"User";
+        alertTextField1.placeholder = @"Enter Your Mobile Number";
         
         [alert show];
 }
@@ -354,7 +433,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 
 -(void)Fpwd_service
 {
-    NSDictionary *params = @{@"email": Fpwd_text};
+    NSDictionary *params = @{@"mobile": Fpwd_text};
     
     [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/forgotPassword" parameters:params requestNumber:WUS_FPwd showProgress:YES withHandler:^(BOOL success, id data)
      {
@@ -368,15 +447,14 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
              
              if ([status isEqualToString:@"1"])
              {
-                 NSString *User_Id=[res_dict valueForKey:@"seller_id"];
+                 NSString *User_Id=[NSString stringWithFormat:@"%@",[[res_dict valueForKey:@"userinfo"] valueForKey:@"matri_id"]];
                  if ([User_Id isEqualToString:@""]||[User_Id isEqualToString:@"0"])
                  {
                      [self Alert:@"Something went wrong!"];
                  }
                  else
                  {
-                     //                     user_data=[NSUserDefaults standardUserDefaults];
-                     //                     [user_data setValue:User_Id forKey:@"user_id"];
+                     [self Alert:result];
                  }
              }
              else if ([status isEqualToString:@"0"]||[status isEqualToString:@"3"])
@@ -419,4 +497,22 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 - (IBAction)FB_click:(id)sender
 {
 }
+
+- (IBAction)backHomePageAction:(id)sender {
+    Home_VC *homePageController = [[Home_VC alloc]initWithNibName:@"Home_VC" bundle:nil];
+    [self.navigationController pushViewController:homePageController animated:YES];
+}
+- (IBAction)passwordVisibleAction:(id)sender {
+    if (self.password.secureTextEntry == YES) {
+        self.password.secureTextEntry = NO;
+    }
+    else
+    {
+        self.password.secureTextEntry = YES;
+    }
+    
+    
+}
+
+
 @end

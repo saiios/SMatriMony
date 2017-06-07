@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,8 +27,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10G-6j-AFc">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="submit_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="d3o-om-fdv">
+                            <rect key="frame" x="-7" y="-6" width="389" height="66"/>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChF-pB-ko5">
-                            <rect key="frame" x="15" y="20" width="35" height="35"/>
+                            <rect key="frame" x="15" y="13" width="35" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="35" id="1Fm-Tm-4MH"/>
                                 <constraint firstAttribute="height" constant="35" id="WJf-cU-LJ9"/>
@@ -39,7 +42,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8c-VI-vEL">
-                            <rect key="frame" x="65" y="25.5" width="305" height="25"/>
+                            <rect key="frame" x="62" y="18.5" width="305" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="YvW-qr-AhQ"/>
                             </constraints>
@@ -48,14 +51,18 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.74117647060000003" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="z8c-VI-vEL" secondAttribute="trailing" constant="5" id="6jL-XZ-j9N"/>
-                        <constraint firstItem="ChF-pB-ko5" firstAttribute="top" secondItem="10G-6j-AFc" secondAttribute="top" constant="20" id="7CD-j0-7XX"/>
+                        <constraint firstAttribute="bottom" secondItem="d3o-om-fdv" secondAttribute="bottom" id="63C-3B-TgY"/>
+                        <constraint firstAttribute="trailing" secondItem="z8c-VI-vEL" secondAttribute="trailing" constant="8" id="6jL-XZ-j9N"/>
+                        <constraint firstItem="ChF-pB-ko5" firstAttribute="top" secondItem="10G-6j-AFc" secondAttribute="top" constant="13" id="7CD-j0-7XX"/>
+                        <constraint firstItem="d3o-om-fdv" firstAttribute="top" secondItem="10G-6j-AFc" secondAttribute="top" constant="-6" id="BVb-cG-jQE"/>
                         <constraint firstItem="ChF-pB-ko5" firstAttribute="leading" secondItem="10G-6j-AFc" secondAttribute="leading" constant="15" id="Ebk-pr-adD"/>
-                        <constraint firstItem="z8c-VI-vEL" firstAttribute="leading" secondItem="ChF-pB-ko5" secondAttribute="trailing" constant="15" id="cj5-x7-pX2"/>
+                        <constraint firstItem="d3o-om-fdv" firstAttribute="leading" secondItem="10G-6j-AFc" secondAttribute="leading" constant="-7" id="ILD-fF-cQ8"/>
+                        <constraint firstAttribute="trailing" secondItem="d3o-om-fdv" secondAttribute="trailing" constant="-7" id="RIe-AF-Rmv"/>
+                        <constraint firstItem="z8c-VI-vEL" firstAttribute="leading" secondItem="ChF-pB-ko5" secondAttribute="trailing" constant="12" id="cj5-x7-pX2"/>
                         <constraint firstAttribute="height" constant="60" id="i1q-uf-ibX"/>
-                        <constraint firstAttribute="bottom" secondItem="z8c-VI-vEL" secondAttribute="bottom" constant="9.5" id="s4l-S9-YVl"/>
+                        <constraint firstAttribute="bottom" secondItem="z8c-VI-vEL" secondAttribute="bottom" constant="16.5" id="s4l-S9-YVl"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTe-F1-c7g">
@@ -77,7 +84,7 @@
                     </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who viewed my profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEk-pB-L9B">
-                    <rect key="frame" x="5" y="162" width="306" height="25"/>
+                    <rect key="frame" x="5" y="162.5" width="306" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="NzV-LT-ymy"/>
                     </constraints>
@@ -95,7 +102,7 @@
                     </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest sent profiles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JF8-J9-EFW">
-                    <rect key="frame" x="5" y="212" width="306" height="25"/>
+                    <rect key="frame" x="5" y="212.5" width="306" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="jYA-XB-Pa4"/>
                     </constraints>
@@ -113,7 +120,7 @@
                     </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who shortlisted me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xt-1A-emN">
-                    <rect key="frame" x="5" y="262.5" width="306" height="25"/>
+                    <rect key="frame" x="5" y="262" width="306" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="es0-mm-Dpn"/>
                     </constraints>
@@ -131,7 +138,7 @@
                     </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blocked List profiles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-Lg-Mbk">
-                    <rect key="frame" x="5" y="312.5" width="306" height="25"/>
+                    <rect key="frame" x="5" y="312" width="306" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="4A7-pd-rEx"/>
                     </constraints>
@@ -180,9 +187,11 @@
                 <constraint firstItem="IY0-Lg-Mbk" firstAttribute="centerY" secondItem="bWW-Eg-N8Z" secondAttribute="centerY" id="uBZ-rh-9ZP"/>
                 <constraint firstItem="ZEk-pB-L9B" firstAttribute="centerY" secondItem="S3l-1g-MN0" secondAttribute="centerY" id="w6l-6J-uyv"/>
             </constraints>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>
     </objects>
     <resources>
         <image name="Back" width="44" height="44"/>
+        <image name="submit_button.png" width="203" height="35"/>
     </resources>
 </document>

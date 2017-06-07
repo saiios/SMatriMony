@@ -17,5 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *yes;
 @property (strong, nonatomic) IBOutlet UIImageView *img;
 @property (strong, nonatomic) IBOutlet UIButton *img_click;
+@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
+
 
 @end

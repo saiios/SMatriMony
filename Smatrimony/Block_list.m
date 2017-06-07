@@ -80,9 +80,15 @@
     cell.cast.text=[NSString stringWithFormat:@"%@, %@",[[Blocked_Dict valueForKey:@"religion_name"]objectAtIndex:indexPath.row],[[Blocked_Dict valueForKey:@"caste_name"]objectAtIndex:indexPath.row]];
     cell.ocp.text=[NSString stringWithFormat:@"%@",[[Blocked_Dict valueForKey:@"ocp_name"]objectAtIndex:indexPath.row]];
     NSString *pic=[NSString stringWithFormat:@"%@",[[Blocked_Dict valueForKey:@"photo1"]objectAtIndex:indexPath.row]];
-    
+    NSString * gender =[[Blocked_Dict valueForKey:@"gender"]objectAtIndex:indexPath.row];
     if ([pic isEqual:[NSNull null]]|| [pic isEqualToString:@""])
     {
+        if ([gender isEqualToString:@"Groom"])
+        {
+            cell.img.image=[UIImage imageNamed:@"male"];
+        }
+        else
+            cell.img.image=[UIImage imageNamed:@"female"];
     }
     else
     {

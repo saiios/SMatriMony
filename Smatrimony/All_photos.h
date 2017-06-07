@@ -11,6 +11,7 @@
 #import "CRToastView.h"
 #import "Pic_Cell.h"
 #import "Feedback_cell.h"
+#import "SDWebImageManager.h"
 
 @interface All_photos : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {

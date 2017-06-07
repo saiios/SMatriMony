@@ -302,6 +302,12 @@ static STParsing *sharedWSHelperObj = nil;
                 //HUD.userInteractionEnabled = YES;
             }
                 break;
+            case WUS_PROFILE:
+            {
+                urlString= [NSString stringWithFormat:@"%@%@",AGENT_MAIN_Url,requestedString];
+                //HUD.userInteractionEnabled = YES;
+            }
+                break;
                      default:
                 break;
         }

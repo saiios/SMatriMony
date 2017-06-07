@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *referencedByLbl;
 @property (strong, nonatomic) IBOutlet UILabel *birthTimeLbl;
 @property (strong, nonatomic) IBOutlet UILabel *languagesKnownLbl;
+@property (strong, nonatomic) IBOutlet UILabel *birthPlaceLbl;
 
 
 @end

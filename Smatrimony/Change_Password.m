@@ -122,7 +122,12 @@
     NSString *matri_id=[user_inf valueForKey:@"matri_id"];
     
     NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:matri_id forKey:@"matri_id"];
+    if ([_From isEqualToString:@"Agent"])
+    {
+        [dict setObject:@"sap204" forKey:@"franchise_id"];
+    }
+    else
+        [dict setObject:matri_id forKey:@"matri_id"];
     [dict setObject:[_old_pwd.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] forKey:@"old_password"];
     [dict setObject:[_N_pwd.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] forKey:@"new_password"];
     
@@ -132,7 +137,14 @@
 
 -(void)Change_Pwd_Service:(NSDictionary *)Dict
 {
-    [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/changePassword" parameters:Dict requestNumber:WUS_Change_pwd showProgress:YES withHandler:^(BOOL success, id data)
+    NSString *s_url=@"api/changePassword";
+    if ([_From isEqualToString:@"Agent"])
+    {
+        s_url=@"agent/changePassword";
+    }
+    
+        
+    [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:s_url parameters:Dict requestNumber:WUS_Change_pwd showProgress:YES withHandler:^(BOOL success, id data)
      {
          if (success)
          {

@@ -37,15 +37,7 @@
 }
 */
 
-- (IBAction)Preferences_click:(id)sender
-{
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Enter the Call Preference:" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:@"Cancle",nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    UITextField * alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeNumberPad;
-    alertTextField.placeholder = @"Enter Call Preference";
-    [alert show];
-}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex==0)
@@ -144,12 +136,6 @@
                                 completionBlock:^{
                                     NSLog(@"Completed");
                                 }];
-}
-
-- (IBAction)Blocked_Profiles:(id)sender
-{
-    Block_list *menuController  =[[Block_list alloc]initWithNibName:@"Block_list" bundle:nil];
-    [self.navigationController pushViewController:menuController animated:YES];
 }
 
 - (IBAction)back_click:(id)sender

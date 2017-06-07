@@ -51,6 +51,7 @@ user_inf=[NSUserDefaults standardUserDefaults];
 {
     [self.view endEditing:YES];
 }
+
 -(void)all_pics:(NSDictionary *)Dict
 {
     [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/getPhotos" parameters:Dict requestNumber:WUS_Feedback showProgress:YES withHandler:^(BOOL success, id data)
@@ -91,6 +92,7 @@ user_inf=[NSUserDefaults standardUserDefaults];
         cell = [tableView dequeueReusableCellWithIdentifier:@"Feedback_cell"];
     }
         cell.lbl.text = [NSString stringWithFormat:@"%@",[table_ary objectAtIndex:indexPath.row]];
+    
     if ([selected_pic isEqual:[NSNull null]]||[selected_pic isEqualToString:@""])
     {
         if (indexPath.row==2)
@@ -106,16 +108,33 @@ user_inf=[NSUserDefaults standardUserDefaults];
     }
     else
     {
-    if (indexPath.row==4)
-    {
-        cell.backgroundColor=[UIColor redColor];
-        cell.lbl.textColor=[UIColor whiteColor];
-    }
-    else
-    {
-        cell.backgroundColor=[UIColor whiteColor];
-        cell.lbl.textColor=[UIColor blackColor];
-    }
+        if (selected_id==1)
+        {
+            if (indexPath.row==3)
+            {
+                cell.backgroundColor=[UIColor redColor];
+                cell.lbl.textColor=[UIColor whiteColor];
+            }
+            else
+            {
+                cell.backgroundColor=[UIColor whiteColor];
+                cell.lbl.textColor=[UIColor blackColor];
+            }
+        }
+        else
+        {
+            if (indexPath.row==4)
+            {
+                cell.backgroundColor=[UIColor redColor];
+                cell.lbl.textColor=[UIColor whiteColor];
+            }
+            else
+            {
+                cell.backgroundColor=[UIColor whiteColor];
+                cell.lbl.textColor=[UIColor blackColor];
+            }
+        }
+    
     }
     return cell;
 }
@@ -153,35 +172,47 @@ user_inf=[NSUserDefaults standardUserDefaults];
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         
         [self presentViewController:picker animated:YES completion:NULL];
-
     }
-    else if (indexPath.row==2)//set profile pic
+    
+    if ([selected_pic isEqual:[NSNull null]]||[selected_pic isEqualToString:@""])//null image
     {
-        if ([selected_pic isEqual:[NSNull null]]||[selected_pic isEqualToString:@""])
+    }
+    else
+    {
+        if (selected_id==1)//1st pic have image
         {
+            if (indexPath.row==2)//delete
+            {
+                NSMutableDictionary *dict = [NSMutableDictionary new];
+                [dict setObject:matri_id forKey:@"matri_id"];
+                [dict setObject:[NSString stringWithFormat:@"%d",selected_id] forKey:@"photo_id"];
+                [dict setObject:[All_pics_dict valueForKey:[NSString stringWithFormat:@"photo%d",selected_id]] forKey:@"photo_name"];
+                
+                selected_pic=[All_pics_dict valueForKey:[all_keys objectAtIndex:indexPath.row]];
+                [self del_profile_pic:dict];
+            }
         }
         else
         {
-        NSMutableDictionary *dict = [NSMutableDictionary new];
-        [dict setObject:matri_id forKey:@"matri_id"];
-        [dict setObject:[NSString stringWithFormat:@"%d",selected_id] forKey:@"photo_id"];
+            if (indexPath.row==2)//set profile pic
+            {
+                    NSMutableDictionary *dict = [NSMutableDictionary new];
+                    [dict setObject:matri_id forKey:@"matri_id"];
+                    [dict setObject:[NSString stringWithFormat:@"%d",selected_id] forKey:@"photo_id"];
         
-        [self set_profile_pic:dict];
+                    [self set_profile_pic:dict];
+            }
+            else if (indexPath.row==3)//delete
+            {
+                NSMutableDictionary *dict = [NSMutableDictionary new];
+                [dict setObject:matri_id forKey:@"matri_id"];
+                [dict setObject:[NSString stringWithFormat:@"%d",selected_id] forKey:@"photo_id"];
+                [dict setObject:[All_pics_dict valueForKey:[NSString stringWithFormat:@"photo%d",selected_id]] forKey:@"photo_name"];
+        
+                selected_pic=[All_pics_dict valueForKey:[all_keys objectAtIndex:indexPath.row]];
+                [self del_profile_pic:dict];
+            }
         }
-    }
-    else if (indexPath.row==3)//delete
-    {
-        NSMutableDictionary *dict = [NSMutableDictionary new];
-        [dict setObject:matri_id forKey:@"matri_id"];
-        [dict setObject:[NSString stringWithFormat:@"%d",selected_id] forKey:@"photo_id"];
-        [dict setObject:[All_pics_dict valueForKey:[NSString stringWithFormat:@"photo%d",selected_id]] forKey:@"photo_name"];
-        
-        selected_pic=[All_pics_dict valueForKey:[all_keys objectAtIndex:indexPath.row]];
-        [self del_profile_pic:dict];
-    }
-    else if (indexPath.row==4)//cancle
-    {
-        
     }
 }
 
@@ -288,7 +319,7 @@ user_inf=[NSUserDefaults standardUserDefaults];
     
     Pic_Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
 
-    NSString *img_str=[All_pics_dict valueForKey:[NSString stringWithFormat:@"photo%d",indexPath.row+1]];
+    NSString *img_str=[All_pics_dict valueForKey:[NSString stringWithFormat:@"photo%ld",indexPath.row+1]];
     if (indexPath.row == selected_pic_ind)
     {
         cell.img.image=chosenImage;
@@ -307,6 +338,22 @@ user_inf=[NSUserDefaults standardUserDefaults];
         else
         {
             NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://smatrimony.com/photos/%@",img_str]];
+            
+            //image with cache
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            
+         //   NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://smatrimony.com/SuccessStory/%@",pic]];
+            
+            [manager downloadImageWithURL: imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize)
+             {
+             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                 
+                 if(image)
+                 {
+                     cell.img.image = image;
+                     cell.img.contentMode = UIViewContentModeScaleToFill;               }
+             }];
+            
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
             dispatch_async(dispatch_get_main_queue(),
@@ -336,8 +383,16 @@ user_inf=[NSUserDefaults standardUserDefaults];
     }
     else
     {
+        if (indexPath.row==0)
+        {
+            _table_height.constant=160;
+            table_ary=[[NSMutableArray alloc]initWithObjects:@"Camera",@"Gallary",@"Delete",@"Cancel", nil];
+        }
+        else
+        {
         _table_height.constant=200;
         table_ary=[[NSMutableArray alloc]initWithObjects:@"Camera",@"Gallary",@"Set as Profile Pic",@"Delete",@"Cancel", nil];
+        }
     }
 
     [_table reloadData];
@@ -376,6 +431,10 @@ user_inf=[NSUserDefaults standardUserDefaults];
              
              NSString *status=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"status"]];
              NSString *result=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"result"]];
+             
+             NSMutableDictionary *dict = [NSMutableDictionary new];
+             [dict setObject:matri_id forKey:@"matri_id"];
+             [self all_pics:Dict];
              
              [self Alert:result];
          }

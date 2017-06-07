@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *old_pwd;
 @property (strong, nonatomic) IBOutlet UITextField *c_new_pwd;
 @property (strong, nonatomic) IBOutlet UITextField *N_pwd;
+@property (strong, nonatomic) IBOutlet NSString *From;
+
 - (IBAction)Submit_click:(id)sender;
 - (IBAction)back_click:(id)sender;
 

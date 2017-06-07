@@ -11,7 +11,8 @@
 #import "STParsing.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-@interface LoginViewController : UIViewController<FBSDKLoginButtonDelegate>
+#import "Login_Mobile.h"
+@interface LoginViewController : UIViewController<FBSDKLoginButtonDelegate,UITextFieldDelegate>
 {
     NSString *Fpwd_text;
     NSUserDefaults *user_inf;
@@ -20,9 +21,11 @@
 @property (strong, nonatomic) IBOutlet UITextField *email;
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @property(weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIButton *submitBtnOutlet;
 
 - (IBAction)register_click:(id)sender;
 - (IBAction)fpwd_click:(id)sender;
 - (IBAction)FB_click:(id)sender;
+- (IBAction)backHomePageAction:(id)sender;
 
 @end

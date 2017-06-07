@@ -96,8 +96,7 @@
 - (view_controller *)viewControllerAtIndex:(NSUInteger)index
 {
     view_controller *childViewController = [[view_controller alloc] initWithNibName:@"view_controller" bundle:nil];
-    //childViewController.delegate =self;
-    //  NSLog(@"test :%@",[newsContentDic objectForKey:[[newsArray objectAtIndex:index] valueForKey:@"name"]]);
+    childViewController.msgSendObj_delegate = self;    //  NSLog(@"test :%@",[newsContentDic objectForKey:[[newsArray objectAtIndex:index] valueForKey:@"name"]]);
     childViewController.index = index;
     childViewController.mail_tag = Mail_tag;
     childViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.pageController.view.frame.size.height);
@@ -112,6 +111,7 @@
     {
         return nil;
     }
+    
     // Decrease the index by 1 to return
     index--;
     return [self viewControllerAtIndex:index];
@@ -349,6 +349,17 @@
     
     [self.tabsView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:presentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     [collectionView reloadData];
+    
+}
+
+// delegate
+
+
+
+-(void)sendmail_click:(NSIndexPath *)index
+{
+    msg_send *menuController  =[[msg_send alloc]initWithNibName:@"msg_send" bundle:nil];
+    [self.navigationController pushViewController:menuController animated:YES];
     
 }
 

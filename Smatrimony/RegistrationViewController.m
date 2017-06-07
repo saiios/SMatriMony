@@ -63,7 +63,7 @@
     NSString *occupation_Id;
     NSString *fatherOccupation_Id;
     NSString *motherOccupation_Id;
-     NSString *designation_Id;
+     NSString *designation_Id,*incomeId;
     
     NSString *checkMobile;
 
@@ -397,7 +397,11 @@
             cell.textLabel.text =[employedInArr objectAtIndex:indexPath.row];
             
         }
-         
+        else if ([clicked isEqualToString:@"incomeBtnClick"]) {//incomeBtnClick
+            
+            cell.textLabel.text =[AnualIncomeArr objectAtIndex:indexPath.row];
+            
+        }
          
          
         else if (familyTypeArr.count>0 &&[clicked isEqualToString:@"familyTypeBtnClick"]) {//
@@ -668,7 +672,7 @@
         static NSString *simpleTableIdentifier = @"Register3";
         
         cell3 = (Register_3 *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-        
+        [self.continueBtnOutlet setTitle:@"Complete Registration" forState:UIControlStateNormal];
         /*
         educationBtnClick
         employedIn_BtnClick
@@ -882,6 +886,14 @@
         
     }
         
+    else if ([clicked isEqualToString:@"incomeBtnClick"]) {//
+        
+        cell3.annualIncomeTF.text = [AnualIncomeArr objectAtIndex:indexPath.row] ;
+        
+        incomeId = [AnualIncomeArr objectAtIndex:indexPath.row] ;
+        
+        
+    }
     else if ([clicked isEqualToString:@"fatherOccupationBtnClick"]) {//cityBtnClick
         
         cell3.fatherOccupationTF.text = [[occupationArr objectAtIndex:indexPath.row] valueForKey:@"ocp_name"];
@@ -965,7 +977,7 @@
             {
                 ALERT_DIALOG(@"Alert", @"password should be minimum 6 characters");
             }
-            
+           
             else{
             
             fName = cell1.firstNameTF.text;
@@ -1006,7 +1018,7 @@
         
         else{
             
-            if ([cell1.DOBinvalidLbl.text isEqualToString:@""]) {
+            if ([cell1.DOBinvalidLbl.text isEqualToString:@"Invalid Date of Birth"]) {
                  ALERT_DIALOG(@"Alert", @"Age should be atleast 18 years old");
                             }
             
@@ -1184,7 +1196,7 @@
                                                                               options:0];
                                            NSInteger age = [ageComponents year];
     
-    NSLog(@"%@ ,%ld%@ years",dob,(long)age);
+   // NSLog(@"%@ ,%ld%@ years",dob,(long)age);
     
     if (age<18) {
         
@@ -1830,29 +1842,6 @@
                     countryArr=[popUPList valueForKey:@"countrieslist"];
                 }
                  
-                 // cell 2 buttons
-                 //       countryBtnClick
-                 //       stateBtnClick
-                 //       districtBtnClick
-                 //       cityBtnClick
-                 //       genderBtnClick
-                 //       MaritalStatusBtnClick
-                 //       heightBtnClick
-                 //       weightBtnClick
-                 
-                 //cell 3
-                 
-                 /*
-                  educationBtnClick
-                  employedIn_BtnClick
-                  occupationBtnClick
-                  designationBtnClick
-                  incomeBtnClick
-                  familyTypeBtnClick
-                  familyStatusBtnClick
-                  fatherOccupationBtnClick
-                  motherOccupationBtnClick
-                  */
                  
                 else if ([clicked isEqualToString:@"educationBtnClick"]) {
                     educationArr = [[NSMutableArray alloc]init];
@@ -1941,7 +1930,7 @@
                      LoginViewController *lgvc  =[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
                         [self.navigationController pushViewController:lgvc animated:YES];
                      
-                      ALERT_DIALOG(@"Success", @"Registration done successfully");
+                     ALERT_DIALOG(@"Success", @"Your accunt has been under review and activated soon");
                      
                  }
                  if ([registerPage isEqualToString:@"1"] &&  [checkMobile isEqualToString:@"yes"]) {
@@ -2114,7 +2103,7 @@
     }
     
    // [self NSStringIsValidEmail:cell1.emailTF.text];
-    NSDictionary *params = @{@"email":emal,@"password":cell1.passwordTF.text,@"firstname":cell1.firstNameTF.text,@"lastname":cell1.lastNameTF.text,@"religion":religion_Id,@"caste":caste_Id,@"subcaste":sub_caste_Id,@"country_id":country_Id,@"state_id":state_Id,@"city":city_Id,@"gender":gendervalidate,@"m_tongue":language_Id,@"m_status":cell2.maritualTF.text,@"residence":cell2.residenceTF.text,@"edu_detail":education_Id,@"height":height_Id,@"occupation":occupation_Id,@"mother_occupation":motherOccupation_Id,@"designation":designation_Id,@"birthdate":cell1.DOBtF.text,@"father_name":cell3.fatherNameTF.text,@"mother_name":cell3.motherNameTF.text,@"father_occupation":fatherOccupation_Id,@"mobile":cell1.mobileNoTF.text,@"weight":str,@"income":cell3.annualIncomeTF.text,@"emp_in":cell3.employedTF.text,@"address":cell2.addressTF.text,@"profileby":cell1.profileForTF.text};
+    NSDictionary *params = @{@"email":emal,@"password":cell1.passwordTF.text,@"firstname":cell1.firstNameTF.text,@"lastname":cell1.lastNameTF.text,@"religion":religion_Id,@"caste":caste_Id,@"subcaste":sub_caste_Id,@"country_id":country_Id,@"state_id":state_Id,@"city":city_Id,@"gender":gendervalidate,@"m_tongue":language_Id,@"m_status":cell2.maritualTF.text,@"residence":cell2.residenceTF.text,@"edu_detail":education_Id,@"height":height_Id,@"occupation":occupation_Id,@"mother_occupation":motherOccupation_Id,@"designation":designation_Id,@"birthdate":cell1.DOBtF.text,@"father_name":cell3.fatherNameTF.text,@"mother_name":cell3.motherNameTF.text,@"father_occupation":fatherOccupation_Id,@"mobile":cell1.mobileNoTF.text,@"weight":str,@"income":incomeId,@"emp_in":cell3.employedTF.text,@"address":cell2.addressTF.text,@"profileby":cell1.profileForTF.text};
     
     [self popupServiceCallFor_Post:@"services/api/registration" params:params];
    

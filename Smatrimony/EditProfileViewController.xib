@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController">
+            <connections>
+                <outlet property="backClicked" destination="LL5-7a-XTq" id="6Ad-4n-pJ8"/>
+                <outlet property="editaprofileTableView" destination="xop-aN-FHH" id="Knw-8w-HhD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-Vx-LDE">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="zQX-tH-LEu"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LL5-7a-XTq">
+                    <rect key="frame" x="3" y="13" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Y7C-et-C3Q"/>
+                        <constraint firstAttribute="width" constant="40" id="fSg-kV-xMb"/>
+                    </constraints>
+                    <state key="normal" image="Back">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="backClickedBtn:" destination="-1" eventType="touchUpInside" id="LV0-f6-fJI"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xop-aN-FHH">
+                    <rect key="frame" x="0.0" y="56" width="375" height="611"/>
+                    <color key="backgroundColor" red="1" green="0.95235722810093937" blue="0.94330041672689491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="fLn-hD-FTb"/>
+                        <outlet property="delegate" destination="-1" id="f60-d1-me8"/>
+                    </connections>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwT-X4-9zc">
+                    <rect key="frame" x="44" y="23" width="85" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="MBK-UM-pQq"/>
+                        <constraint firstAttribute="width" constant="85" id="QHi-4f-8cF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.99963909387588501" green="1" blue="0.99975615739822388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fZh-Vx-LDE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0tn-bb-yjk"/>
+                <constraint firstItem="xop-aN-FHH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8u7-ni-3IL"/>
+                <constraint firstItem="fZh-Vx-LDE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9RS-43-E8d"/>
+                <constraint firstAttribute="trailing" secondItem="xop-aN-FHH" secondAttribute="trailing" id="AM3-WI-dZx"/>
+                <constraint firstItem="xop-aN-FHH" firstAttribute="top" secondItem="fZh-Vx-LDE" secondAttribute="bottom" id="aeE-YL-C37"/>
+                <constraint firstItem="LL5-7a-XTq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="3" id="awP-Tc-1w5"/>
+                <constraint firstAttribute="trailing" secondItem="fZh-Vx-LDE" secondAttribute="trailing" id="bRf-kr-c5O"/>
+                <constraint firstAttribute="bottom" secondItem="xop-aN-FHH" secondAttribute="bottom" id="eC1-kY-hap"/>
+                <constraint firstItem="LL5-7a-XTq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="13" id="eWh-1P-TeU"/>
+                <constraint firstItem="fwT-X4-9zc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="fzQ-Bt-mgt"/>
+                <constraint firstItem="fwT-X4-9zc" firstAttribute="leading" secondItem="LL5-7a-XTq" secondAttribute="trailing" constant="1" id="yRf-zK-tK5"/>
+            </constraints>
+            <point key="canvasLocation" x="82.5" y="68.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Back" width="44" height="44"/>
+        <image name="head" width="340" height="40"/>
+    </resources>
+</document>

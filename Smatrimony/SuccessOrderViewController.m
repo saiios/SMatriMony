@@ -141,10 +141,14 @@
 - (IBAction)view_yourOrdrsBtnActn:(id)sender
 {
     NSLog(@"view orders clicked");
-    /*
-    YourOrdersViewController *define = [[YourOrdersViewController alloc]initWithNibName:@"YourOrdersViewController" bundle:nil];
-    define.From = @"Login";
-    [self.navigationController pushViewController:define animated:YES];
-     */
+    
+    MenuViewController *menuController  =[[MenuViewController alloc]initWithNibName:@"MenuViewController" bundle:nil];
+    NSUserDefaults *user_inf=[NSUserDefaults standardUserDefaults];
+    menuController.user_name_str=[user_inf valueForKey:@"username"];
+    [self.navigationController pushViewController:menuController animated:YES];
+//    YourOrdersViewController *define = [[YourOrdersViewController alloc]initWithNibName:@"YourOrdersViewController" bundle:nil];
+//    define.From = @"Login";
+//    [self.navigationController pushViewController:define animated:YES];
+    
 }
 @end

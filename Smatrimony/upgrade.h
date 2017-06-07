@@ -14,7 +14,7 @@
 #import "PageViewController.h"
 #import "PaymentType_ViewController.h"
 
-@interface upgrade : UIViewController<searchTableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIPageViewControllerDelegate,UIPageViewControllerDataSource,UIScrollViewDelegate,profileTable>
+@interface upgrade : UIViewController<searchTableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIPageViewControllerDelegate,UIPageViewControllerDataSource,UIScrollViewDelegate>
 
 {
     NSArray *sent_ary;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -57,11 +57,11 @@
                                 <action selector="title_click:" destination="-1" eventType="touchUpInside" id="Jg2-Ou-6Ti"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down" translatesAutoresizingMaskIntoConstraints="NO" id="c6K-5X-5uG">
-                            <rect key="frame" x="136" y="28" width="20" height="20"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="c6K-5X-5uG">
+                            <rect key="frame" x="136" y="28" width="12" height="17"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="YnY-nZ-a0N"/>
-                                <constraint firstAttribute="width" constant="20" id="k5T-iM-XDx"/>
+                                <constraint firstAttribute="height" constant="17" id="YnY-nZ-a0N"/>
+                                <constraint firstAttribute="width" constant="12" id="k5T-iM-XDx"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -73,7 +73,7 @@
                         <constraint firstItem="wQm-4W-0Vn" firstAttribute="top" secondItem="rVN-JZ-ctv" secondAttribute="top" constant="20" id="a2T-Iy-Q9n"/>
                         <constraint firstAttribute="height" constant="60" id="f0H-DD-oLM"/>
                         <constraint firstItem="OFe-6V-NpT" firstAttribute="leading" secondItem="wQm-4W-0Vn" secondAttribute="trailing" constant="15" id="gBd-Ah-NwK"/>
-                        <constraint firstItem="c6K-5X-5uG" firstAttribute="centerY" secondItem="Sf0-Aa-EZy" secondAttribute="centerY" id="jNe-0N-ys4"/>
+                        <constraint firstItem="c6K-5X-5uG" firstAttribute="centerY" secondItem="Sf0-Aa-EZy" secondAttribute="centerY" constant="-1.5" id="jNe-0N-ys4"/>
                         <constraint firstAttribute="bottom" secondItem="OFe-6V-NpT" secondAttribute="bottom" constant="8" id="ppQ-Lp-vWp"/>
                         <constraint firstItem="wQm-4W-0Vn" firstAttribute="leading" secondItem="rVN-JZ-ctv" secondAttribute="leading" constant="15" id="som-EI-Ow0"/>
                     </constraints>
@@ -100,23 +100,32 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3K-Ft-9i7">
                                     <rect key="frame" x="1" y="1" width="114" height="25"/>
-                                    <color key="backgroundColor" red="0.74117647060000003" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="0.99604313606171579" blue="0.97889348169282131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="FER-NJ-vnf"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <state key="normal" title="INBOX">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleColor" red="0.90740365932642486" green="0.21081239419430114" blue="0.059665097500023086" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="nil" keyPath="borderColor"/>
+                                        <userDefinedRuntimeAttribute type="nil" keyPath="borderWidth"/>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="inbox_click:" destination="-1" eventType="touchUpInside" id="TRG-l9-nK7"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62j-ZE-G4H">
                                     <rect key="frame" x="1" y="27" width="114" height="23"/>
-                                    <color key="backgroundColor" red="0.74117647060000003" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="0.99604313606171579" blue="0.97889348169282131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <state key="normal" title="SENT">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleColor" red="0.90740365932642486" green="0.21081239419430114" blue="0.059665097500023086" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="nil" keyPath="borderColor"/>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="SENT_click:" destination="-1" eventType="touchUpInside" id="KpV-qg-UWh"/>
                                     </connections>
@@ -165,11 +174,11 @@
                 <constraint firstItem="6MZ-0v-0Ah" firstAttribute="top" secondItem="rVN-JZ-ctv" secondAttribute="bottom" id="on1-an-Ynb"/>
                 <constraint firstItem="rVN-JZ-ctv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sVb-K6-Ri9"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="103.5"/>
+            <point key="canvasLocation" x="-260.5" y="-55.5"/>
         </view>
     </objects>
     <resources>
         <image name="Back" width="44" height="44"/>
-        <image name="down" width="32" height="32"/>
+        <image name="down-arrow.png" width="24" height="24"/>
     </resources>
 </document>

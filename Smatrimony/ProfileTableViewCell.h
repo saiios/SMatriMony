@@ -19,5 +19,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *SortListBtn;
 @property (strong, nonatomic) IBOutlet UIButton *sendInterestBtn;
 @property (strong, nonatomic) IBOutlet UIImageView *imageOutlet;
+@property (strong, nonatomic) IBOutlet UIImageView *btnImageOutlet;
+@property (strong, nonatomic) IBOutlet UILabel *shortlistLabel;
+@property (weak, nonatomic) IBOutlet UIButton *chatBtn;
+@property (weak, nonatomic) IBOutlet UILabel *chatLabel;
+
 
 @end

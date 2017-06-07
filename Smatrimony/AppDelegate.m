@@ -11,54 +11,95 @@
 #import "LoginViewController.h"
 #import "Home_VC.h"
 
+#import "Login_Agent.h"
+#import "Agent_Dashboard.h"
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     user_inf=[NSUserDefaults standardUserDefaults];
     NSString *matri_id=[user_inf valueForKey:@"matri_id"];
-
-    if ([[NSUserDefaults standardUserDefaults]boolForKey:@"UserLogin"])
-    {
-        if ([matri_id isEqualToString:@""]||matri_id.length==0)
+    NSString *F_matri_id=[user_inf valueForKey:@"F_matri_id"];
+    
+    NSString *Re_Open=[[NSUserDefaults standardUserDefaults]valueForKey:@"Re_Open"];
+    
+        if ([Re_Open isEqualToString:@"User_Login"])
         {
             LoginViewController *menuController  =[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
             self.window.rootViewController = nav;
         }
-        else
+        else if ([Re_Open isEqualToString:@"User_Dashboard"])
         {
             MenuViewController *menuController  =[[MenuViewController alloc]initWithNibName:@"MenuViewController" bundle:nil];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
             self.window.rootViewController = nav;
         }
-    [self.window makeKeyAndVisible];
-    }
-    else
-    {
-        if ([matri_id isEqualToString:@""]||matri_id.length==0)
+       else if ([Re_Open isEqualToString:@"Agent_Login"])
         {
-            LoginViewController *menuController  =[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+            Login_Agent *menuController  =[[Login_Agent alloc]initWithNibName:@"Login_Agent" bundle:nil];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+            self.window.rootViewController = nav;
+        }
+        else if ([Re_Open isEqualToString:@"Agent_Dashboard"])
+        {
+            Agent_Dashboard *menuController  =[[Agent_Dashboard alloc]initWithNibName:@"Agent_Dashboard" bundle:nil];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
             self.window.rootViewController = nav;
         }
         else
         {
-        Home_VC *menuController  =[[Home_VC alloc]initWithNibName:@"Home_VC" bundle:nil];
-        
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
-        
-        self.window.rootViewController = nav;
+            Home_VC *menuController  =[[Home_VC alloc]initWithNibName:@"Home_VC" bundle:nil];
+            
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+            
+            self.window.rootViewController = nav;
         }
-        [self.window makeKeyAndVisible];
-        
-    }
+    
+    [self.window makeKeyAndVisible];
+
+
+//    if ([[NSUserDefaults standardUserDefaults]boolForKey:@"UserLogin"])
+//    {
+//        if ([matri_id isEqualToString:@""]||matri_id.length==0)
+//        {
+//            LoginViewController *menuController  =[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+//            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+//            self.window.rootViewController = nav;
+//        }
+//        else
+//        {
+//            MenuViewController *menuController  =[[MenuViewController alloc]initWithNibName:@"MenuViewController" bundle:nil];
+//            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+//            self.window.rootViewController = nav;
+//        }
+//    [self.window makeKeyAndVisible];
+//    }
+//    else
+//    {
+//        if ([matri_id isEqualToString:@""]||matri_id.length==0)
+//        {
+//            LoginViewController *menuController  =[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+//            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+//            self.window.rootViewController = nav;
+//        }
+//        else
+//        {
+//        Home_VC *menuController  =[[Home_VC alloc]initWithNibName:@"Home_VC" bundle:nil];
+//        
+//        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:menuController];
+//        
+//        self.window.rootViewController = nav;
+//        }
+//        [self.window makeKeyAndVisible];
+//        
+//    }
     [self registerForRemoteNotifications];
 
     return [[FBSDKApplicationDelegate sharedInstance] application:application

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "STParsing.h"
 #import "CRToastView.h"
+#import "MenuViewController.h"
 @interface SuccessOrderViewController : UIViewController
 {
     NSUserDefaults *user_data;

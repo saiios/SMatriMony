@@ -9,7 +9,9 @@
 #import "msg_send.h"
 
 @interface msg_send ()
-
+{
+    UITapGestureRecognizer *singleFingerTap;
+}
 @end
 
 @implementation msg_send
@@ -22,15 +24,37 @@
     matri_id=[user_inf valueForKey:@"matri_id"];
     From_email=[user_inf valueForKey:@"email_id"];
     gender=[user_inf valueForKey:@"gender"];
+   // _id_table.layer.borderColor = [UIColor redColor].CGColor;
+    //_id_table.layer.borderWidth = 2.0;
 
     _txt_view.text = @"Enter Your Message";
 //    _txt_view.textColor = [UIColor lightGrayColor];
     _txt_view.delegate = self;
+    self.to.delegate=self;
+    self.subject.delegate = self;
+    self.to.text = _msgRecevierId;
     [_to addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 
+    
+    singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(hideKeyboard)];
+    singleFingerTap.cancelsTouchesInView = NO; //disable UITapGestureRecognizer in subviews
+    [self.view addGestureRecognizer:singleFingerTap];
     [self service_ids];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+      [textField resignFirstResponder];
+    
+    return YES;
+}
+- (void)hideKeyboard
+{
+    [self.view endEditing:YES];
+}
 -(void)service_ids
 {
     NSMutableDictionary *dict = [NSMutableDictionary new];
@@ -47,20 +71,18 @@
              NSString *result=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"result"]];
              composeProfiles=[res_dict valueForKey:@"composeProfiles"];
              id_ary=[[NSMutableArray alloc]initWithArray:[composeProfiles valueForKey:@"matri_id"]];
-             [self Alert:result];
+           //  [self Alert:result];
              
              if ([status isEqualToString:@"1"])
              {
                  _id_table.delegate=self;
                  _id_table.dataSource=self;
-                 [_id_table sendSubviewToBack:_txt_view];
-                 _id_table.hidden=NO;
+                 [_subject_view sendSubviewToBack:_id_table];
 
                  [_id_table reloadData];
              }
              else
              {
-                 
              }
          }
          else
@@ -88,23 +110,10 @@
 
 -(void)textFieldDidChange :(UITextField *)theTextField
 {
-    NSArray *ddf=[[NSArray alloc]initWithObjects:@"aaa",@"dfd", nil];
-    NSArray *pre_ary=[NSArray arrayWithArray:ddf];
-    NSPredicate* p = [NSPredicate predicateWithFormat:@"ProductName BEGINSWITH[cd] %@", theTextField.text];
-    NSArray *results = [ddf filteredArrayUsingPredicate:p];
-    
-   NSArray *clothsArr = [results mutableCopy]; //locationArr
-//    [_clothsListTableView reloadData];
-    /*
-    NSPredicate * predicate =
-    [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ OR name LIKE[cd] %@", theTextField.text, theTextField.text];
-    NSArray *searchResults = [NSArray arrayWithArray:[id_ary filteredArrayUsingPredicate:predicate]];
-    NSLog(@"filtered array %@",searchResults);
-    
-       NSString *expression=[NSString stringWithFormat:@"(content BEGINSWITH[c] %@)",theTextField.text];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:expression];
-    NSMutableArray *mArrayFiltered = [[id_ary filteredArrayUsingPredicate:predicate] mutableCopy];
-     */
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"matri_id BEGINSWITH [c] %@", theTextField.text];
+    result_ary=[composeProfiles filteredArrayUsingPredicate:predicate];
+    _id_table.hidden=NO;
+    [_id_table reloadData];
 }
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
@@ -146,14 +155,26 @@
              NSString *status=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"status"]];
              NSString *result=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"result"]];
              
-             [self Alert:result];
+         //    [self Alert:result];
              
              if ([status isEqualToString:@"1"])
              {
+                //check this if not working enable alertcontroller
+//                 ALERT_DIALOG(@"", @"Message Sent Successfully");
+//                 [self.navigationController popViewControllerAnimated:YES];
+                // [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                 
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success" message:@"Message Sent Successfully" preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+                     
+                     [self.navigationController popViewControllerAnimated:YES];
+                     
+                 }]];
+                 [self presentViewController:alertController animated:YES completion:nil];
              }
              else
              {
-                
+                [self Alert:result];
              }
          }
          else
@@ -193,13 +214,14 @@
     
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
-                                    NSLog(@"Completed");
+                                  //  NSLog(@"Completed");
                                 }];
 }
 
 - (IBAction)back_click:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+   [self.navigationController popViewControllerAnimated:YES];
+  
 }
 
 - (IBAction)send_click:(id)sender
@@ -244,8 +266,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger row = [indexPath row];
-    NSString *selected_id=[id_ary objectAtIndex:row];
+    NSString *selected_id=[[result_ary valueForKey:@"matri_id"]objectAtIndex:indexPath.row];
     _to.text=selected_id;
     _id_table.hidden=YES;
 }
@@ -259,8 +280,8 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"Feedback_cell"];
     }
 //    Feedback_cell *cell = [ tableView dequeueReusableCellWithIdentifier:@"Feedback_cell"];
-//   
-    NSString *id_str=[NSString stringWithFormat:@"%@",[id_ary objectAtIndex:indexPath.row]];
+   
+    NSString *id_str=[NSString stringWithFormat:@"%@",[[result_ary valueForKey:@"matri_id"]objectAtIndex:indexPath.row]];
         cell.lbl.text = id_str;
     
     return cell;
@@ -268,6 +289,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        return id_ary.count;
+        return result_ary.count;
 }
 @end

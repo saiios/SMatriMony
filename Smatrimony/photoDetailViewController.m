@@ -14,7 +14,7 @@
 @interface photoDetailViewController ()
 {
     NSMutableArray *ImageArray;
-    NSString *loggedIn_matri_id,*clicked;
+    NSString *loggedIn_matri_id,*clicked,*clickedGender;
     NSUserDefaults *user_inf;
 }
 
@@ -27,8 +27,15 @@
     // Do any additional setup after loading the view from its nib.
     user_inf=[NSUserDefaults standardUserDefaults];
     loggedIn_matri_id=[user_inf valueForKey:@"matri_id"];
-    
-    if ([[_images valueForKey:@"status"]isEqualToString:@"Paid"]) {
+    clickedGender =   [_images valueForKey:@"gender"];
+    self.upgradeViewOutlet.hidden = true;
+    if ([clickedGender isEqualToString:_loginUserGender]) {
+        self.hideView.hidden = true;
+        self.sendInterestBtnOutlet.hidden = true;
+        self.chatNowBtnOutlet.hidden = true;
+        self.sortListBtnOutlet.hidden = true;
+    }
+    if ([[_images valueForKey:@"status"]isEqualToString:@"Active"]) {
         
         _likeHerBtnOutlet.hidden = YES;
         
@@ -41,6 +48,7 @@
     if ([interest_status isEqualToString:@"1"]) {
         
           [_sendInterestBtnOutlet setImage:[UIImage imageNamed:@"love.png"] forState:UIControlStateNormal];
+        self.interestOutlet.text = @"Interest Sent";
       //  _sendInterestBtnOutlet.backgroundColor = [UIColor colorWithRed:252/255.0f green:109/255.0f blue:82/255.0f alpha:1.0f];
         
     }
@@ -50,7 +58,7 @@
         
          // _sendInterestBtnOutlet.backgroundColor = [UIColor clearColor];
         [_sendInterestBtnOutlet setImage:[UIImage imageNamed:@"loveno.png"] forState:UIControlStateNormal];
-        
+        self.interestOutlet.text = @"Send Interest";
     }
 
     NSString *sortList = [NSString stringWithFormat:@"%@",[_images valueForKey:@"shortlist_status"]];
@@ -58,11 +66,12 @@
         
         [_sortListBtnOutlet setImage:[UIImage imageNamed:@"short_list.png"] forState:UIControlStateNormal];
         
+        self.shortListLabel.text = @"Shortlisted";
     }
     else
     {
         [_sortListBtnOutlet setImage:[UIImage imageNamed:@"unshortlist_icon.png"] forState:UIControlStateNormal];
-        
+        self.shortListLabel.text = @"Shortlist";
     }
     
     
@@ -87,7 +96,7 @@
 {
     if (_images.count>0) {
         ImageArray = [[NSMutableArray alloc]init];
-        
+        UIImageView *imgV ;
         
         
         for (int i =1; i<10; i++) {
@@ -115,10 +124,32 @@
         
         
         
-        UIView  *vv = [[UIView alloc]initWithFrame:CGRectMake(0,150, [UIScreen mainScreen].bounds.size.width, 400)];
-        UIScrollView *scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0,150, [UIScreen mainScreen].bounds.size.width, 400)];
+        UIView  *vv = [[UIView alloc]initWithFrame:CGRectMake(0,150, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        UIScrollView *scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0,130, [UIScreen mainScreen].bounds.size.width,self.view.frame.size.height-250)];
         scroll.backgroundColor = [UIColor whiteColor];
         
+        if (!(ImageArray.count >0)) {
+            
+            
+            imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, [UIScreen mainScreen].bounds.size.width,250)];
+            imgV.backgroundColor = [UIColor whiteColor];
+            imgV.userInteractionEnabled =NO;
+            
+            
+            if ([clickedGender isEqualToString:@"Groom"]) {
+                [imgV setImage: [UIImage imageNamed:@"male"]];
+            }
+            else
+            {
+                [imgV setImage: [UIImage imageNamed:@"female"]];
+            }
+            
+            [vv addSubview:imgV];
+        }
+        
+        
+        else{
+
                for(int i = 0; i < [ImageArray count]; i++)
         {
             UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
@@ -128,12 +159,14 @@
             [ImageArray replaceObjectAtIndex:i withObject: image];
         }
         
+        
+        
         for (int i=0; i<[ImageArray count]; i++) {
             NSLog(@"%f",[UIScreen mainScreen].bounds.size.width*i);
             // create imageView
             float jj =[UIScreen mainScreen].bounds.size.width*i;
             
-            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(jj,0, [UIScreen mainScreen].bounds.size.width,400)];
+            imgV = [[UIImageView alloc] initWithFrame:CGRectMake(jj,0, [UIScreen mainScreen].bounds.size.width,400)];
             // set scale to fill
             // imgV.contentMode=UIViewContentModeScaleAspectFill;
             imgV.backgroundColor = [UIColor greenColor];
@@ -148,6 +181,7 @@
             
             
             
+            
         }
         
         scroll.backgroundColor = [UIColor grayColor];
@@ -155,9 +189,11 @@
         scroll.pagingEnabled =YES;
         [vv addSubview:scroll];
         [self.view addSubview:scroll];
+        [self.view addSubview:_upgradeViewOutlet];
 //        [self.profileTableVIew addParallaxWithView:vv andHeight:200];
 //        parallaxWithView = YES;
 //        self.profileTableVIew.parallaxView.delegate = self;
+    }
     }
 }
 
@@ -255,10 +291,15 @@
                          
                          if (  (_sendInterestBtnOutlet.backgroundColor = [UIColor clearColor])) {
                              _sendInterestBtnOutlet.backgroundColor =  [UIColor colorWithRed:252/255.0f green:109/255.0f blue:82/255.0f alpha:1.0f];
+                            // [self.sendInterestBtnOutlet setImage: forState:UIControlState];
+                             [self.sendInterestBtnOutlet setImage:[UIImage imageNamed:@"love"] forState:UIControlStateNormal];
+                             self.interestOutlet.text = @"Interest Sent";
                          }
                          else
                          {
                              _sendInterestBtnOutlet.backgroundColor = [UIColor clearColor];
+                              [self.sendInterestBtnOutlet setImage:[UIImage imageNamed:@"loveno"] forState:UIControlStateNormal];
+                             self.interestOutlet.text = @"Send Interest";
                          }
                          ALERT_DIALOG(@"Success", result);
                      }
@@ -268,12 +309,13 @@
                      if ([_sortListBtnOutlet.imageView.image isEqual:[UIImage imageNamed:@"unshortlist_icon.png"]])
                      {
                          [_sortListBtnOutlet setImage:[UIImage imageNamed:@"short_list.png"] forState:UIControlStateNormal];
+                         self.shortListLabel.text = @"Shortlisted";
                          
                      }
                      
                      else{
                          [_sortListBtnOutlet setImage:[UIImage imageNamed:@"unshortlist_icon.png"] forState:UIControlStateNormal];
-                         
+                         self.shortListLabel.text = @"Shortlist";
                      }
                 }//clicked
                  
@@ -283,15 +325,41 @@
              
              else if ([status isEqualToString:@"2"])
              {
-                 ALERT_DIALOG(@"Alert", result);
-                 
-                 
-                 
+                 //ALERT_DIALOG(@"Alert", result);
+                
+                 self.upgradeNameOutlet.text = [NSString stringWithFormat:@"To Send Interest to %@ now Upgrade membership",[_images valueForKey:@"username"]];
+                 NSString * genderStatus =[NSString stringWithFormat:@"%@",[_images valueForKey:@"gender"]];
+                 NSString *profile_pic = [NSString stringWithFormat:@"%@",[_images valueForKey:@"photo1"]];
+                 if ([profile_pic isEqual:[NSNull null]]|| [profile_pic isEqualToString:@""])
+                 {
+                     if ([genderStatus isEqualToString:@"Groom"]) {
+                        self.upgradeImage.image = [UIImage imageNamed:@"male"];
+                     }
+                     else
+                     {
+                         self.upgradeImage.image = [UIImage imageNamed:@"female"];
+                     }
+                 }
+                 else
+                 {
+                     NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://smatrimony.com/photos/%@",profile_pic]];
+                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
+                                    ^
+                                    {
+                                        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                                        dispatch_async(dispatch_get_main_queue(),
+                                                       ^
+                                                       {
+                                                           self.upgradeImage.image = [UIImage imageWithData:imageData];
+                                                       });
+                                    });
+                 }
+                    self.upgradeViewOutlet.hidden = false;
              }
              
              else
              {
-                 ALERT_DIALOG(@"Alert", @"Try again");
+                 ALERT_DIALOG(@"Alert",result);
                  
              }
              clicked =@"";
@@ -306,4 +374,12 @@
      }];
 }
 
+- (IBAction)upgradeNowAction:(id)sender {
+    upgrade *menuController  =[[upgrade alloc]initWithNibName:@"upgrade" bundle:nil];
+    [self.navigationController pushViewController:menuController animated:YES];
+}
+
+- (IBAction)closeAction:(id)sender {
+    self.upgradeViewOutlet.hidden = true;
+}
 @end

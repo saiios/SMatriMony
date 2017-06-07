@@ -98,7 +98,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         CCWebViewController *myNewVC = (CCWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CCWebViewControllerId"];
-        myNewVC.amount = @"0.001";
+        myNewVC.amount = [_payment_dict valueForKey:@"plan_amount"];
         myNewVC.payment_dict=_payment_dict;
         [self.navigationController pushViewController:myNewVC animated:YES];
     }
@@ -124,20 +124,20 @@
     }
 }
 
--(void)payment_service:Dict
+-(void)payment_service:(NSDictionary *)Dict
 {
     [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/membershipPayments" parameters:Dict requestNumber:WUS_Feedback showProgress:YES withHandler:^(BOOL success, id data)
      {
          if (success)
          {
              NSDictionary *res_dict=data;
-             
              NSString *status=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"status"]];
              NSString *result=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"result"]];
              
              if (![paymentTypeIs isEqualToString:@"1"])
              {
                  offline_payment *menuController  =[[offline_payment alloc]initWithNibName:@"offline_payment" bundle:nil];
+                 menuController.PlanType = [NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"plan_name"]];
                  [self.navigationController pushViewController:menuController animated:YES];
              }
              else
@@ -146,7 +146,7 @@
                  
                  
                  CCWebViewController *myNewVC = (CCWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CCWebViewControllerId"];
-                 myNewVC.amount = @"0.001";
+                 myNewVC.amount =[_payment_dict valueForKey:@"plan_amount"];;
                  myNewVC.payment_dict=_payment_dict;
                  myNewVC.orderId = [data valueForKey:@"order_inc_id"];
                  
@@ -158,10 +158,90 @@
              [self Alert:@"Something went wrong"];
          }
      }];
+
+    /*
+    NSData *rsaKeyDataStr = [NSKeyedArchiver archivedDataWithRootObject:Dict];
+    NSData *requestData = [NSData dataWithBytes: (__bridge const void * _Nullable)(rsaKeyDataStr) length: [rsaKeyDataStr length]];
+    
+    NSMutableURLRequest *rsaRequest = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: @"http://smatrimony.com/services/api/membershipPayments"]];
+    [rsaRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+    [rsaRequest setHTTPMethod: @"POST"];
+    [rsaRequest setHTTPBody: requestData];
+    
+    NSData *rsaKeyData = [NSURLConnection sendSynchronousRequest: rsaRequest returningResponse: nil error: nil];
+    NSString *rsaKey = [[NSString alloc] initWithData:rsaKeyData encoding:NSASCIIStringEncoding];
+    
+    NSData *response_data = [NSURLConnection sendSynchronousRequest: rsaRequest returningResponse: nil error: nil];
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:response_data
+                                                         options:kNilOptions
+                                                           error:&error];
+    
+    NSString *status=[NSString stringWithFormat:@"%@",[json valueForKey:@"status"]];
+    NSString *result=[NSString stringWithFormat:@"%@",[json valueForKey:@"result"]];
+    if ([status isEqualToString:@"1"])
+    {
+    if (![paymentTypeIs isEqualToString:@"1"])
+    {
+        offline_payment *menuController  =[[offline_payment alloc]initWithNibName:@"offline_payment" bundle:nil];
+        [self.navigationController pushViewController:menuController animated:YES];
+    }
+    else
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        CCWebViewController *myNewVC = (CCWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CCWebViewControllerId"];
+        myNewVC.amount = @"0.001";
+        myNewVC.payment_dict=_payment_dict;
+        myNewVC.orderId = [json valueForKey:@"order_inc_id"];
+        
+        [self.navigationController pushViewController:myNewVC animated:YES];
+    }
+    }
+    else
+    {
+        [self Alert:@"Something went wrong"];
+    }
+    */
 }
 
 -(void)Alert:(NSString *)Msg
 {
+    /*
+     [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/membershipPayments" parameters:Dict requestNumber:WUS_Feedback showProgress:YES withHandler:^(BOOL success, id data)
+     {
+     if (success)
+     {
+     NSDictionary *res_dict=data;
+     
+     NSString *status=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"status"]];
+     NSString *result=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"result"]];
+     
+     if (![paymentTypeIs isEqualToString:@"1"])
+     {
+     offline_payment *menuController  =[[offline_payment alloc]initWithNibName:@"offline_payment" bundle:nil];
+     [self.navigationController pushViewController:menuController animated:YES];
+     }
+     else
+     {
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+     
+     
+     CCWebViewController *myNewVC = (CCWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CCWebViewControllerId"];
+     myNewVC.amount = @"0.001";
+     myNewVC.payment_dict=_payment_dict;
+     myNewVC.orderId = [data valueForKey:@"order_inc_id"];
+     
+     [self.navigationController pushViewController:myNewVC animated:YES];
+     }
+     }
+     else
+     {
+     [self Alert:@"Something went wrong"];
+     }
+     }];
+     */
+
     NSDictionary *options = @{kCRToastNotificationTypeKey:@(CRToastTypeNavigationBar),
                               
                               kCRToastTextKey : Msg,

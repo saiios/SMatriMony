@@ -8,7 +8,7 @@
 
 #import "upgrade.h"
 
-@interface upgrade ()
+@interface upgrade ()<profileTable>
 @end
 
 @implementation upgrade

@@ -44,7 +44,7 @@
                                 <constraint firstAttribute="height" constant="58" id="EOq-6V-Ajn"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
-                            <state key="normal" title="VIEW YOUR ORDERS">
+                            <state key="normal" title="BACK TO HOME">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -83,10 +83,11 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar.png" translatesAutoresizingMaskIntoConstraints="NO" id="gPC-zc-uBx">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="gPC-zc-uBx">
                             <rect key="frame" x="131.5" y="22" width="112.5" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="gPC-zc-uBx" secondAttribute="height" multiplier="47:10" id="JBv-r7-6OU"/>
+                                <constraint firstAttribute="height" constant="24" id="kUa-hn-vtS"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -114,6 +115,6 @@
         </view>
     </objects>
     <resources>
-        <image name="calendar.png" width="24" height="24"/>
+        <image name="Logo" width="250" height="120"/>
     </resources>
 </document>

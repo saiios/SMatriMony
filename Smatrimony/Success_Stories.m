@@ -104,6 +104,13 @@
 {
     if (s_tag == indexPath.row)
     {
+        CGSize constraintSize = {self.view.frame.size.width-20, 20000};
+        //20000 is max height for cell
+        CGSize neededSize = [ [NSString stringWithFormat:@"%@",[[photostories_dict valueForKey:@"successmessage"]objectAtIndex:indexPath.row]] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f] constrainedToSize:constraintSize  lineBreakMode:UILineBreakModeCharacterWrap];
+        
+        
+        return MAX(215, neededSize.height +170);
+        
         return 500;
     }
     else
@@ -123,7 +130,7 @@
 
     if (s_tag == indexPath.row)
     {
-        cell.des.numberOfLines=20;
+        cell.des.numberOfLines=0;
         UIImage *buttonImage = [UIImage imageNamed:@"top"];
         [cell.btn setBackgroundImage:buttonImage forState:UIControlStateNormal];
     }

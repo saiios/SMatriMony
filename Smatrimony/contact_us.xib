@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="contact_us">
             <connections>
+                <outlet property="page_title" destination="egO-Kr-Mwa" id="Mng-rI-bBk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webview" destination="6wp-Y1-CGZ" id="H91-Ne-Xf7"/>
             </connections>
@@ -20,19 +21,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wp-Y1-CGZ">
-                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
-                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <dataDetectorType key="dataDetectorTypes"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="UCq-SF-Mv6"/>
-                    </connections>
-                </webView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCa-M0-LlW">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="-7" width="375" height="67"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="submit_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="JdW-xM-Uwx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0js-UB-6D3">
-                            <rect key="frame" x="15" y="20" width="35" height="35"/>
+                            <rect key="frame" x="15" y="24" width="35" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="JsH-rC-Vvc"/>
                                 <constraint firstAttribute="width" constant="35" id="KDD-Kd-inh"/>
@@ -43,7 +39,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egO-Kr-Mwa">
-                            <rect key="frame" x="65" y="25.5" width="305" height="25"/>
+                            <rect key="frame" x="65" y="29.5" width="305" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="Sgx-XP-EKe"/>
                             </constraints>
@@ -52,31 +48,44 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.74117647060000003" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="2fI-dV-3cL"/>
+                        <constraint firstAttribute="height" constant="67" id="2fI-dV-3cL"/>
+                        <constraint firstItem="JdW-xM-Uwx" firstAttribute="top" secondItem="jCa-M0-LlW" secondAttribute="top" id="3Uy-1M-XZX"/>
                         <constraint firstItem="egO-Kr-Mwa" firstAttribute="leading" secondItem="0js-UB-6D3" secondAttribute="trailing" constant="15" id="YOm-XI-RMm"/>
-                        <constraint firstAttribute="bottom" secondItem="egO-Kr-Mwa" secondAttribute="bottom" constant="9.5" id="ZQH-g9-3nE"/>
+                        <constraint firstAttribute="bottom" secondItem="egO-Kr-Mwa" secondAttribute="bottom" constant="12.5" id="ZQH-g9-3nE"/>
                         <constraint firstItem="0js-UB-6D3" firstAttribute="leading" secondItem="jCa-M0-LlW" secondAttribute="leading" constant="15" id="fzJ-ce-sSr"/>
+                        <constraint firstAttribute="trailing" secondItem="JdW-xM-Uwx" secondAttribute="trailing" id="hOb-ge-ilw"/>
+                        <constraint firstAttribute="bottom" secondItem="JdW-xM-Uwx" secondAttribute="bottom" constant="-17" id="m31-HT-hMW"/>
                         <constraint firstAttribute="trailing" secondItem="egO-Kr-Mwa" secondAttribute="trailing" constant="5" id="quh-8p-pW2"/>
-                        <constraint firstItem="0js-UB-6D3" firstAttribute="top" secondItem="jCa-M0-LlW" secondAttribute="top" constant="20" id="uhO-Fn-xfU"/>
+                        <constraint firstItem="JdW-xM-Uwx" firstAttribute="leading" secondItem="jCa-M0-LlW" secondAttribute="leading" id="uEi-Mo-htO"/>
+                        <constraint firstItem="0js-UB-6D3" firstAttribute="top" secondItem="jCa-M0-LlW" secondAttribute="top" constant="24" id="uhO-Fn-xfU"/>
                     </constraints>
                 </view>
+                <webView contentMode="scaleAspectFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wp-Y1-CGZ">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <dataDetectorType key="dataDetectorTypes"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="UCq-SF-Mv6"/>
+                    </connections>
+                </webView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="6wp-Y1-CGZ" firstAttribute="top" secondItem="jCa-M0-LlW" secondAttribute="bottom" id="2aX-Aq-C76"/>
                 <constraint firstAttribute="trailing" secondItem="6wp-Y1-CGZ" secondAttribute="trailing" id="HTQ-Fz-XxU"/>
-                <constraint firstItem="jCa-M0-LlW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="K6A-7g-5l5"/>
-                <constraint firstAttribute="bottom" secondItem="6wp-Y1-CGZ" secondAttribute="bottom" id="PGf-Ws-NWk"/>
+                <constraint firstItem="jCa-M0-LlW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-7" id="K6A-7g-5l5"/>
                 <constraint firstItem="jCa-M0-LlW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iGj-WX-NP7"/>
+                <constraint firstAttribute="bottom" secondItem="6wp-Y1-CGZ" secondAttribute="bottom" id="lFP-PQ-KDg"/>
                 <constraint firstItem="6wp-Y1-CGZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="skb-rK-4BI"/>
                 <constraint firstAttribute="trailing" secondItem="jCa-M0-LlW" secondAttribute="trailing" id="uB8-Zj-4j9"/>
             </constraints>
-            <point key="canvasLocation" x="26.5" y="52.5"/>
+            <point key="canvasLocation" x="-259.5" y="36.5"/>
         </view>
     </objects>
     <resources>
         <image name="Back" width="44" height="44"/>
+        <image name="submit_button.png" width="203" height="35"/>
     </resources>
 </document>

@@ -8,12 +8,19 @@
 
 #import "view_controller.h"
 
-@interface view_controller ()
+@interface view_controller ()<profileTable>
+{
 
+        NSString *genderStatus,*indexID,*matri_id;
+    Mail_cell *cell_mail;
+    NSIndexPath *indexpathvalue;
+}
 @end
 
-@implementation view_controller
 
+
+@implementation view_controller
+@synthesize msgSendObj_delegate;
 
 -(AppDelegate *)appdelegate{
     
@@ -22,6 +29,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+  // self.popUpViewOutlet.hidden = true;
     _newsTableView.delegate =self;
     _newsTableView.dataSource =self;
     [_newsTableView reloadData];
@@ -30,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.popUpViewOutlet.hidden = true;
     _index_lbl.text=[NSString stringWithFormat:@"%d",_index];
     
     _newsTableView.rowHeight = UITableViewAutomaticDimension;
@@ -41,19 +50,21 @@
     mail_dict=[[NSMutableDictionary alloc]init];
     sent_dict=[[NSMutableDictionary alloc]init];
     user_inf=[NSUserDefaults standardUserDefaults];
-    NSString *matri_id=[user_inf valueForKey:@"matri_id"];
+   // NSString *matri_id=[user_inf valueForKey:@"matri_id"];
+    matri_id=[user_inf valueForKey:@"matri_id"];
     
     NSMutableDictionary *dict = [NSMutableDictionary new];
     [dict setObject:matri_id forKey:@"matri_id"];
     if ([_mail_tag isEqualToString:@"INBOX"])
     {
-        if (_index ==0)//accept
-        {
-            [dict setObject:@"Accept" forKey:@"status"];
-        }
-        else if (_index ==1)//Pending
+        if (_index ==0)//Pending
         {
             [dict setObject:@"Pending" forKey:@"status"];
+           
+        }
+        else if (_index ==1)//Accept
+        {
+            [dict setObject:@"Accept" forKey:@"status"];
         }
         else if (_index ==2)//Reject
         {
@@ -64,11 +75,11 @@
     }
     else if ([_mail_tag isEqualToString:@"SENT"])
     {
-        if (_index ==0)//accept
+        if (_index ==1)//accept
         {
             [dict setObject:@"Accept" forKey:@"status"];
         }
-        else if (_index ==1)//Pending
+        else if (_index ==0)//Pending //changed index
         {
             [dict setObject:@"Pending" forKey:@"status"];
         }
@@ -191,6 +202,10 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    if (_index ==2) {
+//        return 110;
+//    }
+//    else
     return 160;
 }
 
@@ -207,22 +222,28 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Mail_cell *cell = [tableView dequeueReusableCellWithIdentifier:@"Mail_cell"];
-    if (cell==nil)
+   cell_mail = [tableView dequeueReusableCellWithIdentifier:@"Mail_cell"];
+    if (cell_mail==nil)
     {
         [tableView registerNib:[UINib nibWithNibName:@"Mail_cell" bundle:nil] forCellReuseIdentifier:@"Mail_cell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Mail_cell"];
+        cell_mail = [tableView dequeueReusableCellWithIdentifier:@"Mail_cell"];
     }
-    cell.selectionStyle =UITableViewCellSelectionStyleNone;
+    cell_mail.selectionStyle =UITableViewCellSelectionStyleNone;
     
     if ([_mail_tag isEqualToString:@"SENT"])
     {
-        cell.name.text=[NSString stringWithFormat:@"%@ %@",[[sent_dict valueForKey:@"username"]objectAtIndex:indexPath.row],[[sent_dict valueForKey:@"matri_id"]objectAtIndex:indexPath.row]];
-        cell.date.text=[NSString stringWithFormat:@"%@",[[sent_dict valueForKey:@"birthdate"]objectAtIndex:indexPath.row]];
-        [cell.send_mail addTarget:self action:@selector(send_mail_click:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.call_now addTarget:self action:@selector(call_click:) forControlEvents:UIControlEventTouchUpInside];
-        cell.send_mail.tag=indexPath.row;
-        cell.call_now.tag=indexPath.row;
+        cell_mail.short_msg.text = @"Interest Sent";
+        cell_mail.name.text=[NSString stringWithFormat:@"%@ ( %@ )",[[sent_dict valueForKey:@"firstname"]objectAtIndex:indexPath.row],[[sent_dict valueForKey:@"matri_id"]objectAtIndex:indexPath.row]];// changed username to first name
+        NSString *hello =[NSString stringWithFormat:@"%@",[[sent_dict valueForKey:@"ei_sent_date"]objectAtIndex:indexPath.row]];
+        hello=[hello substringToIndex:11];
+        cell_mail.date.text=hello;
+        
+        [cell_mail.send_mail addTarget:self action:@selector(send_mail_click:) forControlEvents:UIControlEventTouchUpInside];
+        [cell_mail.call_now addTarget:self action:@selector(call_click:) forControlEvents:UIControlEventTouchUpInside];
+        cell_mail.send_mail.tag=indexPath.row;
+        cell_mail.call_now.tag=indexPath.row;
+        cell_mail.call_now.hidden = true;
+        cell_mail.firstBtnImage.hidden = true;
         
         NSString *pic=[[sent_dict valueForKey:@"photo1"]objectAtIndex:indexPath.row];
         if ([pic isEqual:[NSNull null]]||[pic isEqualToString:@""])
@@ -235,7 +256,7 @@
                 NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
                 dispatch_async(dispatch_get_main_queue(),
                                ^{
-                                   cell.img.image = [UIImage imageWithData:imageData];
+                                   cell_mail.img.image = [UIImage imageWithData:imageData];
                                });
             });
         }
@@ -243,12 +264,62 @@
     }
     else
     {
-        cell.name.text=[NSString stringWithFormat:@"%@ %@",[[mail_dict valueForKey:@"username"]objectAtIndex:indexPath.row],[[mail_dict valueForKey:@"matri_id"]objectAtIndex:indexPath.row]];
-        cell.date.text=[NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"birthdate"]objectAtIndex:indexPath.row]];
-        [cell.send_mail addTarget:self action:@selector(send_mail_click:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.call_now addTarget:self action:@selector(call_click:) forControlEvents:UIControlEventTouchUpInside];
-        cell.send_mail.tag=indexPath.row;
-        cell.call_now.tag=indexPath.row;
+        if(_index == 0)
+        {
+            int * indexValue;
+            indexValue=(int)indexPath.row;
+            [cell_mail.call_now setTitle:@"       NOT INTRESTED" forState:UIControlStateNormal];//dont remove space
+            cell_mail.firstBtnImage.image=[UIImage imageNamed:@"cancel.png"];
+            [cell_mail.send_mail setTitle:@"  YES" forState:UIControlStateNormal];
+            cell_mail.secongBtnImg.image=[UIImage imageNamed:@"ic_inbox_yes.png"];
+            cell_mail.short_msg.text = @"Message Received";
+            cell_mail.long_msg.text= [NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"ei_message"]objectAtIndex:indexPath.row]];//
+            cell_mail.call_now.tag= indexPath.row;
+            [cell_mail.call_now addTarget:self action:@selector(notInterested_Click:) forControlEvents:UIControlEventTouchUpInside];
+            [cell_mail.send_mail addTarget:self action:@selector(yes_Click:) forControlEvents:UIControlEventTouchUpInside];
+            
+            //Image
+            NSString *pic=[[mail_dict valueForKey:@"photo1"]objectAtIndex:indexPath.row];
+            if ([pic isEqual:[NSNull null]]||[pic isEqualToString:@""])
+            {
+            }
+            else
+            {
+                NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://smatrimony.com/photos/%@",pic]];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                    dispatch_async(dispatch_get_main_queue(),
+                                   ^{
+                                       cell_mail.img.image = [UIImage imageWithData:imageData];
+                                   });
+                });
+            }
+            
+            // NAME ND DOB
+            cell_mail.name.text=[NSString stringWithFormat:@"%@ ( %@ )",[[mail_dict valueForKey:@"username"]objectAtIndex:indexPath.row],[[mail_dict valueForKey:@"matri_id"]objectAtIndex:indexPath.row]];
+            NSString *hello = [NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"ei_sent_date"]objectAtIndex:indexPath.row]];
+            hello=[hello substringToIndex:11];
+            cell_mail.date.text=hello;
+        }
+        else if(_index == 1)
+        {
+            cell_mail.name.text=[NSString stringWithFormat:@"%@ ( %@ )",[[mail_dict valueForKey:@"username"]objectAtIndex:indexPath.row],[[mail_dict valueForKey:@"matri_id"]objectAtIndex:indexPath.row]];
+            NSString *hello = [NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"ei_sent_date"]objectAtIndex:indexPath.row]];
+            hello=[hello substringToIndex:11];
+            cell_mail.date.text=hello;
+       // cell.date.text=[NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"birthdate"]objectAtIndex:indexPath.row]];
+            genderStatus = [NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"gender"]objectAtIndex:indexPath.row]];
+            if ([genderStatus isEqualToString:@"Groom"]) {
+                cell_mail.long_msg.text = @"You have accepted his interest";
+            }
+            else
+            {
+                 cell_mail.long_msg.text = @"You have accepted her interest";
+            }
+        [cell_mail.send_mail addTarget:self action:@selector(send_mail_click:) forControlEvents:UIControlEventTouchUpInside];
+        [cell_mail.call_now addTarget:self action:@selector(call_click:) forControlEvents:UIControlEventTouchUpInside];
+        cell_mail.send_mail.tag=indexPath.row;
+        cell_mail.call_now.tag=indexPath.row;
         NSString *pic=[[mail_dict valueForKey:@"photo1"]objectAtIndex:indexPath.row];
         if ([pic isEqual:[NSNull null]]||[pic isEqualToString:@""])
         {
@@ -260,20 +331,72 @@
                 NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
                 dispatch_async(dispatch_get_main_queue(),
                                ^{
-                                   cell.img.image = [UIImage imageWithData:imageData];
+                                   cell_mail.img.image = [UIImage imageWithData:imageData];
                                });
             });
         }
     }
-    return cell;
+        else
+        {
+            cell_mail.name.text=[NSString stringWithFormat:@"%@ ( %@ )",[[mail_dict valueForKey:@"username"]objectAtIndex:indexPath.row],[[mail_dict valueForKey:@"matri_id"]objectAtIndex:indexPath.row]];
+            NSString *hello = [NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"ei_sent_date"]objectAtIndex:indexPath.row]];
+            hello=[hello substringToIndex:11];
+            cell_mail.date.text=hello;
+            cell_mail.short_msg.text = @"Interest Declined";
+            
+            genderStatus = [NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"gender"]objectAtIndex:indexPath.row]];
+            if ([genderStatus isEqualToString:@"Groom"]) {
+                cell_mail.long_msg.text = @"You have declined his Interset";
+            }
+            else
+            {
+                cell_mail.long_msg.text = @"You have declined her Interset";
+            }
+            NSString *pic=[[mail_dict valueForKey:@"photo1"]objectAtIndex:indexPath.row];
+            if ([pic isEqual:[NSNull null]]||[pic isEqualToString:@""])
+            {
+                if ([genderStatus isEqualToString:@"Groom"]) {
+                    cell_mail.img.image = [UIImage imageNamed:@"male"];
+                }
+                else
+                {
+                    cell_mail.img.image = [UIImage imageNamed:@"female"];
+                }
+                
+            }
+            else
+            {
+                NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://smatrimony.com/photos/%@",pic]];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                    dispatch_async(dispatch_get_main_queue(),
+                                   ^{
+                                       cell_mail.img.image = [UIImage imageWithData:imageData];
+                                   });
+                });
+            }
+            // DISABLE BUTTONS
+              cell_mail.buttonView.hidden = true;
+//            cell.call_now.hidden = true;
+//            cell.send_mail.hidden = true;
+//            cell.firstBtnImage.hidden = true;
+//            cell.secongBtnImg.hidden = true;
+        //    [cell.frame.size.height set= 127;
+        }
+    }
+    return cell_mail;
 }
-
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//   
+//}
 -(void)call_click:(id)sender
 {
     int tag_int=[sender tag];
     if ([_mail_tag isEqualToString:@"SENT"])
     {
         ph_no=[[sent_dict valueForKey:@"mobile"]objectAtIndex:tag_int];
+       // cell_mail.call_now.hidden = YES;
     }
     else
         ph_no=[[mail_dict valueForKey:@"mobile"]objectAtIndex:tag_int];
@@ -308,20 +431,109 @@
 
 //mail
 // From within your active view controller
--(void)send_mail_click:(NSString *)str
+-(void)send_mail_click:(id)str
 {
-    // From within your active view controller
-    //    if([MFMailComposeViewController canSendMail]) {
-    MFMailComposeViewController *mailCont = [[MFMailComposeViewController alloc] init];
-    mailCont.mailComposeDelegate = self;
-    // Required to invoke mailComposeController when send
+  
+
+    int sender_tag=[str tag];
+    indexpathvalue = [NSIndexPath indexPathForRow:sender_tag inSection:0];
+      [self checkMemberShip];
     
-    [mailCont setSubject:@"SMatrimony"];
-    [mailCont setToRecipients:[NSArray arrayWithObject:@""]];
-    [mailCont setMessageBody:@"" isHTML:NO];
+   }
+-(void)checkMemberShip
+{
+    //raviratna5566@gmail.com checkmembership
     
-    [self presentViewController:mailCont animated:YES completion:nil];
-    //    }
+    
+    NSDictionary *memberShipDIct;
+    NSString *url;
+    
+    
+    memberShipDIct = @{@"matri_id":matri_id};
+    url = @"services/api/checkmembership";
+    
+    
+    [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:url parameters:memberShipDIct requestNumber:WUS_Register showProgress:YES withHandler:^(BOOL success, id data)
+     {
+         
+         
+         if (success)
+         {
+             
+             NSDictionary *sortDIct = data;
+             
+             
+             
+             NSString *status=[NSString stringWithFormat:@"%@",[sortDIct valueForKey:@"status"]];
+             
+             NSString *result=[NSString stringWithFormat:@"%@",[sortDIct valueForKey:@"result"]];
+             
+             if ([status isEqualToString:@"1"])
+             {
+                 [self.msgSendObj_delegate sendmail_click:indexpathvalue];
+             }
+             else
+             {
+                 [self Alert:result];
+             }
+         }
+         else
+         {
+             ALERT_DIALOG(@"Alert", @"Something Went Wrong");
+         }
+     }];
+}
+-(void)notInterested_Click:(UIButton *)sender
+{
+    self.popUpViewOutlet.hidden = false;
+    Mail_cell *cell = (Mail_cell *)sender.superview.superview.superview;
+    NSIndexPath *indexPath = [_newsTableView indexPathForCell:cell];
+   // _selectedAddress = [userPickUpAdress objectAtIndex:indexPath.row];
+    genderStatus = [NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"gender"]objectAtIndex:indexPath.row]];
+    NSString *pic=[[mail_dict valueForKey:@"photo1"]objectAtIndex:indexPath.row];
+    if ([pic isEqual:[NSNull null]]||[pic isEqualToString:@""])
+    {
+        if ([genderStatus isEqualToString:@"Groom"]) {
+            cell.img.image = [UIImage imageNamed:@"male"];
+        }
+        else
+        {
+            cell.img.image = [UIImage imageNamed:@"female"];
+        }
+
+    }
+    else
+    {
+        NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://smatrimony.com/photos/%@",pic]];
+       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+           dispatch_async(dispatch_get_main_queue(),
+                          ^{
+                                self.imageOutlet.image = [UIImage imageWithData:imageData];
+                        });
+       });
+    }
+    self.nameLabel.text = [[mail_dict valueForKey:@"username"]objectAtIndex:indexPath.row];
+    self.idLabel.text =[NSString stringWithFormat:@"( %@ )",[[mail_dict valueForKey:@"matri_id"]objectAtIndex:indexPath.row]];
+    
+    if ([genderStatus isEqualToString:@"Groom"]) {
+    self.messageOutlet.text = @"Are you sure you want to decline his Interest";
+    }
+    else
+    {
+        self.messageOutlet.text = @"Are you sure you want to decline her Interest";
+    }
+   indexID =[NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"ei_id"]objectAtIndex:indexPath.row]];
+}
+
+-(void)yes_Click:(UIButton *)sender
+{
+    Mail_cell *cell = (Mail_cell *)sender.superview.superview.superview;
+    NSIndexPath *indexPath = [_newsTableView indexPathForCell:cell];
+    genderStatus = [NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"gender"]objectAtIndex:indexPath.row]];
+    indexID =[NSString stringWithFormat:@"%@",[[mail_dict valueForKey:@"ei_id"]objectAtIndex:indexPath.row]];
+    NSDictionary * params = @{@"status":@"Accept",@"exp_id":indexID,@"gender":genderStatus};
+    [self popupServiceCallFor_Post:@"services/api/updateInterest" params:params];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
@@ -337,5 +549,50 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+- (IBAction)cancelAction:(id)sender {
+    self.popUpViewOutlet.hidden = true;
+}
+
+- (IBAction)notInterested_Yes_Action:(id)sender {
+  
+    NSDictionary * params = @{@"status":@"Reject",@"exp_id":indexID,@"gender":genderStatus};
+    [self popupServiceCallFor_Post:@"services/api/updateInterest" params:params];
+    self.popUpViewOutlet.hidden = true;
+    
+}
+
+#pragma mark - Service Call
+
+-(void)popupServiceCallFor_Post:(NSString *)url params:(NSDictionary *)params//submit actions
+{
+    //raviratna5566@gmail.com
+    
+    
+    [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:url parameters:params requestNumber:WUS_Register showProgress:YES withHandler:^(BOOL success, id data)
+     {
+         if (success)
+         {
+             
+             NSDictionary *res_dict = data;
+             
+             NSString *status = [NSString stringWithFormat:@"%@",[res_dict valueForKey:@"status"]];
+             
+             NSString *result = [NSString stringWithFormat:@"%@",[res_dict valueForKey:@"result"]];
+             if ([status isEqualToString:@"1"]) {
+                 ALERT_DIALOG(@"Success", @"You have Successfully declined ");
+             }
+             if ([status isEqualToString:@"2"]) {
+                 ALERT_DIALOG(@"Alert", result);
+             }
+             
+             
+             
+         }
+     }];
+    
+}
+
+
 
 @end

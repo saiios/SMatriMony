@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HoroscopeController">
+            <connections>
+                <outlet property="datePickerOutlet" destination="Si5-O0-AiK" id="9fU-8t-nqH"/>
+                <outlet property="dateView" destination="feT-pz-tdg" id="9pv-ho-aNa"/>
+                <outlet property="mainTableView" destination="7wq-ip-5j0" id="BhS-6a-C6f"/>
+                <outlet property="miniTable" destination="3wv-0n-ueg" id="n1B-2m-u3Q"/>
+                <outlet property="popUpTable" destination="LTd-kl-gYL" id="UfO-Ul-Odn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7wq-ip-5j0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="i1F-21-vV1"/>
+                        <outlet property="delegate" destination="-1" id="But-pD-OcN"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feT-pz-tdg">
+                    <rect key="frame" x="13" y="208" width="350" height="284"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Si5-O0-AiK">
+                            <rect key="frame" x="4" y="46" width="342" height="230"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="230" id="pvh-J3-LsJ"/>
+                            </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="509887463.32081997">
+                                <!--2017-02-27 11:24:23 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIV-Rd-gJ7">
+                            <rect key="frame" x="4" y="2" width="342" height="40"/>
+                            <color key="backgroundColor" red="0.92941176469999998" green="0.50980392159999999" blue="0.26605709090000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="djd-FS-kKj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="Done">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="datePickerDOneAction:" destination="-1" eventType="touchUpInside" id="cb4-JT-Ga8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="350" id="4a4-lc-sLe"/>
+                        <constraint firstItem="Si5-O0-AiK" firstAttribute="top" secondItem="cIV-Rd-gJ7" secondAttribute="bottom" constant="4" id="XA0-Kj-qtG"/>
+                        <constraint firstItem="cIV-Rd-gJ7" firstAttribute="leading" secondItem="feT-pz-tdg" secondAttribute="leading" constant="4" id="dsc-fe-RNM"/>
+                        <constraint firstAttribute="trailing" secondItem="Si5-O0-AiK" secondAttribute="trailing" constant="4" id="giw-3H-XoD"/>
+                        <constraint firstItem="Si5-O0-AiK" firstAttribute="leading" secondItem="feT-pz-tdg" secondAttribute="leading" constant="4" id="j0l-th-f0w"/>
+                        <constraint firstItem="cIV-Rd-gJ7" firstAttribute="top" secondItem="feT-pz-tdg" secondAttribute="top" constant="2" id="ugc-AE-ubc"/>
+                        <constraint firstAttribute="height" constant="284" id="vnj-X7-Etp"/>
+                        <constraint firstAttribute="trailing" secondItem="cIV-Rd-gJ7" secondAttribute="trailing" constant="4" id="vpi-Np-2hO"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTd-kl-gYL">
+                    <rect key="frame" x="0.0" y="80" width="375" height="587"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3wv-0n-ueg">
+                            <rect key="frame" x="10" y="20" width="355" height="548"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.79787730456714712" green="0.98499306773892337" blue="0.93137517532202618" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="Zu6-mh-jAb"/>
+                                <outlet property="delegate" destination="-1" id="Rm7-Ro-5eA"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.28741197183098594" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="3wv-0n-ueg" firstAttribute="leading" secondItem="LTd-kl-gYL" secondAttribute="leading" constant="10" id="Enx-Yn-ETe"/>
+                        <constraint firstAttribute="trailing" secondItem="3wv-0n-ueg" secondAttribute="trailing" constant="10" id="Icd-jL-iOs"/>
+                        <constraint firstAttribute="bottom" secondItem="3wv-0n-ueg" secondAttribute="bottom" constant="19" id="L26-HP-qNr"/>
+                        <constraint firstItem="3wv-0n-ueg" firstAttribute="top" secondItem="LTd-kl-gYL" secondAttribute="top" constant="20" id="yCW-gr-hHq"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="7wq-ip-5j0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6BI-a3-J7E"/>
+                <constraint firstAttribute="trailing" secondItem="7wq-ip-5j0" secondAttribute="trailing" id="AT3-JD-h0o"/>
+                <constraint firstItem="LTd-kl-gYL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Aeb-Lk-8mY"/>
+                <constraint firstItem="feT-pz-tdg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="16.5" id="InE-By-ivI"/>
+                <constraint firstItem="7wq-ip-5j0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OF3-2S-8CQ"/>
+                <constraint firstAttribute="bottom" secondItem="LTd-kl-gYL" secondAttribute="bottom" id="TVE-3L-fOl"/>
+                <constraint firstItem="feT-pz-tdg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cgO-OZ-onl"/>
+                <constraint firstAttribute="trailing" secondItem="LTd-kl-gYL" secondAttribute="trailing" id="eoc-l2-DY0"/>
+                <constraint firstAttribute="bottom" secondItem="7wq-ip-5j0" secondAttribute="bottom" id="fJZ-e9-naI"/>
+                <constraint firstItem="LTd-kl-gYL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="i3L-lE-5nr"/>
+            </constraints>
+            <point key="canvasLocation" x="-556.5" y="-30.5"/>
+        </view>
+    </objects>
+</document>

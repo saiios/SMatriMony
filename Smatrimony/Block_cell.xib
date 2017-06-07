@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,12 +15,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="PaX-fC-Bvx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
-                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smatrimony_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="oRw-On-X60">
                         <rect key="frame" x="15" y="40" width="80" height="80"/>
                         <constraints>
@@ -84,16 +81,16 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7C-mU-ZSg">
                         <rect key="frame" x="200" y="147" width="100" height="35"/>
-                        <color key="backgroundColor" red="0.22584542630000001" green="0.26470011469999999" blue="0.36429235339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96091726036269431" green="0.080037130375055388" blue="0.030913164648666624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="3hW-7K-pKS"/>
                             <constraint firstAttribute="width" constant="100" id="a7b-Z9-n9R"/>
                         </constraints>
-                        <state key="normal" title="Un Block">
+                        <state key="normal" title="  Un Block">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-MV-tbW">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="block.png" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-MV-tbW">
                         <rect key="frame" x="205" y="157" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="FIf-vK-LhO"/>
@@ -101,10 +98,10 @@
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="d0D-fV-stb" firstAttribute="leading" secondItem="oRw-On-X60" secondAttribute="trailing" constant="5" id="5Y8-Qu-7KL"/>
                     <constraint firstItem="Ymy-Sm-V78" firstAttribute="width" secondItem="4u2-cI-9e9" secondAttribute="width" id="5dG-Rn-2bm"/>
-                    <constraint firstAttribute="bottom" secondItem="PaX-fC-Bvx" secondAttribute="bottom" id="95k-G4-kGU"/>
                     <constraint firstItem="3fn-lL-0z6" firstAttribute="leading" secondItem="oRw-On-X60" secondAttribute="trailing" constant="5" id="APg-c1-JIM"/>
                     <constraint firstAttribute="trailing" secondItem="r7C-mU-ZSg" secondAttribute="trailing" constant="20" id="E1G-NV-OAl"/>
                     <constraint firstItem="r7C-mU-ZSg" firstAttribute="top" secondItem="Ymy-Sm-V78" secondAttribute="bottom" constant="1" id="JLF-P4-mqM"/>
@@ -113,7 +110,6 @@
                     <constraint firstAttribute="trailing" secondItem="aGJ-Cb-wWL" secondAttribute="trailing" constant="5" id="OA4-3R-0M5"/>
                     <constraint firstItem="d0D-fV-stb" firstAttribute="top" secondItem="Jsk-jb-Xoj" secondAttribute="bottom" constant="1" id="ORh-15-Dzz"/>
                     <constraint firstItem="aGJ-Cb-wWL" firstAttribute="top" secondItem="d0D-fV-stb" secondAttribute="bottom" constant="1" id="WdC-Zo-GfK"/>
-                    <constraint firstAttribute="trailing" secondItem="PaX-fC-Bvx" secondAttribute="trailing" id="Y0G-Jh-Iv0"/>
                     <constraint firstAttribute="trailing" secondItem="d0D-fV-stb" secondAttribute="trailing" constant="5" id="a8T-47-2Uc"/>
                     <constraint firstItem="4u2-cI-9e9" firstAttribute="width" secondItem="aGJ-Cb-wWL" secondAttribute="width" id="d2m-DF-l6D"/>
                     <constraint firstItem="Jsk-jb-Xoj" firstAttribute="top" secondItem="3fn-lL-0z6" secondAttribute="bottom" constant="1" id="f6q-68-9c7"/>
@@ -123,15 +119,14 @@
                     <constraint firstItem="Ymy-Sm-V78" firstAttribute="top" secondItem="4u2-cI-9e9" secondAttribute="bottom" constant="1" id="lHF-jt-Xg0"/>
                     <constraint firstAttribute="trailing" secondItem="Ymy-Sm-V78" secondAttribute="trailing" constant="5" id="lkb-My-qzk"/>
                     <constraint firstAttribute="trailing" secondItem="tD7-MV-tbW" secondAttribute="trailing" constant="100" id="lnq-qi-fti"/>
-                    <constraint firstItem="PaX-fC-Bvx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lu3-HV-grf"/>
                     <constraint firstItem="tD7-MV-tbW" firstAttribute="centerY" secondItem="r7C-mU-ZSg" secondAttribute="centerY" id="mCV-4D-mHj"/>
                     <constraint firstItem="3fn-lL-0z6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="nHY-VQ-Xp0"/>
                     <constraint firstItem="oRw-On-X60" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oDd-yI-HKR"/>
-                    <constraint firstItem="PaX-fC-Bvx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vap-Ut-kqy"/>
                     <constraint firstAttribute="trailing" secondItem="Jsk-jb-Xoj" secondAttribute="trailing" constant="5" id="waS-sP-hOt"/>
                     <constraint firstAttribute="trailing" secondItem="4u2-cI-9e9" secondAttribute="trailing" constant="5" id="zpQ-LG-nbv"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="cast" destination="4u2-cI-9e9" id="2Ji-Aj-6Vc"/>
                 <outlet property="img" destination="oRw-On-X60" id="2QS-sh-nZg"/>
@@ -146,8 +141,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="account" width="35" height="35"/>
-        <image name="bg.png" width="287" height="476"/>
+        <image name="block.png" width="16" height="16"/>
         <image name="smatrimony_logo.png" width="250" height="128"/>
     </resources>
 </document>

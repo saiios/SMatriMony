@@ -22,8 +22,9 @@
 #define UserOrder_Url @"http://stg.steeloncall.com/calculate/userservice/"
 #define MAIN_Url  @"http://www.smatrimony.com/services/"
 #define register_Url  @"http://www.smatrimony.com/"
+#define AGENT_MAIN_Url  @"http://www.smatrimony.com/services/agent/"
 
-#define NSLog
+//#define NSLog
 
 #define ALERT_DIALOG(__title__,__message__) \
 do\
@@ -47,6 +48,7 @@ typedef enum
     WUS_unblock,
     WUS_getPopUPData,
     WUS_Register,
+    WUS_PROFILE,
 
 } WSENUM;
 

@@ -14,6 +14,7 @@
 
 @implementation DailyRecommendations
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -27,6 +28,11 @@
     [dict setObject:matri_id forKey:@"matri_id"];
     
     [self daily_matches:dict];
+    
+   
+    
+   
+   
 }
 
 -(void)daily_matches:(NSDictionary *)Dict
@@ -75,7 +81,7 @@
     DR_vc *initialViewController = [self viewControllerAtIndex:s_index];
     
     // initialViewController.delegate =self;
-    initialViewController.contentArray = @[@"test"];
+    initialViewController.contentArray = [@[@"test"]mutableCopy];
     
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
     
@@ -115,7 +121,8 @@
 {
     ProfileViewController *profile = [[ProfileViewController alloc]initWithNibName:@"ProfileViewController" bundle:nil];
     NSString *clickedIndex = [NSString stringWithFormat:@"%ld",tag];
-    profile.ClickedmatriId = clickedIndex;
+    // clickedIndex;
+   profile.ClickedmatriId = [[daily_matches valueForKey:@"matri_id"] objectAtIndex:tag];
     [self.navigationController pushViewController:profile animated:YES];
 }
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController

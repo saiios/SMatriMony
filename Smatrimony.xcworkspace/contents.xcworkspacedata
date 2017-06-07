@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Religious_info_editCell.h">
+   </FileRef>
+   <FileRef
+      location = "group:Religious_info_editCell.m">
+   </FileRef>
+   <FileRef
+      location = "group:Religious_info_editCell.xib">
+   </FileRef>
+   <FileRef
       location = "group:Smatrimony.xcodeproj">
    </FileRef>
    <FileRef

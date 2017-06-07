@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Jy7-Sq-ws6">
@@ -91,6 +91,14 @@
                     <constraint firstAttribute="trailing" secondItem="FtQ-Ed-c1K" secondAttribute="trailing" constant="5" id="wZj-T3-n9E"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="date" destination="QrD-B1-fEk" id="4gG-bq-fbA"/>
+                <outlet property="gender" destination="5ra-k4-Dwx" id="Mqo-ck-PG2"/>
+                <outlet property="img" destination="Jy7-Sq-ws6" id="hXo-cN-YqJ"/>
+                <outlet property="m_id" destination="FtQ-Ed-c1K" id="qXG-HF-c1q"/>
+                <outlet property="name" destination="6Mk-7u-SZG" id="nry-r2-MvE"/>
+                <outlet property="years" destination="Z1v-mi-Dmn" id="pfS-r1-d0l"/>
+            </connections>
             <point key="canvasLocation" x="2" y="-43"/>
         </tableViewCell>
     </objects>

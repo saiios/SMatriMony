@@ -37,8 +37,9 @@
 
 - (IBAction)agentlogin_click:(id)sender
 {
-    Agent_Dashboard *menuController  =[[Agent_Dashboard alloc]initWithNibName:@"Agent_Dashboard" bundle:nil];
-    
+    //Agent_Dashboard *menuController  =[[Agent_Dashboard alloc]initWithNibName:@"Agent_Dashboard" bundle:nil];
+    Login_Agent *menuController  =[[Login_Agent alloc]initWithNibName:@"Login_Agent" bundle:nil];
+    // Registration *menuController  =[[Registration alloc]initWithNibName:@"Registration" bundle:nil];
     [self.navigationController pushViewController:menuController animated:YES];
 }
 

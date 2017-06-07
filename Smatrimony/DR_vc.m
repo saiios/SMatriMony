@@ -7,36 +7,113 @@
 //
 
 #import "DR_vc.h"
+#import "DDHTimerControl.h"
+
 
 @interface DR_vc ()
+{
+    NSString *orginalTime;
+    DR_cell *cell;
+}
+
+
 
 @end
 
 @implementation DR_vc
 @synthesize Daily_delegate;
+//@synthesize myCounterLabel;
+int hours, minutes, seconds;
+int secondsLeft;
+
+NSInteger totalSeconds;
 
 -(AppDelegate *)appdelegate{
     
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
+
+
+
 -(void)viewWillAppear:(BOOL)animated
 {
+  //  [self timmer];
+    
+
     [_newsTableView reloadData];
 }
+
+-(void)timmer
+{
+    NSDate* now = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitHour  | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:now];
+    
+    NSInteger hour = [dateComponents hour];
+    NSInteger minute = [dateComponents minute];
+    NSInteger second = [dateComponents second];
+    
+    NSInteger standardHour = 23;
+    NSInteger standardMinute = 59;
+    NSInteger standardSecond =59;
+    
+    NSInteger remainingHours = (standardHour- hour);
+    NSInteger remainingMinute = (standardMinute- minute);
+    NSInteger remainingSecond = (standardSecond- second);
+    
+    totalSeconds = remainingSecond+(remainingMinute*60)+(remainingHours*60*60);
+    BOOL isFirstTime;
+   // totalSeconds = 30;
+}
+
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+       
     _newsTableView.delegate =self;
     _newsTableView.dataSource =self;
     
     _newsTableView.rowHeight = UITableViewAutomaticDimension;
     _newsTableView.estimatedRowHeight = 160.0; //
-    // Do any additional setup after loading the view from its nib.
     
-    NSUserDefaults *user_inf=[NSUserDefaults standardUserDefaults];
+    
+    user_inf=[NSUserDefaults standardUserDefaults];
     gender=[user_inf valueForKey:@"gender"];
+                  [self countdownTimer];
+              
+  }
+
+
+
+
+- (void)updateCounter:(NSTimer *)theTimer {
+    [self timmer];
+    secondsLeft = (int)totalSeconds;
+    if(secondsLeft > 0 ){
+        
+                       secondsLeft -- ;
+                   hours = secondsLeft / 3600;
+        minutes = (secondsLeft % 3600) / 60;
+        seconds = (secondsLeft %3600) % 60;
+       orginalTime = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+        cell.timerLabel.text = orginalTime;
+    }
+    else{
+        secondsLeft = (int)totalSeconds;
+    }
+}
+
+-(void)countdownTimer{
+    
+    secondsLeft = hours = minutes = seconds = 0;
+   
+    timerd = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,16 +135,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DR_cell *cell = [tableView dequeueReusableCellWithIdentifier:@"DR_cell"];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"DR_cell"];
     if (cell==nil)
     {
         [tableView registerNib:[UINib nibWithNibName:@"DR_cell" bundle:nil] forCellReuseIdentifier:@"DR_cell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"DR_cell"];
     }
     cell.selectionStyle =UITableViewCellSelectionStyleNone;
-    cell.name.text=[NSString stringWithFormat:@"%@",_name];
+    cell.name.text=[NSString stringWithFormat:@"%@ (%@)",_name,_m_id];
     //    NSString *y_a=[NSString stringWithFormat:@"%@",_yr_age];
     //height
+    cell.timerLabel.text = orginalTime;
     int inches= [_height intValue];
     float feet=inches*0.0833;
     NSString *feet_str=[NSString stringWithFormat:@"%.1f",feet];
@@ -131,6 +209,8 @@
 -(void)full_profile:(id)sender
 {
     int tag=[sender tag];
+    
+    
     [Daily_delegate Daily_Detail:tag];
 }
 
@@ -189,7 +269,7 @@
 
 -(void)ADD_TO_block_service:(NSDictionary *)Dict
 {
-    [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/addToBlocklist" parameters:Dict requestNumber:WUS_Feedback showProgress:YES withHandler:^(BOOL success, id data)
+    [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/ignoreProfile" parameters:Dict requestNumber:WUS_Feedback showProgress:YES withHandler:^(BOOL success, id data)
      {
          if (success)
          {

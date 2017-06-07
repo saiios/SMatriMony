@@ -22,8 +22,10 @@
 #import "FAQ.h"
 #import "contact_us.h"
 #import "upgrade.h"
+#import <CoreLocation/CoreLocation.h>
+#import "MembersMainControllerViewController.h"
 
-@interface MenuViewController : UIViewController<searchTableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIPageViewControllerDelegate,UIPageViewControllerDataSource,UIScrollViewDelegate,profileTable>
+@interface MenuViewController : UIViewController<searchTableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIPageViewControllerDelegate,UIPageViewControllerDataSource,UIScrollViewDelegate,CLLocationManagerDelegate>
 {
     BOOL isMenuActive;
     NSArray *leftMenuArray,*menu_ary,*leftMenu_imgs;
@@ -34,6 +36,7 @@
     UIView *cellSelectionBar;
     NSUserDefaults *user_inf;
     NSString *matri_id,*profile_pic,*pay_status;
+    CLLocationManager *locationManager;
 }
 @property (strong, nonatomic) IBOutlet UIView *profileTableBgView;
 @property (strong, nonatomic) UIPageViewController      *pageController;
@@ -47,5 +50,7 @@
 - (IBAction)profile_click:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *mat_id;
+- (IBAction)idSearchAction:(id)sender;
+- (IBAction)editAction:(id)sender;
 
 @end

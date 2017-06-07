@@ -13,7 +13,18 @@
 #import "PageViewController.h"
 #import "PageCollectionViewCell.h"
 #import "ProfileViewController.h"
-@interface MenuViewController ()
+#import "EditProfileViewController.h"
+#import "id_search_ViewController.h"
+#import "Assisted_Services_ViewController.h"
+#import "Safe_Matrimony_ViewController.h"
+
+@interface MenuViewController ()<profileTable>
+{
+    float lat;
+    float lon;
+    NSString *nearBycity;
+    NSString * genderStatus;
+}
 
 @end
 
@@ -27,6 +38,13 @@
     
     if ([profile_pic isEqual:[NSNull null]]|| [profile_pic isEqualToString:@""])
     {
+        if ([genderStatus isEqualToString:@"Groom"]) {
+            _profileImageVIew.image = [UIImage imageNamed:@"male"];
+        }
+        else
+        {
+            _profileImageVIew.image = [UIImage imageNamed:@"female"];
+        }
     }
     else
     {
@@ -42,18 +60,28 @@
     }
     _mat_id.text=matri_id;
     _username.text=_user_name_str;
+   // [self viewDidLoad];
 }
 
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
+     [[NSUserDefaults standardUserDefaults]setObject:@"User_Dashboard" forKey:@"Re_Open"];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager requestAlwaysAuthorization];
+    [locationManager startUpdatingLocation];
+    [self getLocationCity];
     
     self.navigationController.navigationBar.hidden =YES;
     leftMenuArray = @[@"My Matches",@"Mailbox",@"Daily Recommendations",@"Edit Profile",@"Upgrade Account",@"Settings",@"Feedback",@"Rate Us",@"Success Stories",@"Messages",@"Logout"];
     
     user_inf=[NSUserDefaults standardUserDefaults];
     pay_status=[user_inf valueForKey:@"status"];
+    genderStatus = [user_inf valueForKey:@"gender"];
     
     //FB
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
@@ -70,21 +98,63 @@
          leftMenu_imgs = @[@"My_Matches",@"Mail_Box",@"Daily_Recomendations",@"Edit_Profile",@"upgrade",@"Settings",@"Feedback",@"Rate_us",@"Success_Story",@"Messages",@"logout"];
     }
     
-    menu_ary=@[@"FAQ's",@"Contact Us"];
+    menu_ary=@[@"Help Center",@"Contact Us",@"Assisted Services",@"Safe Matrimony"];
     _leftMenuTable.delegate =self;
     [_leftMenuTable createView:_leftMenuTable.frame];
+    
     
     _leftMenuBgView.frame = [UIScreen mainScreen].bounds;
     leftmenuRect = _leftMenuContentView.frame;
     cellSelectionBar = [[UIView alloc] init];
     cellSelectionBar.tag = 50;
     
-    tabsArray =@[@"Matches",@"Recently",@"Short Listed", @"Viewed",@" Profile Views",@"I Viewed",@"Viewed",@"ID Search"];
+    tabsArray =@[@"Matches",@"Recently Joined",@"Short Listed", @"Viewed Profiles",@" Profile Views",@"I Viewed",@"Viewed Contacts",@"Near You",@"ID Search"];
     [self createTabsView];
     [self updatePage];
 
     // Do any additional setup after loading the view from its nib.
 }
+
+
+-(void)getLocationCity{
+    
+    lat =   locationManager.location.coordinate.latitude;
+    lon =   locationManager.location.coordinate.longitude;
+    
+    CLGeocoder *ceo = [[CLGeocoder alloc]init];
+    CLLocation *loc = [[CLLocation alloc]initWithLatitude:lat longitude:lon]; //insert your coordinates
+    
+    [ceo reverseGeocodeLocation:loc
+              completionHandler:^(NSArray *placemarks, NSError *error) {
+                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                  if (placemark) {
+                      
+                      
+                      NSLog(@"placemark %@",placemark);
+                      //String to hold address
+                      NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                      NSLog(@"addressDictionary %@", placemark.addressDictionary);
+                      
+                      NSLog(@"placemark %@",placemark.region);
+                      NSLog(@"placemark %@",placemark.country);  // Give Country Name
+                      NSLog(@"placemark %@",placemark.locality); // Extract the city name
+                      NSLog(@"location %@",placemark.name);
+                      NSLog(@"location %@",placemark.ocean);
+                      NSLog(@"location %@",placemark.postalCode);
+                      NSLog(@"location %@",placemark.subLocality);
+                      
+                      NSLog(@"location %@",placemark.location);
+                      nearBycity = [NSString stringWithFormat:@"%@",placemark.subLocality];
+                      //Print the location to console
+                      NSLog(@"I am currently at %@",locatedAt);
+                  }
+                  else {
+                      NSLog(@"Could not locate");
+                  }
+              }
+     ];
+}
+
 
 -(void)viewDidAppear:(BOOL)animated{
     [_leftMenuTable updateInstaceFrame:CGRectMake(_leftMenuTable.frame.origin.x,_leftMenuTable.frame.origin.y,_leftMenuTable.frame.size.width,_leftMenuTable.frame.size.height)];
@@ -148,7 +218,7 @@
 #pragma mark LeftMenu Delegates
 -(float)setHeighForSearchTable:(UITableView *)tableView
 {
-    return 40;
+    return 50;
 }
 
 -(NSInteger )numberOfSectionsInTableView:(UITableView *)tableView
@@ -183,11 +253,14 @@
     //images
     if (index.section==1)
     {
-        cell.img.image=[UIImage imageNamed:[leftMenu_imgs objectAtIndex:index.row]];
-    }
+       
+            
+            cell.img.image=[UIImage imageNamed:[ leftMenu_imgs objectAtIndex:index.row]];
+   }
     else
+        
         cell.img.image=[UIImage imageNamed:[leftMenu_imgs objectAtIndex:index.row]];
-    return cell;
+   return cell;
     
 }
 -(void)searchTableViewSelected:(UITableView *)table IndexPath:(NSIndexPath * )indexPath
@@ -202,6 +275,14 @@
         else if (indexPath.row==1)
         {
             [self contact_us];
+        }
+        else if(indexPath.row == 2)
+        {
+            [self assisted_Services];
+        }
+        else if (indexPath.row == 3)
+        {
+            [self safe_matrimony];
         }
     }
     else{
@@ -221,7 +302,7 @@
     }
     else if (indexPath.row==3)
     {
-        NSLog(@"Add Member");
+        [self edit_profile];
     }
     else if (indexPath.row==4)
     {
@@ -300,6 +381,12 @@
     current_plan *menuController  =[[current_plan alloc]initWithNibName:@"current_plan" bundle:nil];
     [self.navigationController pushViewController:menuController animated:YES];   
 }
+-(void)edit_profile
+{
+    EditProfileViewController *editProfileViewController  =[[EditProfileViewController alloc]initWithNibName:@"EditProfileViewController" bundle:nil];
+    [self.navigationController pushViewController:editProfileViewController animated:YES];
+}
+
 
 -(void)upgrade_account
 {
@@ -316,9 +403,21 @@
 -(void)contact_us
 {
     contact_us *menuController  =[[contact_us alloc]initWithNibName:@"contact_us" bundle:nil];
+    menuController.From=@"Contact Us";
     [self.navigationController pushViewController:menuController animated:YES];
 }
+-(void)assisted_Services
+{
+    Assisted_Services_ViewController *menuController  =[[Assisted_Services_ViewController alloc]initWithNibName:@"Assisted_Services_ViewController" bundle:nil];
+    [self.navigationController pushViewController:menuController animated:YES];
+}
+-(void)safe_matrimony
+{
+    contact_us *menuController  =[[contact_us alloc]initWithNibName:@"contact_us" bundle:nil];
+    menuController.From=@"Safe Matrimony";
+    [self.navigationController pushViewController:menuController animated:YES];
 
+}
 -(void)settings
 {
     Settings *menuController  =[[Settings alloc]initWithNibName:@"Settings" bundle:nil];
@@ -401,16 +500,19 @@
                               };
     [CRToastManager showNotificationWithOptions:options
                                 completionBlock:^{
-                                    NSLog(@"Completed");
+                                   // NSLog(@"Completed");
                                 }];
 }
 
 #pragma mark TabsView
--(void)clickedProfileTable:(NSIndexPath *)index
+-(void)clickedProfileTable:(NSIndexPath *)index selectedMatriId:(NSString *)selectedMatriId
+
 {
     ProfileViewController *profile = [[ProfileViewController alloc]initWithNibName:@"ProfileViewController" bundle:nil];
     NSString *clickedIndex = [NSString stringWithFormat:@"%ld",(long)index.row];
-    profile.ClickedmatriId = clickedIndex;
+    
+    //profile.ClickedmatriId = clickedIndex; // CHANGE
+    profile.ClickedmatriId = selectedMatriId;
     [self.navigationController pushViewController:profile animated:YES];
 }
 
@@ -470,6 +572,8 @@
     //  NSLog(@"test :%@",[newsContentDic objectForKey:[[newsArray objectAtIndex:index] valueForKey:@"name"]]);
     childViewController.contentArray =@[@"",@""];
     childViewController.index = index;
+    childViewController.city = nearBycity;
+      //childViewController.city = @"Guntur";//test
     childViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.pageController.view.frame.size.height);
     
     return childViewController;
@@ -539,7 +643,7 @@
     PageCollectionViewCell   *cell =(PageCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
    
     cell.categoryTitle.text = [tabsArray objectAtIndex:indexPath.row];
-    
+   // cell.categoryTitle.textColor = [UIColor greenColor];
     
     if (presentIndex == indexPath.row) {
         NSLog(@"%ld",(long)indexPath.row);
@@ -550,7 +654,9 @@
         cellSelectionBar.tag = 500;
         [cell.contentView addSubview:cellSelectionBar];
         cell.categoryTitle.textColor = [UIColor blackColor];
-        //cell.categoryTitle.textAlignment = NSTextAlignmentCenter;
+        cell.categoryTitle.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        cell.categoryTitle.font = [UIFont boldSystemFontOfSize:12];
+        cell.categoryTitle.textAlignment = NSTextAlignmentCenter;
         
     }
     else
@@ -563,7 +669,8 @@
         }
         
         cell.categoryTitle.textColor = [UIColor whiteColor];
-     
+        cell.categoryTitle.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        cell.categoryTitle.font = [UIFont boldSystemFontOfSize:12];
         
     }
     
@@ -615,5 +722,30 @@
 {
     All_photos *profile = [[All_photos alloc]initWithNibName:@"All_photos" bundle:nil];
     [self.navigationController pushViewController:profile animated:YES];
+}
+- (IBAction)idSearchAction:(id)sender {
+    id_search_ViewController *menuController  =[[id_search_ViewController alloc]initWithNibName:@"id_search_ViewController" bundle:nil];
+    [self.navigationController pushViewController:menuController animated:YES];
+
+}
+
+- (IBAction)editAction:(id)sender {
+    [self edit_profile];
+   
+}
+-(void)gotoUpgrade:(NSString *)selectedMatriId
+{
+    upgrade *pgrade = [[upgrade alloc]initWithNibName:@"upgrade" bundle:nil];
+    [self.navigationController pushViewController:pgrade animated:YES];
+}
+-(void)gotoUpgradeAcc:(NSDictionary *)upGradeDictonary
+{
+    upgrade *pgrade = [[upgrade alloc]initWithNibName:@"upgrade" bundle:nil];
+    [self.navigationController pushViewController:pgrade animated:YES];
+    
+}
+- (IBAction)chatAction:(id)sender {
+    MembersMainControllerViewController * Obj = [[MembersMainControllerViewController alloc]initWithNibName:@"MembersMainControllerViewController" bundle:nil];
+    [self.navigationController pushViewController:Obj animated:YES];
 }
 @end

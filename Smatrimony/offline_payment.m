@@ -10,6 +10,7 @@
 
 @interface offline_payment ()
 
+
 @end
 
 @implementation offline_payment
@@ -18,14 +19,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _ThankYouMessageLbl.text = [NSString stringWithFormat:@"Thank you for choosing the %@ Plan. Admin will contact you shortly",_PlanType];
     [self membership_duration];
-}
+    _name = @"hello";
+   }
 
 -(void)membership_duration
 {
     [[STParsing sharedWebServiceHelper]requesting_GET_ServiceWithString:@"api/bankDetails" requestNumber:WUS_S_story showProgress:YES withHandler:^(BOOL success, id data)
      {
-         if (success)
+         if (success)// office no 401776999
          {
              NSDictionary *res_dict=data;
              NSString *status=[NSString stringWithFormat:@"%@",[res_dict valueForKey:@"status"]];
@@ -111,5 +114,12 @@
 - (IBAction)back_click:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)home_click:(id)sender
+{
+    MenuViewController *menuController  =[[MenuViewController alloc]initWithNibName:@"MenuViewController" bundle:nil];
+    NSUserDefaults *user_inf=[NSUserDefaults standardUserDefaults];
+    menuController.user_name_str=[user_inf valueForKey:@"username"];
+    [self.navigationController pushViewController:menuController animated:YES];
 }
 @end

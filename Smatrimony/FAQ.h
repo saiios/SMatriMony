@@ -15,6 +15,7 @@
 {
     int s_tag;
     NSDictionary *faq_dict;
+    faq_cell *cell;
 }
 - (IBAction)back_click:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableView *faq_table;

@@ -38,6 +38,7 @@
         [self addSubview:searchTableView];
         [searchTableView reloadData];
         searchTableView.backgroundColor =[UIColor clearColor];
+        searchTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
@@ -74,7 +75,7 @@
         return [_delegate numberOffRowsInSearchTableView:tableView];
     }
     else
-        return 2;
+        return 4;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -96,7 +97,7 @@
         [label setText:@""];
     }
     else
-        [label setText:@"More Items"];
+        [label setText:@"More"];
     [view addSubview:label];
     [view setBackgroundColor:[UIColor clearColor]]; //your background color...
     return view;

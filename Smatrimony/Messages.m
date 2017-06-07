@@ -8,10 +8,13 @@
 
 #import "Messages.h"
 
-@interface Messages ()
+@interface Messages ()<msg_table>
 @end
 
 @implementation Messages
+{
+    NSString *matri_id;
+}
 
 - (void)viewDidLoad
 {
@@ -19,7 +22,7 @@
     // Do any additional setup after loading the view from its nib.
     
     user_inf=[NSUserDefaults standardUserDefaults];
-    NSString *matri_id=[user_inf valueForKey:@"matri_id"];
+    matri_id=[user_inf valueForKey:@"matri_id"];
     NSString *mail_id=[user_inf valueForKey:@"email_id"];
 
     NSMutableDictionary *dict = [NSMutableDictionary new];
@@ -31,10 +34,42 @@
     
     [_tabsView registerNib:[UINib nibWithNibName:@"PageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"PagecollectionviewCell"];
 
-    tabsArray =@[@"INBOX",@"SENT",@"DRAFT",@"TRASH",@"IMPORTANT"];
+    tabsArray =[@[@"INBOX",@"SENT",@"DRAFT",@"TRASH",@"IMPORTANT"]mutableCopy];
+    countArray=[@[@"0",@"0",@"0",@"0",@"0"]mutableCopy];
     [self inbox_msg:dict];
+  //  msg_vc * msgvcObj =[[msg_vc alloc]init];
+    self.upgradeOutlet.hidden = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+     
+                                             selector:@selector(receiveTestNotification:) name:@"TestNotification" object:nil];
+   // view_controller.msgSendObj= self;
 }
-
+-(void) receiveTestNotification:(NSNotification *) notification
+{
+    //ALERT_DIALOG(@"alert", @"hi");
+    NSDictionary * resultdict = notification.userInfo;
+    NSString *tabValue = [resultdict valueForKey:@"indexName"];
+    NSString * countValue =[resultdict valueForKey:@"count"];
+    if ([tabValue isEqualToString:@"inbox"]) {
+        [countArray replaceObjectAtIndex:0 withObject:countValue];
+    }
+    else if ([tabValue isEqualToString:@"sent"])
+    {
+        [countArray replaceObjectAtIndex:1 withObject:countValue];
+    }
+    else if ([tabValue isEqualToString:@"draft"])
+    {
+        [countArray replaceObjectAtIndex:2 withObject:countValue];
+    }
+    else if ([tabValue isEqualToString:@"trash"])
+    {
+        [countArray replaceObjectAtIndex:3 withObject:countValue];
+    }
+    else if ([tabValue isEqualToString:@"important"])
+    {
+        [countArray replaceObjectAtIndex:4 withObject:countValue];
+    }
+}
 -(void)inbox_msg:(NSDictionary *)Dict
 {
     [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/InboxMailsList" parameters:Dict requestNumber:WUS_Change_pwd showProgress:YES withHandler:^(BOOL success, id data)
@@ -117,6 +152,7 @@
 {
     msg_vc *childViewController = [[msg_vc alloc] initWithNibName:@"msg_vc" bundle:nil];
     childViewController.msg_delegate=self;
+    //childViewController.msgSendObj=self;
     childViewController.contentArray =@[@"",@""];
     childViewController.index = index;
     childViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.pageController.view.frame.size.height);
@@ -254,10 +290,24 @@
 }
  */
 
--(void)M_reply_click:(NSIndexPath *)index
+-(void)M_reply_click:(NSString *)fromPage lilstId:(NSString *)listID
 {
     msg_send *menuController  =[[msg_send alloc]initWithNibName:@"msg_send" bundle:nil];
+    menuController.msgRecevierId = listID;
+    menuController.fromPage = fromPage;
     [self.navigationController pushViewController:menuController animated:YES];
+}
+-(void)replyClick:(NSString *)listId
+{
+    msg_send *menuController  =[[msg_send alloc]initWithNibName:@"msg_send" bundle:nil];
+    menuController.msgRecevierId = listId;
+    [self.navigationController pushViewController:menuController animated:YES];
+}
+-(void)notifyMeOnUpgrade
+{
+   // ALERT_DIALOG(@"Alert", @"hi");
+    upgrade *upgradeObj = [[upgrade alloc]initWithNibName:@"upgrade" bundle:nil];
+    [self.navigationController pushViewController:upgradeObj animated:YES];
 }
 #pragma mark - CollectionView
 - (NSInteger)numberOfColumnsInFlowLayout:(UICollectionViewFlowLayout *)flowlayout
@@ -275,7 +325,7 @@
     static NSString *cellIdentifier = @"PagecollectionviewCell";
     
     PageCollectionViewCell   *cell =(PageCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.categoryTitle.text = [tabsArray objectAtIndex:indexPath.row];
+    cell.categoryTitle.text =[NSString stringWithFormat:@"%@  [%@]",[tabsArray objectAtIndex:indexPath.row],[countArray objectAtIndex:indexPath.row]];
     
     if (presentIndex == indexPath.row)
     {
@@ -344,7 +394,78 @@
 
 - (IBAction)compose_click:(id)sender
 {
-    msg_send *menuController  =[[msg_send alloc]initWithNibName:@"msg_send" bundle:nil];
-    [self.navigationController pushViewController:menuController animated:YES];
+
+    [self checkMemberShip];
 }
+
+-(void)checkMemberShip
+{
+    //raviratna5566@gmail.com checkmembership
+    
+    
+    NSDictionary *memberShipDIct;
+    NSString *url;
+    
+    
+    memberShipDIct = @{@"matri_id":matri_id};
+    url = @"services/api/checkmembership";
+    
+    
+    [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:url parameters:memberShipDIct requestNumber:WUS_Register showProgress:YES withHandler:^(BOOL success, id data)
+     {
+         
+         
+         if (success)
+         {
+             
+             NSDictionary *sortDIct = data;
+             
+             
+             
+             NSString *status=[NSString stringWithFormat:@"%@",[sortDIct valueForKey:@"status"]];
+             
+             NSString *result=[NSString stringWithFormat:@"%@",[sortDIct valueForKey:@"result"]];
+             
+             if ([status isEqualToString:@"1"])
+             {
+                 
+                                     msg_send * obj = [[msg_send alloc]initWithNibName:@"msg_send" bundle:nil];
+                                        obj.msgRecevierId = @"";
+                 //                 obj.fromPage =@"reply";
+                                     [self.navigationController pushViewController:obj animated:YES];
+               //  NSString * page = @"reply";
+               //  [msg_delegate replyClick:listID];
+                 //   [msg_delegate M_reply_click:page listValue:listID];
+             }
+             
+             else if ([status isEqualToString:@"2"])
+             {
+                 self.upgradeOutlet.hidden = NO;
+             }
+             
+             else
+             {
+                 ALERT_DIALOG(@"Alert", result);
+                 
+             }
+             
+         }
+         
+         else
+         {
+             ALERT_DIALOG(@"Alert", @"Something went wrong");
+             
+         }
+         
+     }];
+}
+
+- (IBAction)upgradeNowAction:(id)sender {
+    upgrade * obj =[[upgrade alloc]initWithNibName:@"upgrade" bundle:nil];
+    [self.navigationController pushViewController:obj animated:YES];
+}
+- (IBAction)upgradeCancelAction:(id)sender {
+    self.upgradeOutlet.hidden = YES;
+}
+
 @end

@@ -12,5 +12,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *chatBtn;
 @property (strong, nonatomic) IBOutlet UIButton *callBtn;
 @property (strong, nonatomic) IBOutlet UIButton *SortListBTn;
+@property (weak, nonatomic) IBOutlet UILabel *shortListLabel;
+@property (weak, nonatomic) IBOutlet UILabel *callNowLabel;
+@property (weak, nonatomic) IBOutlet UILabel *chatNowLabel;
 
 @end

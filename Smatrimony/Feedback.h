@@ -17,6 +17,8 @@
     UITapGestureRecognizer *singleFingerTap;
     NSUserDefaults *user_inf;
 }
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableTopConstraintOutlet;
+- (IBAction)call_click:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableView *table;
 - (IBAction)back_click:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *name;
@@ -32,5 +34,11 @@
 @property (strong, nonatomic) IBOutlet UIView *cat_view;
 @property (strong, nonatomic) IBOutlet UIView *priority_view;
 @property (strong, nonatomic) IBOutlet NSString *username;
+@property (strong, nonatomic) IBOutlet UIButton *submitBtnLabel;
+
+@property (strong, nonatomic) IBOutlet UITextField *matriIDLabel;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *categoryPriorityoutlet;
+
 
 @end

@@ -9,15 +9,27 @@
 #import "Settings.h"
 
 @interface Settings ()
-
+{
+    NSString *resultValue;
+}
 @end
 
 @implementation Settings
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    defaults=[NSUserDefaults standardUserDefaults];
+    NSString *check = [defaults valueForKey:@"resultView"];
+    if ([check isEqualToString:@"listView"]) {
+        [self.listViewBtn setImage:[UIImage imageNamed:@"Radio_select"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.photoViewBtn setImage:[UIImage imageNamed:@"Radio_select"] forState:UIControlStateNormal];
+    }
+    resultValue=[[NSString alloc]init];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -36,7 +48,7 @@
 
 - (IBAction)back_click:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+       [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)notif_click:(id)sender
@@ -56,4 +68,24 @@
     Change_Password *menuController  =[[Change_Password alloc]initWithNibName:@"Change_Password" bundle:nil];
     [self.navigationController pushViewController:menuController animated:YES];
 }
+
+- (IBAction)privacy_click:(id)sender {
+    Call_Preferences *menuController  =[[Call_Preferences alloc]initWithNibName:@"Call_Preferences" bundle:nil];
+    [self.navigationController pushViewController:menuController animated:YES];
+}
+
+- (IBAction)listViewAction:(id)sender {
+    [self.listViewBtn setImage:[UIImage imageNamed:@"Radio_select"] forState:UIControlStateNormal];
+     [self.photoViewBtn setImage:[UIImage imageNamed:@"Radio_Deselect"] forState:UIControlStateNormal];
+   resultValue=@"listView";
+    [defaults setValue:resultValue forKey:@"resultView"];
+}
+
+- (IBAction)photoViewAction:(id)sender {
+    [self.listViewBtn setImage:[UIImage imageNamed:@"Radio_Deselect"] forState:UIControlStateNormal];
+    [self.photoViewBtn setImage:[UIImage imageNamed:@"Radio_select"] forState:UIControlStateNormal];
+    resultValue=@"photoView";
+    [defaults setValue:resultValue forKey:@"resultView"];
+}
+
 @end

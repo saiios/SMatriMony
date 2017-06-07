@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="offline_payment">
             <connections>
+                <outlet property="ThankYouMessageLbl" destination="TUs-i8-XNh" id="bqh-rL-3GC"/>
                 <outlet property="txt_view" destination="4yH-15-pg2" id="UWW-i8-HWj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="web_view" destination="aY3-yi-0FW" id="6Id-Ek-O0Y"/>
@@ -61,9 +62,12 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="TFr-Px-75w"/>
                     </constraints>
-                    <state key="normal" title="Make Payment">
+                    <state key="normal" title="BACK TO HOME">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="home_click:" destination="-1" eventType="touchUpInside" id="ZD9-J3-of3"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miU-LB-pzA">
                     <rect key="frame" x="16" y="85" width="349" height="21"/>
@@ -93,9 +97,19 @@
                         <constraint firstAttribute="height" constant="130" id="EVp-tE-TMU"/>
                     </constraints>
                 </webView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank You for choosing " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUs-i8-XNh">
+                    <rect key="frame" x="16" y="292" width="343" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="yxe-9u-WWN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="TUs-i8-XNh" secondAttribute="trailing" constant="16" id="12I-Rd-7wO"/>
                 <constraint firstItem="2nk-tj-YWa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1hS-Ec-vN1"/>
                 <constraint firstItem="miU-LB-pzA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="CrN-mx-Uqg"/>
                 <constraint firstItem="aY3-yi-0FW" firstAttribute="top" secondItem="4yH-15-pg2" secondAttribute="bottom" constant="60" id="DXo-Ff-YXY"/>
@@ -105,14 +119,16 @@
                 <constraint firstAttribute="bottom" secondItem="Yzz-su-VwB" secondAttribute="bottom" id="LXa-nZ-Ag5"/>
                 <constraint firstAttribute="trailing" secondItem="miU-LB-pzA" secondAttribute="trailing" constant="10" id="Lk5-Gf-dDo"/>
                 <constraint firstAttribute="trailing" secondItem="aY3-yi-0FW" secondAttribute="trailing" constant="25" id="M7f-bp-3Zg"/>
+                <constraint firstItem="TUs-i8-XNh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="XZ3-O0-qBa"/>
                 <constraint firstAttribute="trailing" secondItem="4yH-15-pg2" secondAttribute="trailing" constant="10" id="e7d-nb-T0V"/>
                 <constraint firstAttribute="trailing" secondItem="Yzz-su-VwB" secondAttribute="trailing" id="elL-MM-0CV"/>
                 <constraint firstItem="aY3-yi-0FW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="nXW-rI-3i1"/>
                 <constraint firstItem="miU-LB-pzA" firstAttribute="top" secondItem="2nk-tj-YWa" secondAttribute="bottom" constant="25" id="nzp-C3-F0o"/>
                 <constraint firstItem="4yH-15-pg2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="rSj-QR-rp6"/>
+                <constraint firstItem="TUs-i8-XNh" firstAttribute="top" secondItem="4yH-15-pg2" secondAttribute="bottom" constant="31" id="tlL-PB-hHs"/>
                 <constraint firstItem="Yzz-su-VwB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wjj-f5-Bg6"/>
             </constraints>
-            <point key="canvasLocation" x="-218" y="-9"/>
+            <point key="canvasLocation" x="-218.5" y="-9.5"/>
         </view>
     </objects>
     <resources>

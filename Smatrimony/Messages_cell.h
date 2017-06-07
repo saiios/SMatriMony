@@ -11,7 +11,7 @@
 @interface Messages_cell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (weak, nonatomic) IBOutlet UILabel *dob;
-@property (weak, nonatomic) IBOutlet UILabel *lbl;
+@property (strong, nonatomic) IBOutlet UITextView *lbl;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIButton *reply;
 @property (weak, nonatomic) IBOutlet UIButton *btn1;

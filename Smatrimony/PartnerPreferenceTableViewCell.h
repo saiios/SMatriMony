@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *drinkingLbl;
 @property (strong, nonatomic) IBOutlet UILabel *skinToneLbl;
 @property (strong, nonatomic) IBOutlet UIImageView *profilePreferenceImage;
+@property (strong, nonatomic) IBOutlet UIImageView *userImage;
 
 
 //religion
@@ -77,5 +78,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *ImgCity;
 @property (strong, nonatomic) IBOutlet UIImageView *ImgCitizenShip;
 
+@property (weak, nonatomic) IBOutlet UILabel *preferenceLabel;
 
 @end

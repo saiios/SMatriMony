@@ -16,5 +16,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UIButton *call_now;
 @property (strong, nonatomic) IBOutlet UIButton *send_mail;
+@property (strong, nonatomic) IBOutlet UIImageView *firstBtnImage;
+@property (strong, nonatomic) IBOutlet UIImageView *secongBtnImg;
+@property (strong, nonatomic) IBOutlet UIView *buttonView;
 
 @end

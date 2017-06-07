@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,32 +20,38 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aop-jj-DJG">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w25-c3-UU2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVL-fM-95i">
-                            <rect key="frame" x="8" y="25" width="40" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3g-Iy-gZg">
+                            <rect key="frame" x="15" y="20" width="35" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="Pzu-At-ysb"/>
-                                <constraint firstAttribute="width" constant="40" id="VVg-Wn-Bra"/>
+                                <constraint firstAttribute="width" constant="35" id="7cu-Xo-jOB"/>
+                                <constraint firstAttribute="height" constant="35" id="9vl-yu-e9p"/>
                             </constraints>
-                            <state key="normal" backgroundImage="1.jpg"/>
+                            <state key="normal" image="Back"/>
+                            <connections>
+                                <action selector="back_click:" destination="-1" eventType="touchUpInside" id="b3T-wX-h8J"/>
+                            </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z0q-h9-ECY">
-                            <rect key="frame" x="63" y="25" width="80" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Franchise List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-Hg-WUN">
+                            <rect key="frame" x="65" y="25.5" width="305" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="80" id="Sn5-ia-vBG"/>
-                                <constraint firstAttribute="height" constant="40" id="Wv5-kc-eKX"/>
+                                <constraint firstAttribute="height" constant="25" id="W48-nt-yz6"/>
                             </constraints>
-                        </imageView>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.74117647060000003" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="Z0q-h9-ECY" firstAttribute="top" secondItem="Aop-jj-DJG" secondAttribute="top" constant="25" id="6Iz-zo-sSU"/>
-                        <constraint firstItem="aVL-fM-95i" firstAttribute="top" secondItem="Aop-jj-DJG" secondAttribute="top" constant="25" id="6ms-kg-sPg"/>
-                        <constraint firstItem="Z0q-h9-ECY" firstAttribute="leading" secondItem="aVL-fM-95i" secondAttribute="trailing" constant="15" id="8DO-7N-4VW"/>
-                        <constraint firstItem="aVL-fM-95i" firstAttribute="leading" secondItem="Aop-jj-DJG" secondAttribute="leading" constant="8" id="XLb-fY-UBc"/>
-                        <constraint firstAttribute="height" constant="70" id="gXm-qq-eDA"/>
+                        <constraint firstAttribute="bottom" secondItem="V1U-Hg-WUN" secondAttribute="bottom" constant="9.5" id="RsB-P4-ml0"/>
+                        <constraint firstAttribute="trailing" secondItem="V1U-Hg-WUN" secondAttribute="trailing" constant="5" id="Xfg-Da-PUU"/>
+                        <constraint firstAttribute="height" constant="60" id="ako-lU-h5P"/>
+                        <constraint firstAttribute="bottom" secondItem="V3g-Iy-gZg" secondAttribute="bottom" constant="5" id="gJM-WQ-prF"/>
+                        <constraint firstItem="V3g-Iy-gZg" firstAttribute="leading" secondItem="w25-c3-UU2" secondAttribute="leading" constant="15" id="miM-sx-8uX"/>
+                        <constraint firstItem="V1U-Hg-WUN" firstAttribute="leading" secondItem="V3g-Iy-gZg" secondAttribute="trailing" constant="15" id="vsS-Vq-Hid"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sk-Bu-0qr">
@@ -54,12 +60,15 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Yh1-kc-5ux"/>
                     </constraints>
-                    <state key="normal" title="ADD AGENT">
+                    <state key="normal" title="ADD SUB AGENT">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="add_subAgent_click:" destination="-1" eventType="touchUpInside" id="lZJ-1e-Knv"/>
+                    </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bNH-Nt-6yX">
-                    <rect key="frame" x="0.0" y="70" width="375" height="557"/>
+                    <rect key="frame" x="0.0" y="60" width="375" height="567"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="abF-Qm-FaC"/>
@@ -69,13 +78,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="w25-c3-UU2" secondAttribute="trailing" id="2K9-h8-O7u"/>
                 <constraint firstItem="1sk-Bu-0qr" firstAttribute="top" secondItem="bNH-Nt-6yX" secondAttribute="bottom" id="4LA-9P-dyh"/>
-                <constraint firstItem="bNH-Nt-6yX" firstAttribute="top" secondItem="Aop-jj-DJG" secondAttribute="bottom" id="4wC-eT-cPU"/>
                 <constraint firstAttribute="bottom" secondItem="1sk-Bu-0qr" secondAttribute="bottom" id="81A-Oc-Dll"/>
+                <constraint firstItem="bNH-Nt-6yX" firstAttribute="top" secondItem="w25-c3-UU2" secondAttribute="bottom" id="MES-FT-4oR"/>
                 <constraint firstAttribute="trailing" secondItem="1sk-Bu-0qr" secondAttribute="trailing" id="WLc-Bw-Ser"/>
-                <constraint firstItem="Aop-jj-DJG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XP0-OR-Vy2"/>
-                <constraint firstAttribute="trailing" secondItem="Aop-jj-DJG" secondAttribute="trailing" id="pIq-5X-eYc"/>
-                <constraint firstItem="Aop-jj-DJG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rUi-vJ-DMo"/>
+                <constraint firstItem="w25-c3-UU2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wep-qx-Koy"/>
+                <constraint firstItem="w25-c3-UU2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oE8-mj-ygh"/>
                 <constraint firstAttribute="trailing" secondItem="bNH-Nt-6yX" secondAttribute="trailing" id="t8O-D0-2G6"/>
                 <constraint firstItem="bNH-Nt-6yX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wIV-9o-iHj"/>
                 <constraint firstItem="1sk-Bu-0qr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xgg-Bp-bmW"/>
@@ -83,7 +92,6 @@
         </view>
     </objects>
     <resources>
-        <image name="1.jpg" width="650" height="502"/>
-        <image name="t.png" width="443" height="458"/>
+        <image name="Back" width="44" height="44"/>
     </resources>
 </document>

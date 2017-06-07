@@ -14,6 +14,11 @@
 {
     [super awakeFromNib];
     // Initialization code
+    self.call_now.layer.cornerRadius = 15;
+    self.call_now.clipsToBounds = YES;
+    
+    self.send_mail.layer.cornerRadius = 15;
+    self.send_mail.clipsToBounds =YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

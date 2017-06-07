@@ -20,8 +20,15 @@
 {
     NSUserDefaults *user_inf;
     NSString *gender;
+    NSTimer *timerd;
+    //IBOutlet UILabel *myCounterLabel;
+
 }
 @property(nonatomic,assign)id Daily_delegate;
+
+@property (nonatomic, retain) UILabel *myCounterLabel;
+-(void)updateCounter:(NSTimer *)theTimer;
+-(void)countdownTimer;
 
 @property (strong, nonatomic) IBOutlet UITableView *newsTableView;
 @property (assign, nonatomic) NSInteger index;

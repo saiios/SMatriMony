@@ -15,7 +15,10 @@
 
 @protocol msg_table <NSObject>
 @optional
--(void)M_reply_click:(NSIndexPath *)index;
+-(void)M_reply_click:(NSString *)frompageValue listValue:(NSString *)listId;
+-(void)notifyMeOnUpgrade;
+-(void)replyClick:(NSString *)Id;
+
 @end
 
 @interface msg_vc : UIViewController<UITableViewDataSource,UITableViewDelegate>
@@ -29,5 +32,9 @@
 @property(strong,nonatomic) NSMutableArray *contentArray;
 @property (nonatomic, weak) id <msg_table> msg_delegate;
 
+//@property (strong, nonatomic) IBOutlet UIView *upgradeNowOutlet;
+//@property (strong, nonatomic) IBOutlet UIView *upgradeNowAction;
+- (IBAction)upgradeNowAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *upgradeNowOutlet;
 
 @end

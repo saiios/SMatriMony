@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,9 +25,9 @@
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </webView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head" translatesAutoresizingMaskIntoConstraints="NO" id="e32-YB-byT">
-                    <rect key="frame" x="0.0" y="18" width="375" height="48"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="48" id="UeX-mg-px5"/>
+                        <constraint firstAttribute="height" constant="66" id="UeX-mg-px5"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mft-7X-F1C">
@@ -45,10 +45,20 @@
                         <action selector="backClick:" destination="-1" eventType="touchUpInside" id="wv0-ue-J5S"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horoscope" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7I-Fp-zBT">
+                    <rect key="frame" x="55" y="25" width="242" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="dRf-4P-lox"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <color key="textColor" red="0.99963909387588501" green="1" blue="0.99975615739822388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="e32-YB-byT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="18" id="A17-bA-CjZ"/>
+                <constraint firstItem="e32-YB-byT" firstAttribute="leading" secondItem="n7I-Fp-zBT" secondAttribute="trailing" constant="-297" id="7mI-xr-bYr"/>
+                <constraint firstItem="e32-YB-byT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="A17-bA-CjZ"/>
                 <constraint firstAttribute="trailing" secondItem="RaF-mk-JlR" secondAttribute="trailing" id="KAN-Il-0rX"/>
                 <constraint firstItem="e32-YB-byT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VTF-5r-dL5"/>
                 <constraint firstItem="mft-7X-F1C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="1" id="Yxn-nV-7g6"/>
@@ -56,9 +66,11 @@
                 <constraint firstItem="RaF-mk-JlR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gfH-Ps-OQH"/>
                 <constraint firstAttribute="trailing" secondItem="e32-YB-byT" secondAttribute="trailing" id="n4A-a2-gga"/>
                 <constraint firstItem="mft-7X-F1C" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="22" id="oBh-3c-53p"/>
+                <constraint firstItem="n7I-Fp-zBT" firstAttribute="top" secondItem="e32-YB-byT" secondAttribute="bottom" constant="-41" id="rhg-8E-UC2"/>
+                <constraint firstItem="n7I-Fp-zBT" firstAttribute="leading" secondItem="mft-7X-F1C" secondAttribute="trailing" constant="8" id="sLC-Sj-NCc"/>
                 <constraint firstAttribute="bottom" secondItem="RaF-mk-JlR" secondAttribute="bottom" id="zNX-rF-M6i"/>
             </constraints>
-            <point key="canvasLocation" x="25.5" y="52.5"/>
+            <point key="canvasLocation" x="-90" y="-21"/>
         </view>
     </objects>
     <resources>

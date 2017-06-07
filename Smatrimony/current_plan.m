@@ -24,30 +24,30 @@
     NSMutableDictionary *dict = [NSMutableDictionary new];
     [dict setObject:matri_id forKey:@"matri_id"];
     
-    _duration.layer.borderColor = [UIColor whiteColor].CGColor;
+    _duration.layer.borderColor = [UIColor orangeColor].CGColor;
     _duration.layer.borderWidth = 1.0;
-    _contacts.layer.borderColor = [UIColor whiteColor].CGColor;
+    _contacts.layer.borderColor = [UIColor orangeColor].CGColor;
     _contacts.layer.borderWidth = 1.0;
-    _view_profile.layer.borderColor = [UIColor whiteColor].CGColor;
+    _view_profile.layer.borderColor = [UIColor orangeColor].CGColor;
     _view_profile.layer.borderWidth = 1.0;
-    _personal_msg.layer.borderColor = [UIColor whiteColor].CGColor;
+    _personal_msg.layer.borderColor = [UIColor orangeColor].CGColor;
     _personal_msg.layer.borderWidth = 1.0;
-    _exp_date.layer.borderColor = [UIColor whiteColor].CGColor;
+    _exp_date.layer.borderColor = [UIColor orangeColor].CGColor;
     _exp_date.layer.borderWidth = 1.0;
-    _horo.layer.borderColor = [UIColor whiteColor].CGColor;
+    _horo.layer.borderColor = [UIColor orangeColor].CGColor;
     _horo.layer.borderWidth = 1.0;
 
-    _d.layer.borderColor = [UIColor whiteColor].CGColor;
+    _d.layer.borderColor = [UIColor orangeColor].CGColor;
     _d.layer.borderWidth = 1.0;
-    _c.layer.borderColor = [UIColor whiteColor].CGColor;
+    _c.layer.borderColor = [UIColor orangeColor].CGColor;
     _c.layer.borderWidth = 1.0;
-    _v.layer.borderColor = [UIColor whiteColor].CGColor;
+    _v.layer.borderColor = [UIColor orangeColor].CGColor;
     _v.layer.borderWidth = 1.0;
-    _p.layer.borderColor = [UIColor whiteColor].CGColor;
+    _p.layer.borderColor = [UIColor orangeColor].CGColor;
     _p.layer.borderWidth = 1.0;
-    _e.layer.borderColor = [UIColor whiteColor].CGColor;
+    _e.layer.borderColor = [UIColor orangeColor].CGColor;
     _e.layer.borderWidth = 1.0;
-    _h.layer.borderColor = [UIColor whiteColor].CGColor;
+    _h.layer.borderColor = [UIColor orangeColor].CGColor;
     _h.layer.borderWidth = 1.0;
     [self current_plan:dict];
 }
@@ -79,7 +79,7 @@
                  _plan.text=[NSString stringWithFormat:@" %@ PLAN",[current_plan valueForKey:@"p_plan"]];
                  _amount.text=[NSString stringWithFormat:@" %@",[current_plan valueForKey:@"p_amount"]];
                  NSString *duration_str=[NSString stringWithFormat:@" %@",[current_plan valueForKey:@"plan_duration"]];
-                 if ([duration_str isEqualToString:@" 0 months"])
+                   if ([duration_str isEqualToString:@" 0 months"]||[duration_str isEqualToString:@" Unlimited"])
                  {
                      _duration.text=@" Unlimited";
                      _exp_date.text=@" Unlimited";

@@ -25,6 +25,7 @@
 - (IBAction)ContinueBtnActn:(id)sender;
 - (IBAction)backClick:(id)sender;
 - (IBAction)datePicker_DoneBtnActn:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *continueBtnOutlet;
 
 
 

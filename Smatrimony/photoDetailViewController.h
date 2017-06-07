@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "upgrade.h"
 
 //protocol
 @protocol senddataProtocol <NSObject>
@@ -24,6 +25,7 @@
 
 @property (strong,nonatomic)NSMutableArray *images;
 @property (strong, nonatomic) IBOutlet UIButton *backClick;
+@property (strong , nonatomic) NSString * loginUserGender;
 - (IBAction)likeHerBtnActn:(id)sender;
 
 - (IBAction)sortListBtnActn:(id)sender;
@@ -31,9 +33,24 @@
 
 - (IBAction)sendintrstBtnActn:(id)sender;
 
+
 @property (strong, nonatomic) IBOutlet UIButton *sendInterestBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *chatNowBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *sortListBtnOutlet;
 @property (strong, nonatomic) IBOutlet UIButton *likeHerBtnOutlet;
+@property (strong, nonatomic) IBOutlet UILabel *shortListLabel;
+
+@property (strong, nonatomic) IBOutlet UIView *upgradeViewOutlet;
+
+@property (strong, nonatomic) IBOutlet UIImageView *upgradeImage;
+@property (strong, nonatomic) IBOutlet UILabel *upgradeNameOutlet;
+
+- (IBAction)upgradeNowAction:(id)sender;
+- (IBAction)closeAction:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UILabel *interestOutlet;
+@property (weak, nonatomic) IBOutlet UIView *hideView;
+
+
 
 @end

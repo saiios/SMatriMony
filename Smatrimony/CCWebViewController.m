@@ -23,7 +23,10 @@
 @implementation CCWebViewController
 
 @synthesize rsaKeyUrl;@synthesize accessCode;@synthesize merchantId;@synthesize orderId;
-@synthesize amount;@synthesize currency;@synthesize redirectUrl;@synthesize cancelUrl;
+@synthesize amount;
+@synthesize currency;
+@synthesize redirectUrl;
+@synthesize cancelUrl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,29 +42,27 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
 
-    /*
-     String access_code = "AVDL69EC48AB07LDBA";
-     String merchant_id = "104981";
-     String redirectUrl="ccavenuemobile/ccavResponseHandler";
-     String cancelUrl="ccavenuemobile/ccavResponseHandler";
-     String rsaKeyUrl="ccavenuemobile/GetRSA";
-     String currency = "INR";
-     */
-    
     self.viewWeb.delegate = self;
     
     accessCode = @"AVDL69EC48AB07LDBA";
     currency   = @"INR";
-    //amount = @"0.001";//from
-    amount = @"1";//from
+    NSLog(@"amount %@",amount);
     merchantId = @"104981";
-    orderId = @"124432464";// from
-    redirectUrl = @"http://www.smatrimony.com/ccavenueios/ccavResponseHandler";
-    cancelUrl= @"http://www.smatrimony.com/ccavenueios/ccavResponseHandler";
-    rsaKeyUrl = @"http://www.smatrimony.com/ccavenueios/GetRSA";
+    
+    int r = arc4random() % 1000000000;
+    printf("Random number: %u", r);
+    orderId = [NSString stringWithFormat:@"%d",r];// from
+    
+    redirectUrl = @"http://smatrimony.com/ccavenuemobile/ccavResponseHandlerios";
+    cancelUrl= @"http://smatrimony.com/ccavenuemobile/ccavResponseHandlerios";
+    rsaKeyUrl = @"http://smatrimony.com/ccavenuemobile/GetRSA";
+    
+    //redirectUrl = @"http://52.66.50.106/ccavenuemobile/ccavResponseHandler";
+    //cancelUrl= @"http://52.66.50.106/ccavenuemobile/ccavResponseHandler";
+    //rsaKeyUrl = @"http://52.66.50.106/ccavenuemobile/GetRSA";
     
     //Getting RSA Key
-    NSString *rsaKeyDataStr = [NSString stringWithFormat:@"access_code=%@&order_id=%@",accessCode,orderId];
+    NSString *rsaKeyDataStr = [NSString stringWithFormat:@"order_id=%@",orderId];
     NSData *requestData = [NSData dataWithBytes: [rsaKeyDataStr UTF8String] length: [rsaKeyDataStr length]];
     NSMutableURLRequest *rsaRequest = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: rsaKeyUrl]];
     [rsaRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
@@ -74,9 +75,6 @@
     NSLog(@"%@",rsaKey);
     
     //Billing info
-    
-   
-    
     //Encrypting Card Details
     NSString *myRequestString = [NSString stringWithFormat:@"amount=%@&currency=%@",amount,currency];
     CCTool *ccTool = [[CCTool alloc] init];
@@ -102,36 +100,36 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    accessCode = @"AVLC64DC55BU28CLUB";
+    accessCode = @"AVDL69EC48AB07LDBA";
     currency   = @"INR";
-     //amount = @"1";//from
-    merchantId = @"94188";
-    orderId = @"1234"; //from
-    redirectUrl = @"https://steeloncall.com/ccavenueios/ccavResponseHandler.php";
-    cancelUrl= @"https://steeloncall.com/ccavenueios/ccavResponseHandler.php";
-    rsaKeyUrl = @"https://steeloncall.com/ccavenueios/GetRSA.php";
-
-
+    NSLog(@"amount %@",amount);
+    merchantId = @"104981";
+    
+    int r = arc4random() % 1000000000;
+    printf("Random number: %u", r);
+    orderId = [NSString stringWithFormat:@"%d",r];// from
+    
+    // orderId = @"124784664";// from
+    
+    redirectUrl = @"http://smatrimony.com/ccavenuemobile/ccavResponseHandlerios";
+    cancelUrl= @"http://smatrimony.com/ccavenuemobile/ccavResponseHandlerios";
+    rsaKeyUrl = @"http://smatrimony.com/ccavenuemobile/GetRSA";
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
-    
-    
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
     NSString *string = webView.request.URL.absoluteString;
     NSLog(@"%@",string);
     
-    if ([string rangeOfString:@"/ccavResponseHandler.php"].location != NSNotFound) {
+    if ([string rangeOfString:@"/ccavResponseHandler"].location != NSNotFound)
+    {
         NSString *html = [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-        
-        
         NSLog(@"%@",html);
         
         transStatus = @"Not Known";
-        
         if (([html rangeOfString:@"Aborted"].location != NSNotFound) ||
-            ([html rangeOfString:@"Cancel"].location != NSNotFound)) {
-            
+            ([html rangeOfString:@"Cancel"].location != NSNotFound))
+        {
             transStatus = @"Transaction Cancelled";
             
         }else if (([html rangeOfString:@"Success"].location != NSNotFound)) {
@@ -140,13 +138,9 @@
             
             
         }else if (([html rangeOfString:@"Fail"].location != NSNotFound)) {
-            
             transStatus = @"Transaction Failed";
         }
-     
-        
-        
-        
+
         NSRange r1 = [html rangeOfString:@"<body>"];
         NSRange r2 = [html rangeOfString:@"</body>"];
         NSRange rSub = NSMakeRange(r1.location + r1.length, r2.location - r1.location - r1.length);
@@ -160,32 +154,26 @@
         dicOfRespo = [[NSDictionary alloc]init];
         dicOfRespo = [json valueForKey:@"result"];
         [self sendRespotoService:json];
-        
-               
-     
-       
-       
     }
 }
-
 
 -(void)sendRespotoService:(id)json
 {
     //paymentResponse
     NSString *jsonString;
-    
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicOfRespo
                                                        options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
                                                          error:&error];
     
-    if (! jsonData) {
+    if (! jsonData)
+    {
         NSLog(@"Got an error: %@", error);
-    } else {
+    }
+    else
+    {
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
-    
-        NSDictionary *parameters=@{@"ccavenue_response":json};
     
     
     NSUserDefaults *user_inf=[NSUserDefaults standardUserDefaults];
@@ -193,17 +181,46 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary new];
     [dict setObject:matri_id forKey:@"matri_id"];
-    [dict setObject:@"Offline" forKey:@"paymode"];
-    [dict setObject:[NSString stringWithFormat:@"6"] forKey:@"order_id"];
-    [dict setObject:[NSString stringWithFormat:@"0"] forKey:@"profile"];
-    [dict setObject:[NSString stringWithFormat:@"Premium"] forKey:@"p_plan"];
-    [dict setObject:[NSString stringWithFormat:@"0 Months"] forKey:@"plan_duration"];
-    [dict setObject:[NSString stringWithFormat:@"No"] forKey:@"video"];
-    [dict setObject:[NSString stringWithFormat:@"No"] forKey:@"chat"];
-    [dict setObject:[NSString stringWithFormat:@"17"] forKey:@"planid"];
-    [dict setObject:[NSString stringWithFormat:@"30"] forKey:@"p_no_contacts"];
-    [dict setObject:[NSString stringWithFormat:@"1999"] forKey:@"p_amount"];
-    [dict setObject:[NSString stringWithFormat:@"30"] forKey:@"p_msg"];
+    [dict setObject:@"Online" forKey:@"paymode"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[[json valueForKey:@"result"]valueForKey:@"order_id"]] forKey:@"order_id"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"profile"]] forKey:@"profile"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"plan_name"]] forKey:@"p_plan"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"plan_duration"]] forKey:@"plan_duration"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"video"]] forKey:@"video"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"chat"]] forKey:@"chat"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"plan_id"]] forKey:@"planid"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"plan_contacts"]] forKey:@"p_no_contacts"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"plan_amount"]] forKey:@"p_amount"];
+    [dict setObject:[NSString stringWithFormat:@"%@",[_payment_dict valueForKey:@"plan_msg"]] forKey:@"p_msg"];
+    [dict setObject:json forKey:@"ccavenue_response"];
+
+    /*
+     {
+     chat = No;
+     "discount_amount" = 0;
+     id = 1;
+     "package_type" = Classic;
+     "plan_amount" = 3800;
+     "plan_amount_type" = "Rs.";
+     "plan_astro" = No;
+     "plan_astro_val" = 0;
+     "plan_contacts" = 60;
+     "plan_duration" = "0 Months";
+     "plan_horo" = 60;
+     "plan_id" = 18;
+     "plan_msg" = 60;
+     "plan_name" = Platinum;
+     "plan_offers" = "This is platinum plan..";
+     "plan_type" = PAID;
+     profile = 0;
+     status = APPROVED;
+     video = No;
+     }
+     */
+    
+    /*
+  matri_id,paymode,p_plan,plan_duration,profile,video,chat,p_no_contacts,p_amount,p_msg,order_id,planid
+     */
     
     [[STParsing sharedWebServiceHelper]requesting_POST_ServiceWithString1:@"api/membershipPayments" parameters:dict requestNumber:WUS_Feedback showProgress:YES withHandler:^(BOOL success, id data)
      {

@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAh-U3-M0n">
-                        <rect key="frame" x="0.0" y="517" width="383" height="196"/>
+                        <rect key="frame" x="0.0" y="516" width="383" height="196"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H53-Ct-4Xs">
                                 <rect key="frame" x="5" y="5" width="373" height="21"/>
@@ -146,11 +147,34 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male" translatesAutoresizingMaskIntoConstraints="NO" id="Fth-MX-Hgz">
-                        <rect key="frame" x="0.0" y="0.0" width="383" height="517"/>
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="516"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfM-ms-klI">
-                        <rect key="frame" x="0.0" y="0.0" width="383" height="517"/>
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="516"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d61-Qc-Nov">
+                        <rect key="frame" x="273" y="444" width="100" height="31"/>
+                        <color key="backgroundColor" red="0.14324017103662556" green="0.83792130235602091" blue="0.68737617821728425" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Imr-tH-yst"/>
+                            <constraint firstAttribute="height" constant="31" id="tBS-Ug-4Is"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                        <color key="textColor" red="0.16431834513910271" green="0.11283532952954325" blue="0.11501758274061059" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.9882352941176471" green="0.21568627450980393" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="OfM-ms-klI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ALU-h3-s2p"/>
@@ -160,8 +184,10 @@
                     <constraint firstItem="EAh-U3-M0n" firstAttribute="top" secondItem="OfM-ms-klI" secondAttribute="bottom" id="QC7-da-eUI"/>
                     <constraint firstItem="Fth-MX-Hgz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QRg-Wx-kPe"/>
                     <constraint firstAttribute="trailing" secondItem="Fth-MX-Hgz" secondAttribute="trailing" id="Sy3-R3-Fr1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="d61-Qc-Nov" secondAttribute="trailing" constant="2" id="VfG-rR-QE1"/>
                     <constraint firstItem="EAh-U3-M0n" firstAttribute="top" secondItem="Fth-MX-Hgz" secondAttribute="bottom" id="cEk-aw-948"/>
                     <constraint firstAttribute="trailing" secondItem="OfM-ms-klI" secondAttribute="trailing" id="lcr-JY-rsb"/>
+                    <constraint firstItem="d61-Qc-Nov" firstAttribute="top" secondItem="OfM-ms-klI" secondAttribute="bottom" constant="-72" id="nZg-b2-aES"/>
                     <constraint firstItem="OfM-ms-klI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pfv-X2-iDW"/>
                     <constraint firstItem="Fth-MX-Hgz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vMr-jz-u75"/>
                 </constraints>
@@ -174,6 +200,7 @@
                 <outlet property="img_click" destination="OfM-ms-klI" id="D4n-zE-P0s"/>
                 <outlet property="name" destination="H53-Ct-4Xs" id="T07-lI-2Cp"/>
                 <outlet property="skip" destination="Xbt-MR-UjX" id="dSg-H5-f2B"/>
+                <outlet property="timerLabel" destination="d61-Qc-Nov" id="rdg-ip-GLt"/>
                 <outlet property="yes" destination="Zlu-JA-jMR" id="xwc-yz-Ik2"/>
             </connections>
             <point key="canvasLocation" x="6.5" y="106.5"/>

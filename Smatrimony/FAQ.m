@@ -106,7 +106,14 @@
 {
     if (s_tag == indexPath.row)
     {
-        return 300;
+//        CGFloat height_row=cell.des.frame.size.height;
+//        return height_row+50;
+        
+        CGSize constraintSize = {self.view.frame.size.width-20, 20000}; //230 is cell width & 20000 is max height for cell
+        CGSize neededSize = [ [NSString stringWithFormat:@"%@",[[faq_dict valueForKey:@"faq_content"]objectAtIndex:indexPath.row]] sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0f] constrainedToSize:constraintSize  lineBreakMode:UILineBreakModeCharacterWrap];
+        
+        
+        return MAX(90, neededSize.height +60);
     }
     else
         return 120;
@@ -114,7 +121,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    faq_cell *cell = [ tableView dequeueReusableCellWithIdentifier:@"faq_cell_1"];
+    cell = [ tableView dequeueReusableCellWithIdentifier:@"faq_cell_1"];
     if (cell==nil)
     {
         [tableView registerNib:[UINib nibWithNibName:@"faq_cell" bundle:nil] forCellReuseIdentifier:@"faq_cell_1"];
@@ -125,7 +132,7 @@
     
     if (s_tag == indexPath.row)
     {
-        cell.des.numberOfLines=20;
+        cell.des.numberOfLines=0;
         UIImage *buttonImage = [UIImage imageNamed:@"top"];
         [cell.btn setBackgroundImage:buttonImage forState:UIControlStateNormal];
     }
@@ -136,8 +143,23 @@
         [cell.btn setBackgroundImage:buttonImage forState:UIControlStateNormal];
     }
     NSString *des_str=[[faq_dict valueForKey:@"faq_content"]objectAtIndex:indexPath.row];
-    if (des_str.length !=0)
+   NSAttributedString *resultstring = [[NSAttributedString alloc] initWithData:[des_str dataUsingEncoding:NSUTF8StringEncoding] options:@{
+                                                                                                                                          NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]
+                                                                                                                                          }
+                                                            documentAttributes:nil error:nil];
+     // NSString* htmlStr = @"<some>html</string>";
+    des_str = [resultstring string];
+ if (des_str.length !=0)
     {
+        if ([des_str containsString:@"<p>"]||[des_str containsString:@"</p>"]||[des_str containsString:@"<em>"]||[des_str containsString:@"</em>"]||[des_str containsString:@"&nbsp;"]) {
+            des_str = [des_str stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+            des_str = [des_str stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
+            des_str = [des_str stringByReplacingOccurrencesOfString:@"<em>" withString:@""];
+            des_str = [des_str stringByReplacingOccurrencesOfString:@"</em>" withString:@""];
+            des_str = [des_str stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "];
+            
+
+        }
         cell.des.text=[NSString stringWithFormat:@"%@",des_str];
     }
     else
@@ -152,7 +174,15 @@
     
     return cell;
 }
-
+-(NSString *)stringByStrippingHTML:(NSString*)str
+{
+    NSRange r;
+    while ((r = [str rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
+    {
+        str = [str stringByReplacingCharactersInRange:r withString:@""];
+    }
+    return str;
+}
 -(void)btn_click :(id)sender
 {
     if (s_tag ==[sender tag])

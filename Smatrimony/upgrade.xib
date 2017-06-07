@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -51,8 +51,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jm3-7U-T1W">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="submit_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="4eS-KZ-p4t">
+                            <rect key="frame" x="-8" y="-6" width="392" height="66"/>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQx-HS-JEJ">
-                            <rect key="frame" x="15" y="20" width="35" height="35"/>
+                            <rect key="frame" x="15" y="13" width="35" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="6g0-oK-2bR"/>
                                 <constraint firstAttribute="width" constant="35" id="wFE-jq-USB"/>
@@ -63,7 +66,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL5-M9-wkc">
-                            <rect key="frame" x="65" y="25.5" width="250" height="25"/>
+                            <rect key="frame" x="65" y="18.5" width="250" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="UQW-np-PrR"/>
                             </constraints>
@@ -77,22 +80,26 @@
                                 <constraint firstAttribute="width" constant="30" id="4qZ-EN-qIx"/>
                                 <constraint firstAttribute="height" constant="30" id="u9U-sp-NAC"/>
                             </constraints>
-                            <state key="normal" image="6BD45780-7CB9-4586-A0C9-7FCBF7B2A1D3"/>
+                            <state key="normal" image="button:qD8-eD-qYy:image"/>
                             <connections>
                                 <action selector="compose_click:" destination="-1" eventType="touchUpInside" id="wYu-kb-tyw"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.74117647060000003" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="yQx-HS-JEJ" firstAttribute="leading" secondItem="Jm3-7U-T1W" secondAttribute="leading" constant="15" id="6Eo-dZ-MlS"/>
                         <constraint firstAttribute="height" constant="60" id="A6w-so-5N6"/>
-                        <constraint firstAttribute="bottom" secondItem="QL5-M9-wkc" secondAttribute="bottom" constant="9.5" id="G10-97-SWm"/>
+                        <constraint firstAttribute="bottom" secondItem="QL5-M9-wkc" secondAttribute="bottom" constant="16.5" id="G10-97-SWm"/>
+                        <constraint firstAttribute="trailing" secondItem="4eS-KZ-p4t" secondAttribute="trailing" constant="-9" id="I8t-Gj-rdr"/>
                         <constraint firstAttribute="trailing" secondItem="QL5-M9-wkc" secondAttribute="trailing" constant="60" id="QL0-nF-kSi"/>
                         <constraint firstItem="QL5-M9-wkc" firstAttribute="leading" secondItem="yQx-HS-JEJ" secondAttribute="trailing" constant="15" id="Wh5-CP-7Bz"/>
-                        <constraint firstItem="yQx-HS-JEJ" firstAttribute="top" secondItem="Jm3-7U-T1W" secondAttribute="top" constant="20" id="Zo7-hG-NvM"/>
+                        <constraint firstItem="yQx-HS-JEJ" firstAttribute="top" secondItem="Jm3-7U-T1W" secondAttribute="top" constant="13" id="Zo7-hG-NvM"/>
+                        <constraint firstItem="4eS-KZ-p4t" firstAttribute="leading" secondItem="Jm3-7U-T1W" secondAttribute="leading" constant="-8" id="bcb-V5-UtA"/>
                         <constraint firstItem="qD8-eD-qYy" firstAttribute="leading" secondItem="QL5-M9-wkc" secondAttribute="trailing" constant="5" id="iMu-jK-UkI"/>
+                        <constraint firstItem="4eS-KZ-p4t" firstAttribute="top" secondItem="Jm3-7U-T1W" secondAttribute="top" constant="-6" id="xhB-W8-5oz"/>
                         <constraint firstAttribute="bottom" secondItem="qD8-eD-qYy" secondAttribute="bottom" constant="9" id="ycd-5R-KIv"/>
+                        <constraint firstAttribute="bottom" secondItem="4eS-KZ-p4t" secondAttribute="bottom" id="zFz-CQ-xEp"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brj-AG-Nm1">
@@ -113,11 +120,12 @@
                 <constraint firstItem="Jm3-7U-T1W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tLi-Hc-1De"/>
                 <constraint firstAttribute="trailing" secondItem="Jm3-7U-T1W" secondAttribute="trailing" id="tTo-BL-NHF"/>
             </constraints>
-            <point key="canvasLocation" x="26.5" y="52.5"/>
+            <point key="canvasLocation" x="-388.5" y="-270.5"/>
         </view>
     </objects>
     <resources>
-        <image name="6BD45780-7CB9-4586-A0C9-7FCBF7B2A1D3" width="650" height="502">
+        <image name="Back" width="44" height="44"/>
+        <image name="button:qD8-eD-qYy:image" width="650" height="502">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -16505,6 +16513,6 @@ fgAO/oEADv6GAA7+jgAO/pEADv6jAA7+pgAO/qsAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAA7+
 rQ
 </mutableData>
         </image>
-        <image name="Back" width="44" height="44"/>
+        <image name="submit_button.png" width="203" height="35"/>
     </resources>
 </document>
