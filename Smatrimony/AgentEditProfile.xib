@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AgentEditProfile">
+            <connections>
+                <outlet property="collectionViewOutlet" destination="pCA-wI-38w" id="C2T-ag-DPX"/>
+                <outlet property="pageViewOutlet" destination="sWU-Zm-cWE" id="RDc-0a-sWf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="submit_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="pOG-XT-QyT">
+                    <rect key="frame" x="-12" y="-6" width="395" height="66"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="66" id="b1I-h4-EaH"/>
+                    </constraints>
+                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pCA-wI-38w">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="KcB-wk-H9g"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1CW-X8-Mgk">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="GX6-p7-0eb"/>
+                        <outlet property="delegate" destination="-1" id="SwY-5b-EKK"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWU-Zm-cWE">
+                    <rect key="frame" x="0.0" y="40" width="375" height="627"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="pCA-wI-38w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2oF-ze-twQ"/>
+                <constraint firstAttribute="trailing" secondItem="sWU-Zm-cWE" secondAttribute="trailing" id="CUn-C0-5E5"/>
+                <constraint firstAttribute="trailing" secondItem="pOG-XT-QyT" secondAttribute="trailing" constant="-8" id="F1W-u2-1h9"/>
+                <constraint firstItem="sWU-Zm-cWE" firstAttribute="top" secondItem="pCA-wI-38w" secondAttribute="bottom" id="NxS-oY-h98"/>
+                <constraint firstItem="pOG-XT-QyT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-6" id="ahL-tl-siX"/>
+                <constraint firstAttribute="trailing" secondItem="pCA-wI-38w" secondAttribute="trailing" id="fKd-9v-lTR"/>
+                <constraint firstItem="sWU-Zm-cWE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jR5-gB-OkK"/>
+                <constraint firstItem="pCA-wI-38w" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mAK-yY-zJu"/>
+                <constraint firstAttribute="bottom" secondItem="sWU-Zm-cWE" secondAttribute="bottom" id="tIt-6e-OqU"/>
+                <constraint firstItem="pOG-XT-QyT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-12" id="wVF-eX-1kG"/>
+            </constraints>
+            <point key="canvasLocation" x="-339" y="55"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="submit_button.png" width="203" height="35"/>
+    </resources>
+</document>
