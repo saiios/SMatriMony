@@ -15,8 +15,12 @@
     [super awakeFromNib];
     // Initialization code
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 }
+=======
+   }
+>>>>>>> 8fb08f11ca87193828d31d8f169956426f816849
 =======
    }
 >>>>>>> 8fb08f11ca87193828d31d8f169956426f816849
